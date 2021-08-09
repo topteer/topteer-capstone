@@ -85,6 +85,9 @@ public class Organization {
         this.email = email;
     }
 
+    public static void save(Organization organization) {
+    }
+
     public long getId() {
         return id;
     }
