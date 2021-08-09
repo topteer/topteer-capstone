@@ -30,8 +30,9 @@ public class EventsController {
             long orgId = validEvent.getOrgID();
             long eCoordId = validEvent.geteCoordID();
             Events event = new Events(orgId, title, eCoordId, phone, date, time, location, hours);
+            eventDao.save(event);
         }
-        eventDao.save(event);
+
         return "redirect:/profile";
     }
 }
