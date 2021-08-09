@@ -13,9 +13,9 @@ import java.util.List;
 public class SearchServlet {
         protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             String query = req.getParameter("searchTitle");
-            List<Ad> results = DaoFactory.getAdsDao().searchByTitle(query);
+//            List<Ad> results = DaoFactory.getAdsDao().searchByTitle(query);
             req.setAttribute("query", query);
-            req.setAttribute("ads", results);
+//            req.setAttribute("ads", results);
             req.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(req, resp);
         }
     }
