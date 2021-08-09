@@ -2,6 +2,7 @@ package com.topteer.topteer.controllers;
 import com.topteer.topteer.models.Organization;
 import com.topteer.topteer.models.User;
 import com.topteer.topteer.repositories.OrganizationRepository;
+import com.topteer.topteer.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,13 @@ import javax.validation.Valid;
 @Controller
 public class OrganizationController {
     private OrganizationRepository orgDao;
+    private UserRepository usersDao;
+
+//    Repository injection
+    public OrganizationController(OrganizationRepository orgDao, UserRepository usersDao) {
+        this.orgDao = orgDao;
+        this.usersDao = usersDao;
+    }
 
     @GetMapping("/organization/create")
     private String showOrgForm(Model model){
@@ -27,7 +35,7 @@ public class OrganizationController {
             return "/organization/create";
         }
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User userId = userDao.getById(currentUser.getId());
+        User userId = usersDao.getById(currentUser.getId());
         Organization organization = new Organization(org_name, address, city, state, zip, phone, email, userId);
         orgDao.save(organization);
         return "redirect:/profile";

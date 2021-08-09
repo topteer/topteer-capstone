@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public class UserController {
 
-    private UserRepository users;
+    private UserRepository usersDao;
 
-    public UserController(UserRepository users) {
-        this.users = users;
+    public UserController(UserRepository usersDao) {
+        this.usersDao = usersDao;
     }
 
     @GetMapping("/register")
