@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Welcome</title>
+    </head>
+    <body>
+        <form action="/organization/create" th:action="@{/organization/create}" method="post" th:object="${orgs}">
+            <div class="form-group">
+                <label for="orgName">Organization Name:</label>
+                <input id="orgName" th:field="*{org_name}">
+                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('orgName')}" th:errors="*{org_name}"></p>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input id="address" th:field="*{address}" />
+                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input id="city" th:field="*{city}">
+                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
+            </div>
+            <div class="form-group">
+                <label for="state">State:</label>
+                <select id="state" th:field="*{state}">
+                    <option value="al">AL</option>
+                    <option value="ak">AK</option>
+                    <option value="az">AZ</option>
+                    <option value="ar">AR</option>
+                    <option value="ca">CA</option>
+                    <option value="co">CO</option>
+                    <option value="ct">CT</option>
+                    <option value="de">DE</option>
+                    <option value="fl">FL</option>
+                    <option value="ga">GA</option>
+                    <option value="hi">HI</option>
+                    <option value="id">ID</option>
+                    <option value="il">IL</option>
+                    <option value="in">IN</option>
+                    <option value="ia">IA</option>
+                    <option value="ks">KS</option>
+                    <option value="ky">KY</option>
+                    <option value="la">LA</option>
+                    <option value="me">ME</option>
+                    <option value="md">MD</option>
+                    <option value="ma">MA</option>
+                    <option value="mi">MI</option>
+                    <option value="mn">MN</option>
+                    <option value="ms">MS</option>
+                    <option value="mo">MO</option>
+                    <option value="mt">MT</option>
+                    <option value="ne">NE</option>
+                    <option value="nv">NV</option>
+                    <option value="nh">NH</option>
+                    <option value="nj">NJ</option>
+                    <option value="nm">NM</option>
+                    <option value="ny">NY</option>
+                    <option value="nc">NC</option>
+                    <option value="nd">ND</option>
+                    <option value="oh">OH</option>
+                    <option value="ok">OK</option>
+                    <option value="or">OR</option>
+                    <option value="pa">PA</option>
+                    <option value="ri">RI</option>
+                    <option value="sc">SC</option>
+                    <option value="sd">SD</option>
+                    <option value="tn">TN</option>
+                    <option value="tx">TX</option>
+                    <option value="ut">UT</option>
+                    <option value="vt">VT</option>
+                    <option value="va">VA</option>
+                    <option value="wa">WA</option>
+                    <option value="wv">WV</option>
+                    <option value="wi">WI</option>
+                    <option value="wy">WY</option>
+                </select>
+                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></p>
+            </div>
+            <div class="form-group">
+                <label for="zip">Zip:</label>
+                <input id="zip" th:field="*{zip}">
+                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('zip')}" th:errors="*{zip}"></p>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input id="phone" th:field="*{phone}" />
+                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input th:type="email" id="email" th:field="*{email}" />
+                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            </div>
+        </form>
+    </body>
+</html>
