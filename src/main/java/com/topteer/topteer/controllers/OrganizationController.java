@@ -14,12 +14,10 @@ import javax.validation.Valid;
 @Controller
 public class OrganizationController {
     private OrganizationRepository orgDao;
-    private UserRepository usersDao;
 
 //    ========== Repository injection ============
-    public OrganizationController(OrganizationRepository orgDao, UserRepository usersDao) {
+    public OrganizationController(OrganizationRepository orgDao) {
         this.orgDao = orgDao;
-        this.usersDao = usersDao;
     }
 
 //    ========== Create organization ===============
@@ -36,16 +34,10 @@ public class OrganizationController {
             return "/organization/create";
         }
 
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User userId = usersDao.getById(currentUser.getId());
         Organization organization = new Organization(org_name, address, city, state, zip, phone, email);
 
 
-        //Needs further thought
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User userId = orgDao.getUserId();
 
-        //
 
         orgDao.save(organization);
         return "redirect:/profile";
