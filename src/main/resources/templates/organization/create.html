@@ -9,7 +9,7 @@
             <div class="form-group">
                 <label for="orgName">Organization Name:</label>
                 <input id="orgName" th:field="*{org_name}">
-                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('orgName')}" th:errors="*{org_name}"></p>
+                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('org_name')}" th:errors="*{org_name}"></p>
             </div>
             <div class="form-group">
                 <label for="address">Address:</label>
@@ -92,6 +92,7 @@
                 <input th:type="email" id="email" th:field="*{email}" />
                 <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
             </div>
+            <button type="submit" name="sendCreate">Submit</button>
         </form>
     </body>
 </html>

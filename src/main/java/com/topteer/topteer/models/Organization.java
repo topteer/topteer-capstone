@@ -81,7 +81,7 @@ public class Organization {
         this.email = email;
     }
 
-    public Organization(String org_name, String address, String city, String state, String zip, String phone, String email, User userId) {
+    public Organization(String org_name, String address, String city, String state, String zip, String phone, String email) {
         this.org_name = org_name;
         this.address = address;
         this.city = city;
@@ -89,7 +89,6 @@ public class Organization {
         this.zip = zip;
         this.phone = phone;
         this.email = email;
-        this.userId = userId;
     }
 
     public long getId() {
@@ -162,5 +161,13 @@ public class Organization {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }
