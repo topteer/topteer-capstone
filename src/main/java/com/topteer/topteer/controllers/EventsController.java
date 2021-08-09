@@ -1,7 +1,10 @@
 package com.topteer.topteer.controllers;
 
 import com.topteer.topteer.models.Events;
+import com.topteer.topteer.models.User;
 import com.topteer.topteer.repositories.EventRepository;
+import com.topteer.topteer.repositories.OrgCoordRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -13,9 +16,11 @@ import javax.validation.Valid;
 public class EventsController {
 
     private EventRepository eventDao;
+    private OrgCoordRepository orgCoordDao;
 
-    public EventsController(EventRepository eventDao) {
+    public EventsController(EventRepository eventDao, OrgCoordRepository orgCoordDao) {
         this.eventDao = eventDao;
+        this.orgCoordDao = orgCoordDao;
     }
 
     @GetMapping("/create")
@@ -31,8 +36,9 @@ public class EventsController {
             model.addAttribute("events", validEvent);
             return "/event/create";
         }else{
-            long orgId = validEvent.getOrgID();
-            long eCoordId = validEvent.geteCoordID();
+            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            long orgId = orgCoordDao.getOrgID();
+            long eCoordId = currentUser.getId();
             Events event = new Events(orgId, title, eCoordId, phone, date, time, location, hours, length);
             eventDao.save(event);
         }
