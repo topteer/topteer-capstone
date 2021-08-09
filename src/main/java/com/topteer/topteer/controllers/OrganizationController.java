@@ -14,14 +14,12 @@ import javax.validation.Valid;
 @Controller
 public class OrganizationController {
     private OrganizationRepository orgDao;
-    private UserRepository usersDao;
-    private OrgCoordRepository orgCoord;
+
 
 //    ========== Repository injection ============
-    public OrganizationController(OrganizationRepository orgDao, UserRepository usersDao, OrgCoordRepository orgCoord) {
+    public OrganizationController(OrganizationRepository orgDao) {
         this.orgDao = orgDao;
-        this.usersDao = usersDao;
-        this.orgCoord = orgCoord;
+
     }
 
 //    ========== Create organization ===============
@@ -37,7 +35,11 @@ public class OrganizationController {
             model.addAttribute("orgs", validOrg);
             return "/organization/create";
         }
+
+
         Organization organization = new Organization(org_name, address, city, state, zip, phone, email);
+
+
 
         orgDao.save(organization);
 
