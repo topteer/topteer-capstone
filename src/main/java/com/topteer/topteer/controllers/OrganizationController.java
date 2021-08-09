@@ -1,9 +1,9 @@
 package com.topteer.topteer.controllers;
+import com.topteer.topteer.models.OrgCoord;
 import com.topteer.topteer.models.Organization;
-import com.topteer.topteer.models.User;
+import com.topteer.topteer.repositories.OrgCoordRepository;
 import com.topteer.topteer.repositories.OrganizationRepository;
 import com.topteer.topteer.repositories.UserRepository;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -15,9 +15,11 @@ import javax.validation.Valid;
 public class OrganizationController {
     private OrganizationRepository orgDao;
 
+
 //    ========== Repository injection ============
     public OrganizationController(OrganizationRepository orgDao) {
         this.orgDao = orgDao;
+
     }
 
 //    ========== Create organization ===============
@@ -34,19 +36,19 @@ public class OrganizationController {
             return "/organization/create";
         }
 
+
         Organization organization = new Organization(org_name, address, city, state, zip, phone, email);
 
 
 
-
         orgDao.save(organization);
+
         return "redirect:/profile";
     }
 
 //    ======== Edit organization =========
     @GetMapping("/organization/{id}/edit")
     public String orgEdit(@PathVariable long id, Model model){
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Organization organization = orgDao.getById(id);
             model.addAttribute("orgs", organization);
             return "/organization/edit";

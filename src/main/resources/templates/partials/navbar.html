@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">/>
+    <title>Home Page</title>
+    <style>
+        body {margin: 0; position: sticky;}
+
+        ul.topnav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        ul.topnav li {float: left;}
+
+        ul.topnav li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+        ul.topnav li a.active {background-color: #04AA6D;}
+
+        ul.topnav li.right {float: right;}
+
+        @media screen and (max-width: 600px) {
+            ul.topnav li.right,
+            ul.topnav li {float: none;}
+        }
+    </style>
+</head>
+<body>
+
+<ul class="topnav">
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="#register">Register</a></li>
+    <li><a href="#profile">Profile</a></li>
+    <li class="right"><a href="#aboutUs">About Us</a></li>
+</ul>
+
+<h1>This is the Home page for Top-Teer</h1>
+
+
+</body>
+</html>
+
+
