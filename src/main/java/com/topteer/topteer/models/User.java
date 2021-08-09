@@ -31,6 +31,15 @@ public class User {
     public User() {
     }
 
+    public User(User copy) {
+        this.id = copy.id;
+        this.firstName = copy.firstName;
+        this.lastName = copy.lastName;
+        this.userName = copy.userName;
+        this.email = copy.email;
+        this.password = copy.password;
+    }
+
     public User(long id, String firstName, String lastName, String userName, String email, String password) {
         this.id = id;
         this.firstName = firstName;
