@@ -59,12 +59,19 @@ public class Organization {
     @Column(nullable = false, length = 80)
     private String email;
 
+    @Column(nullable = false)
+    private long userId;
+
+    //Foreign Key relationship
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userId", referencedColumnName = "id")
+    private User user;
+
     public Organization() {
     }
 
-    public Organization(long id, Organization org, String org_name, String address, String city, String state, String zip, String phone, String email) {
+    public Organization(long id, String org_name, String address, String city, String state, String zip, String phone, String email) {
         this.id = id;
-        this.org = org;
         this.org_name = org_name;
         this.address = address;
         this.city = city;
@@ -74,8 +81,7 @@ public class Organization {
         this.email = email;
     }
 
-    public Organization(Organization org, String org_name, String address, String city, String state, String zip, String phone, String email) {
-        this.org = org;
+    public Organization(String org_name, String address, String city, String state, String zip, String phone, String email, User userId) {
         this.org_name = org_name;
         this.address = address;
         this.city = city;
@@ -83,6 +89,7 @@ public class Organization {
         this.zip = zip;
         this.phone = phone;
         this.email = email;
+        this.userId = userId;
     }
 
     public long getId() {
