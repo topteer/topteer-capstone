@@ -38,7 +38,7 @@ public class OrganizationController {
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userId = usersDao.getById(currentUser.getId());
-        Organization organization = new Organization(org_name, address, city, state, zip, phone, email, userId);
+        Organization organization = new Organization(org_name, address, city, state, zip, phone, email);
 
 
         //Needs further thought
@@ -46,7 +46,6 @@ public class OrganizationController {
 //        User userId = orgDao.getUserId();
 
         //
-        Organization organization = new Organization(org_name, address, city, state, zip, phone, email);
 
         orgDao.save(organization);
         return "redirect:/profile";

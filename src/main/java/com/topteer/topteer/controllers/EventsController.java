@@ -14,6 +14,10 @@ public class EventsController {
 
     private EventRepository eventDao;
 
+    public EventsController(EventRepository eventDao) {
+        this.eventDao = eventDao;
+    }
+
     @GetMapping("/create")
     public String showEventForm(Model model){
         model.addAttribute("events", new Events());
