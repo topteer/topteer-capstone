@@ -16,12 +16,13 @@ public class OrganizationController {
     private OrganizationRepository orgDao;
     private UserRepository usersDao;
 
-//    Repository injection
+//    ========== Repository injection ============
     public OrganizationController(OrganizationRepository orgDao, UserRepository usersDao) {
         this.orgDao = orgDao;
         this.usersDao = usersDao;
     }
 
+//    ========== Create organization ===============
     @GetMapping("/organization/create")
     private String showOrgForm(Model model){
         model.addAttribute("organization", new Organization());
@@ -41,6 +42,7 @@ public class OrganizationController {
         return "redirect:/profile";
     }
 
+//    ======== Edit organization =========
     @GetMapping("/organization/{id}/edit")
     public String orgEdit(@PathVariable long id, Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
