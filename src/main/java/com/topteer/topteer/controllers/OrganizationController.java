@@ -2,6 +2,7 @@ package com.topteer.topteer.controllers;
 import com.topteer.topteer.models.Organization;
 import com.topteer.topteer.models.User;
 import com.topteer.topteer.repositories.OrganizationRepository;
+import com.topteer.topteer.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +14,15 @@ import javax.validation.Valid;
 @Controller
 public class OrganizationController {
     private OrganizationRepository orgDao;
+    private UserRepository usersDao;
 
+//    ========== Repository injection ============
+    public OrganizationController(OrganizationRepository orgDao, UserRepository usersDao) {
+        this.orgDao = orgDao;
+        this.usersDao = usersDao;
+    }
+
+//    ========== Create organization ===============
     @GetMapping("/organization/create")
     private String showOrgForm(Model model){
         model.addAttribute("organization", new Organization());
@@ -27,16 +36,23 @@ public class OrganizationController {
             return "/organization/create";
         }
 
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userId = usersDao.getById(currentUser.getId());
+        Organization organization = new Organization(org_name, address, city, state, zip, phone, email, userId);
+
+
         //Needs further thought
 //        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        User userId = orgDao.getUserId();
 
         //
         Organization organization = new Organization(org_name, address, city, state, zip, phone, email);
+
         orgDao.save(organization);
         return "redirect:/profile";
     }
 
+//    ======== Edit organization =========
     @GetMapping("/organization/{id}/edit")
     public String orgEdit(@PathVariable long id, Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
