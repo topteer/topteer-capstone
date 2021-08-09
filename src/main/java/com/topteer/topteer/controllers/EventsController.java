@@ -25,3 +25,5 @@ public class EventsController {
         return "redirect:/profile";
     }
 }
+
+//find by title suggested by Jeff, scrapped previous work.
