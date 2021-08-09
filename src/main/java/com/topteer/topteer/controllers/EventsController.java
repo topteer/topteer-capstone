@@ -21,7 +21,7 @@ public class EventsController {
     }
 
     @RequestMapping(value = "/event/create",method = RequestMethod.POST)
-    public String saveEvent(@RequestParam String title, @RequestParam String phone, @RequestParam String date, @RequestParam String time, @RequestParam String location, @RequestParam int hours, @RequestParam int length, @Valid Events validEvent, Errors validation, Model model){
+    public String saveEvent(@RequestParam String title, @RequestParam String phone, @RequestParam String date, @RequestParam String time, @RequestParam String location, @RequestParam double hours, @RequestParam double length, @Valid Events validEvent, Errors validation, Model model){
         if(validation.hasErrors()){
             model.addAttribute("errors", validation);
             model.addAttribute("events", validEvent);
@@ -29,7 +29,7 @@ public class EventsController {
         }else{
             long orgId = validEvent.getOrgID();
             long eCoordId = validEvent.geteCoordID();
-            Events event = new Events(orgId, title, eCoordId, phone, date, time, location, hours);
+            Events event = new Events(orgId, title, eCoordId, phone, date, time, location, hours, length);
             eventDao.save(event);
         }
 

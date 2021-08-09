@@ -70,7 +70,7 @@ public class Events {
     @Column(nullable = false)
     private double length;
 
-    public Events() {
+    public Events(long orgId, String title, long eCoordId, String phone, String date, String time, String location, double hours, double length) {
     }
 
     public Events(long id, long orgID, Organization org, long eCoordID, User user, String phone, String date, String time, String location, double hours, double length) {
@@ -87,7 +87,7 @@ public class Events {
         this.length = length;
     }
 
-    public Events(long orgID, String title, long eCoordID, User user, String phone, String date, String time, String location, double hours, double length) {
+    public Events(long orgID, String title, long eCoordID, String phone, String date, String time, String location, double hours) {
         this.orgID = orgID;
         this.title = title;
         this.eCoordID = eCoordID;
@@ -98,6 +98,10 @@ public class Events {
         this.location = location;
         this.hours = hours;
         this.length = length;
+    }
+
+    public Events() {
+
     }
 
     public long getId() {
