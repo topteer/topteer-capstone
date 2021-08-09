@@ -20,8 +20,8 @@ public class Events {
     private long orgID;
 
     //Foreign Key relationship
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "orgID", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "org")
     private Organization org;
 
     @NotBlank(message = "You must input a title")
@@ -34,8 +34,8 @@ public class Events {
     private long eCoordID;
 
     //Foreign Key relationship
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn (name = "eCoordID", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn (name = "eCoordID")
     private User user;
 
     //phone column creation

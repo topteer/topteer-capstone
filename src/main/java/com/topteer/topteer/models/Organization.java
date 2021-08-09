@@ -15,8 +15,11 @@ public class Organization {
     private long id;
 
     //id relationship
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private Organization org;
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "orgID")
+   private Events event;
+
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "orgID")
+   private OrgCoord orgCoord;
 
     //org_name column generation
     @NotBlank(message = "You must enter a Organization name")
@@ -59,15 +62,11 @@ public class Organization {
     @Column(nullable = false, length = 80)
     private String email;
 
-    @Column(nullable = false)
-    private long userId;
-
-    //Foreign Key relationship
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userId", referencedColumnName = "id")
-    private User user;
-
     public Organization() {
+    }
+
+    public Organization(OrgCoord orgCoord) {
+        this.orgCoord = orgCoord;
     }
 
     public Organization(long id, String org_name, String address, String city, String state, String zip, String phone, String email) {
@@ -163,11 +162,11 @@ public class Organization {
         this.email = email;
     }
 
-    public long getUserId() {
-        return userId;
+    public Events getEvent() {
+        return event;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setEvent(Events event) {
+        this.event = event;
     }
 }

@@ -1,9 +1,9 @@
 package com.topteer.topteer.controllers;
+import com.topteer.topteer.models.OrgCoord;
 import com.topteer.topteer.models.Organization;
-import com.topteer.topteer.models.User;
+import com.topteer.topteer.repositories.OrgCoordRepository;
 import com.topteer.topteer.repositories.OrganizationRepository;
 import com.topteer.topteer.repositories.UserRepository;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -15,11 +15,13 @@ import javax.validation.Valid;
 public class OrganizationController {
     private OrganizationRepository orgDao;
     private UserRepository usersDao;
+    private OrgCoordRepository orgCoord;
 
 //    ========== Repository injection ============
-    public OrganizationController(OrganizationRepository orgDao, UserRepository usersDao) {
+    public OrganizationController(OrganizationRepository orgDao, UserRepository usersDao, OrgCoordRepository orgCoord) {
         this.orgDao = orgDao;
         this.usersDao = usersDao;
+        this.orgCoord = orgCoord;
     }
 
 //    ========== Create organization ===============
@@ -35,26 +37,16 @@ public class OrganizationController {
             model.addAttribute("orgs", validOrg);
             return "/organization/create";
         }
-
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User userId = usersDao.getById(currentUser.getId());
         Organization organization = new Organization(org_name, address, city, state, zip, phone, email);
 
-
-        //Needs further thought
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User userId = orgDao.getUserId();
-
-        //
-
         orgDao.save(organization);
+
         return "redirect:/profile";
     }
 
 //    ======== Edit organization =========
     @GetMapping("/organization/{id}/edit")
     public String orgEdit(@PathVariable long id, Model model){
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Organization organization = orgDao.getById(id);
             model.addAttribute("orgs", organization);
             return "/organization/edit";
