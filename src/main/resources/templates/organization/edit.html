@@ -5,24 +5,22 @@
         <title>Welcome</title>
     </head>
     <body>
-        <form th:action="@{/organization/{id}/edit(id=${org.getID})}" method="post">
+        <form th:action="@{/organization/{id}/edit(id=${org.getID})}" method="post" th:object="orgs">
             <div class="form-group">
                 <label for="orgName">Organization Name:</label>
                 <input id="orgName" th:field="*{org_name}" th:value="org_name" disabled>
             </div>
             <div class="form-group">
                 <label for="address">Address:</label>
-                <input id="address" th:field="*{address}" >
-                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+                <input id="address" th:field="*{address}" th:value="address" disabled>
             </div>
             <div class="form-group">
                 <label for="city">City:</label>
-                <input id="city" th:field="*{city}">
-                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
+                <input id="city" th:field="*{city}" th:value="city" disabled>
             </div>
             <div class="form-group">
                 <label for="state">State:</label>
-                <select id="state" th:field="*{state}">
+                <select id="state" th:field="*{state}" th:value="state" disabled>
                     <option value="al">AL</option>
                     <option value="ak">AK</option>
                     <option value="az">AZ</option>
@@ -74,7 +72,20 @@
                     <option value="wi">WI</option>
                     <option value="wy">WY</option>
                 </select>
-                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></p>
+                <div class="form-group">
+                    <label for="zip">Zip:</label>
+                    <input id="zip" th:field="*{zip}" th:value="zip" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone:</label>
+                    <input id="phone" th:field="*{phone}" th:value="phone">
+                    <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input th:type="email" id="email" th:field="*{email}" th:value="email">
+                    <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                </div>
             </div>
             <button type="submit" name="sendEdit">Submit</button>
         </form>

@@ -162,4 +162,12 @@ public class Organization {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 }

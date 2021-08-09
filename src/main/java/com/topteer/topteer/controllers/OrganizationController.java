@@ -35,9 +35,19 @@ public class OrganizationController {
             model.addAttribute("orgs", validOrg);
             return "/organization/create";
         }
+
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userId = usersDao.getById(currentUser.getId());
         Organization organization = new Organization(org_name, address, city, state, zip, phone, email, userId);
+
+
+        //Needs further thought
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User userId = orgDao.getUserId();
+
+        //
+        Organization organization = new Organization(org_name, address, city, state, zip, phone, email);
+
         orgDao.save(organization);
         return "redirect:/profile";
     }
@@ -47,13 +57,8 @@ public class OrganizationController {
     public String orgEdit(@PathVariable long id, Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Organization organization = orgDao.getById(id);
-        if(currentUser.getId() == organization.getUser().getID()){
             model.addAttribute("orgs", organization);
             return "/organization/edit";
-        }else{
-            return "redirect:/organization/" + id;
-        }
-
     }
 
     @PostMapping("/organization/{id}/edit")
