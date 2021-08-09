@@ -24,6 +24,11 @@ public class Events {
     @JoinColumn(name = "orgID", referencedColumnName = "id")
     private Organization org;
 
+    @NotBlank(message = "You must input a title")
+    @Column(nullable = false, length = 80)
+    private String title;
+
+
     //eCoordID column creation
     @Column(nullable = false)
     private long eCoordID;
@@ -82,9 +87,9 @@ public class Events {
         this.length = length;
     }
 
-    public Events(long orgID, Organization org, long eCoordID, User user, String phone, String date, String time, String location, double hours, double length) {
+    public Events(long orgID, String title, long eCoordID, User user, String phone, String date, String time, String location, double hours, double length) {
         this.orgID = orgID;
-        this.org = org;
+        this.title = title;
         this.eCoordID = eCoordID;
         this.user = user;
         this.phone = phone;
@@ -184,5 +189,13 @@ public class Events {
     }
 
     public void save(Events events) {
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
