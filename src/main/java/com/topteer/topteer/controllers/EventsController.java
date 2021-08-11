@@ -45,8 +45,10 @@ public class EventsController {
             return "/event/create";
         }else{
 
+
             Events event = new Events(orgId, title, description, eCoordId, phone, date, time, location, hours, length);
             eventDao.save(event);
+
         }
 
         return "redirect:/profile";

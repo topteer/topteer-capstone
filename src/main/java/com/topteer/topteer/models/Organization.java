@@ -103,6 +103,7 @@ public class Organization {
         this.id = id;
     }
 
+
     public String getOrg_name() {
         return org_name;
     }
