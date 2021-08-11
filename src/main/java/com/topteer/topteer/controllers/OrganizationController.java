@@ -32,11 +32,7 @@ public class OrganizationController {
             model.addAttribute("orgs", validOrg);
             return "/organization/create";
         }
-
-
         Organization organization = new Organization(org_name, address, city, state, zip, phone, email);
-
-
 
         orgDao.save(organization);
 

@@ -1,11 +1,15 @@
 package com.topteer.topteer.models;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
+
 
 @Entity
-@Table(name = "organization")
+@Table(name = "orgs")
 
 public class Organization {
 
@@ -14,12 +18,12 @@ public class Organization {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    //id relationship
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "orgID")
-   private Events event;
+    @Column(nullable = false)
+    private long userId;
 
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "orgID")
-   private OrgCoord orgCoord;
+    //id relationship
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+   private List<Events> events;
 
     //org_name column generation
     @NotBlank(message = "You must enter a Organization name")
@@ -62,15 +66,11 @@ public class Organization {
     @Column(nullable = false, length = 80)
     private String email;
 
-    public Organization() {
-    }
 
-    public Organization(OrgCoord orgCoord) {
-        this.orgCoord = orgCoord;
-    }
 
-    public Organization(long id, String org_name, String address, String city, String state, String zip, String phone, String email) {
+    public Organization(long id, long userId, String org_name, String address, String city, String state, String zip, String phone, String email) {
         this.id = id;
+        this.userId = userId;
         this.org_name = org_name;
         this.address = address;
         this.city = city;
@@ -90,6 +90,11 @@ public class Organization {
         this.email = email;
     }
 
+    public Organization() {
+
+    }
+
+
     public long getId() {
         return id;
     }
@@ -98,13 +103,6 @@ public class Organization {
         this.id = id;
     }
 
-//    public Organization getOrg() {
-//        return org;
-//    }
-//
-//    public void setOrg(Organization org) {
-//        this.org = org;
-//    }
 
     public String getOrg_name() {
         return org_name;
@@ -162,11 +160,21 @@ public class Organization {
         this.email = email;
     }
 
-    public Events getEvent() {
-        return event;
+    public long getUserId() {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        userId = currentUser.getId();
+        return userId;
     }
 
-    public void setEvent(Events event) {
-        this.event = event;
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public List<Events> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Events> events) {
+        this.events = events;
     }
 }
