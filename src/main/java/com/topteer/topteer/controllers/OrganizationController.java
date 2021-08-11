@@ -1,9 +1,6 @@
 package com.topteer.topteer.controllers;
-import com.topteer.topteer.models.OrgCoord;
 import com.topteer.topteer.models.Organization;
-import com.topteer.topteer.repositories.OrgCoordRepository;
 import com.topteer.topteer.repositories.OrganizationRepository;
-import com.topteer.topteer.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
