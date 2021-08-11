@@ -2,6 +2,7 @@ package com.topteer.topteer.models;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -24,9 +25,6 @@ public class User {
 
     @Column(nullable = false)
     private String password;
-
-    @OneToMany(mappedBy = "user")
-    private User user;
 
     public User() {
     }
