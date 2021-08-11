@@ -37,10 +37,10 @@ public class EventsController {
             return "/event/create";
         }else{
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            long orgId = orgCoordDao.getOrgID();
+//            long orgId = orgCoordDao.getOrgID();
             long eCoordId = currentUser.getId();
-            Events event = new Events(orgId, title, eCoordId, phone, date, time, location, hours, length);
-            eventDao.save(event);
+//            Events event = new Events(orgId, title, eCoordId, phone, date, time, location, hours, length);
+//            eventDao.save(event);
         }
 
         return "redirect:/profile";

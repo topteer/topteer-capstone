@@ -98,13 +98,13 @@ public class Organization {
         this.id = id;
     }
 
-    public Organization getOrg() {
-        return org;
-    }
-
-    public void setOrg(Organization org) {
-        this.org = org;
-    }
+//    public Organization getOrg() {
+//        return org;
+//    }
+//
+//    public void setOrg(Organization org) {
+//        this.org = org;
+//    }
 
     public String getOrg_name() {
         return org_name;
