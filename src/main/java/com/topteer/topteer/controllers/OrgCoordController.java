@@ -21,12 +21,12 @@ public class OrgCoordController {
         this.orgCoordDao = orgCoordDao;
     }
 
-    public String createList(){
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        long orgId = ;
-        long eCoord = currentUser.getId();
-        OrgCoord orgCoord = new OrgCoord(orgId, eCoord);
-        orgCoordDao.save(orgCoord);
-    }
+//    public String createList(){
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        long orgId = ;
+//        long eCoord = currentUser.getId();
+//        OrgCoord orgCoord = new OrgCoord(orgId, eCoord);
+//        orgCoordDao.save(orgCoord);
+//    }
 
 }
