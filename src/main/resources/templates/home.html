@@ -1,15 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="partials/header.html :: header"><title></title>
-    <link rel="icon" href="../static/img/favicon.ico" th:href="@{/favicon.ico}" type="image/x-icon"/>
+    <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon"/>
     <link rel="stylesheet" th:href="@{/static/main.css}" type="text/css" />
+    <script type="text/javascript" th:src='partials/quotes.js'> </script>
 </head>
 
 <body class="main">
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 <main>
-    <h1>Top-Teer</h1>
     <img src="../static/img/top-teer-logo.png" th:src="@{/img/top-teer-logo.png}" width="100" height="100" alt="The Logo"/>
+    <h1>Top</h1>
+    <img src="../static/img/volunteer-hands.jpeg" th:src="@{/img/volunteer-hands.jpeg}" width="400" height="150" alt="Hands of Volunteer"/>
+    <h1>Teer</h1>
+
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="title" name="title" type="text" class="validate" placeholder="Organization" />
+            <label for="title"></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="body" name="body" class="validate" placeholder="State">
+            <label for="body"></label>
+        </div>
+    </div>
+    <button type="submit" value="submit">Search</button>
+
+<script>
+    function getRandomQuote(){
+        var quotesArray = ["Never trust anyone who doesn’t drink coffee. – AJ Lee","Coffee is a kind of magic you can drink. ― Catherynne M. Valente","Never underestimate the power of a good cup of coffee. – Ursula Vernon","At least there was coffee. Reliable, delicious, life-giving coffee. – Mary H.K. Choi"]
+        return quotesArray[Math.floor(Math.random() * quotesArray.length - 1) + 1];
+    }
+
+    var randomQuote = document.getElementById("quote")
+
+    randomQuote.innerHTML = getRandomQuote()
+</script>
+
+    <p id="quote"></p>
+
 </main>
 </body>
 </html>
