@@ -26,6 +26,13 @@ public class EventsController {
         this.userDao = userDao;
     }
 
+//    Show all events
+    @GetMapping("/events")
+    public String posts(Model model) {
+        model.addAttribute("events", eventDao.findAll());
+        return "event/index";
+    }
+
     @GetMapping("/create")
     public String showEventForm(Model model){
 

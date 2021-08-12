@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>All events</title>
+</head>
+<body>
+
+<div th:each="organization: ${organizations}">
+    <h2 th:text="${organization.getOrg_name()}"></h2>
+    <p th:text="${organization.getAddress()}"></p>
+    <p th:text="${organization.getCity()}"></p>
+    <p th:text="${organization.getState()}"></p>
+    <p th:text="${organization.getZip()}"></p>
+    <p th:text="${organization.getPhone()}"></p>
+    <p th:text="${organization.getEmail()}"></p>
+    <p th:text="${organization.getEvents()}"></p>
+</div>
+
+</body>
+</html>

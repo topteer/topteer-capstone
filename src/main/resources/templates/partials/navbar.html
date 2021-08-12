@@ -4,10 +4,13 @@
 <body>
 <nav th:fragment="navbar">
     <ul class="topnav">
-        <li><a class="active" href="/home">Home</a></li>
-        <li><a href="/register">Register</a></li>
-        <li><a href="/profile">Profile</a></li>
-        <li class="right"><a href="/aboutUs">About Us</a></li>
+        <li><a class="active" th:href="@{/home}">Home</a></li>
+        <li><a th:href="@{/register}">Register</a></li>
+        <li><a th:href="@{/login}">Log in</a></li>
+        <li><a th:href="@{/events}">All Events</a></li>
+        <li><a th:href="@{/organizations}">All Organizations</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li class="right"><a href="#aboutUs">About Us</a></li>
     </ul>
 </nav>
 </body>

@@ -19,6 +19,13 @@ public class OrganizationController {
 
     }
 
+    //     ======== Show all events ============
+    @GetMapping("/organizations")
+    public String allOrgs(Model model) {
+        model.addAttribute("organizations", orgDao.findAll());
+        return "/organization/index";
+    }
+
 //    ========== Create organization ===============
     @GetMapping("/organization/create")
     private String showOrgForm(Model model){
