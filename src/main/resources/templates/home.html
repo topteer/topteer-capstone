@@ -5,13 +5,14 @@
 </head>
 
 <body class="main">
+<div class="wrapper">
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 
 
 <main>
-    <img src="../static/img/top-teer-logo.png" th:src="@{/img/top-teer-logo.png}" width="5%" height="5%" alt="The Logo"/>
+
     <h1>Top</h1>
-    <img src="../static/img/volunteer-hands.jpeg" th:src="@{/img/volunteer-hands.jpeg}" width="400" height="150" alt="Hands of Volunteer"/>
+    <img src="../static/img/volunteer-hands.jpeg" th:src="@{/img/volunteer-hands.jpeg}" width="400" height="125" alt="Hands of Volunteer"/>
     <h1>Teer</h1>
 
     <div class="row">
@@ -28,7 +29,7 @@
     </div>
     <button type="submit" value="submit">Search</button>
 
-    <p id="quote"></p>
+<!--    <p id="quote"></p>-->
 
     <h4>Test links to pages in progress</h4>
     <ul>
@@ -36,8 +37,10 @@
         <li><a th:href="@{/organization/1/edit/}">Edit Org 1(*)</a></li>
     </ul>
 
-    <script type="text/javascript" th:src="@{/js/quotes.js}"> </script>
+
 
 </main>
+</div>
+<footer th:replace="partials/footer.html :: footer"></footer>
 </body>
 </html>
