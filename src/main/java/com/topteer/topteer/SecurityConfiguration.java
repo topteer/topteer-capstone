@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/events")
+                .defaultSuccessUrl("/event")
                 .permitAll()
                 .and()
                 .logout()
@@ -45,7 +45,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/events/create")
+                        "/event/create")
                 .authenticated()
                 .and()
                 .authorizeRequests()

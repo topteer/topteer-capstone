@@ -5,9 +5,57 @@
         <title>Welcome</title>
     </head>
     <body>
-        <div class="eventContainer">
+        <div class="eventContainer" th:object="${event}">
             <h3 class="eventHeader" th:text="${event.title}"></h3>
-            <p th:text=""></p>
+            <p th:text="${event.description}"></p>
+
         </div>
+
+        <script th:src="@{/js/geoCode.js}"></script>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+        <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
+        <script>
+            function geocode(search, token) {
+                var baseUrl = 'https://api.mapbox.com';
+                var endPoint = '/geocoding/v5/mapbox.places/';
+                return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+                    .then(function(res) {
+                        return res.json();
+                        // to get all the data from the request, comment out the following three lines...
+                    }).then(function(data) {
+                        return data.features[0].center;
+                    });
+            }
+            mapboxgl.accessToken = 'mapBoxAuthTOKEN';
+            var map = new mapboxgl.Map({
+                container: 'map', // container ID
+                style: 'mapbox://styles/mapbox/streets-v11', // style URL
+                center: [-98.4896, 29.4268], // starting position [lng, lat]
+                zoom: 15 // starting zoom
+
+            });
+            map.scrollZoom.disable();
+            map.doubleClickZoom.disable();
+
+            var marker = new mapboxgl.Marker({
+                color:'red',
+                draggable: false
+
+            })
+                .setLngLat([-97.0403, 32.8998])
+                .addTo(map);
+
+            function success(pos) {
+                crd = pos.coords;
+                ll = new mapboxgl.LngLat(crd.longitude, crd.latitude);
+                rad = ll.toBounds(40233).toArray();
+                now = rad[0].concat(rad[1]);
+                geo()
+            }
+
+            function error(err){
+                console.warn(`ERROR(${err.code}): ${err.message}`);
+            }
+        </script>
     </body>
 </html>

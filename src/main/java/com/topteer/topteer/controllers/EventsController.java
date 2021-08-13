@@ -1,6 +1,7 @@
 package com.topteer.topteer.controllers;
 
 import com.topteer.topteer.models.Events;
+import com.topteer.topteer.models.Organization;
 import com.topteer.topteer.models.User;
 import com.topteer.topteer.repositories.EventRepository;
 import com.topteer.topteer.repositories.OrganizationRepository;
@@ -38,7 +39,12 @@ public class EventsController {
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long eCoordId = currentUser.getId();
-        String org_name = orgDao.findByUserId(eCoordId).getOrg_name();
+        Organization organization = orgDao.findByUserId(eCoordId);
+        String org_name = organization.getOrg_name();
+        model.addAttribute("eCoordId", eCoordId);
+        model.addAttribute("eCoord", currentUser.getFirstName());
+        model.addAttribute("org_name", org_name);
+        model.addAttribute("orgId", organization.getId());
         model.addAttribute("events", new Events());
 
         return "event/create";
@@ -63,7 +69,9 @@ public class EventsController {
     @GetMapping("/event/{id}/show")
     public String singleEvent(@PathVariable long id, Model model){
         Events events = eventDao.getById(id);
-        model.addAttribute("event", eventDao.getById(id));
+        String eventCoord = events.getUser().getFirstName();
+        model.addAttribute("event", events);
+        model.addAttribute("eCoord", eventCoord);
         return "event/show";
     }
 
