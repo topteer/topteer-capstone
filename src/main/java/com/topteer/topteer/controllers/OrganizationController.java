@@ -50,13 +50,18 @@ public class OrganizationController {
     @GetMapping("/organization/{id}/edit")
     public String orgEdit(@PathVariable long id, Model model){
         Organization organization = orgDao.getById(id);
+        String state = organization.getState();
+        model.addAttribute("state", state);
         model.addAttribute("orgs", organization);
             return "/organization/edit";
     }
 
     @PostMapping("/organization/{id}/edit")
-    public String orgEdit(@PathVariable long id, @RequestParam(name = "phone") String phone, @RequestParam(name = "email") String email){
+    public String orgEdit(@PathVariable long id, @RequestParam(name = "address") String address, @RequestParam(name = "city") String city, @RequestParam(name = "zip")String zip, @RequestParam(name = "phone") String phone, @RequestParam(name = "email") String email){
         Organization orgEdit = orgDao.getById(id);
+        orgEdit.setAddress(address);
+        orgEdit.setCity(city);
+        orgEdit.setZip(zip);
         orgEdit.setPhone(phone);
         orgEdit.setEmail(email);
         orgDao.save(orgEdit);
