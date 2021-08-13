@@ -50,8 +50,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/",
-                        "/register",
+                        "/*",
+                        "/organization/**", //TODO: remove this entry it was just so we could look at the org create forms without logging in
+                        "/register/*",
                         "/js/**", // had to add this to not restrict scripts
                         "/css/**", // had to add this to not restrict stylesheets
                         "/img/**") // had to add this to not restrict images
