@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Welcome</title>
-    </head>
-    <body>
-        <form action="/organization/create" th:action="@{/organization/create}" method="post" th:object="${orgs}">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head><title>Top-Teer Create an Organization</title>
+    <link th:replace="partials/header.html :: header"/>
+</head>
+
+
+<body class="main">
+<nav th:replace="partials/navbar.html :: navbar"></nav>
+
+        <form action="/organization/create" th:action="@{/organization/create}" method="post" th:object="${organization}">
             <div class="form-group">
                 <label for="orgName">Organization Name:</label>
                 <input id="orgName" th:field="*{org_name}">

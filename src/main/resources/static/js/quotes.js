@@ -3,6 +3,6 @@ function getRandomQuote(){
     return quotesArray[Math.floor(Math.random() * quotesArray.length - 1) + 1];
 }
 
-var randomQuote = document.getElementById("quote")
+var randomQuote = document.getElementById("quote");
 
-randomQuote.innerHTML = getRandomQuote()
+randomQuote.innerHTML = getRandomQuote();

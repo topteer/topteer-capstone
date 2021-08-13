@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Welcome</title>
-    </head>
-    <body>
-        <form th:action="@{/organization/{id}/edit(id=${org.getID})}" method="post" th:object="orgs">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head><title>Top-Teer Edit an Organization</title>
+    <link th:replace="partials/header.html :: header"/>
+</head>
+
+
+<body class="main">
+<nav th:replace="partials/navbar.html :: navbar"></nav>
+        <form th:action="@{/organization/{id}/edit(id=${orgs.getId})}" method="post" th:object="${orgs}">
             <div class="form-group">
                 <label for="orgName">Organization Name:</label>
-                <input id="orgName" th:field="*{org_name}" th:value="org_name" disabled>
+                <input id="orgName" th:field="*{org_name}" th:value="org_name" >
             </div>
             <div class="form-group">
                 <label for="address">Address:</label>
-                <input id="address" th:field="*{address}" th:value="address" disabled>
+                <input id="address" th:field="*{address}" th:value="address" >
             </div>
             <div class="form-group">
                 <label for="city">City:</label>
-                <input id="city" th:field="*{city}" th:value="city" disabled>
+                <input id="city" th:field="*{city}" th:value="city" >
             </div>
             <div class="form-group">
                 <label for="state">State:</label>
-                <select id="state" th:field="*{state}" th:value="state" disabled>
+                <select id="state" name="state" >
                     <option value="al">AL</option>
                     <option value="ak">AK</option>
                     <option value="az">AZ</option>
@@ -62,8 +64,9 @@
                     <option value="ri">RI</option>
                     <option value="sc">SC</option>
                     <option value="sd">SD</option>
-                    <option value="tn">TN</option>
-                    <option value="tx">TX</option>
+                    <option value="tn" th:selected="${orgs.state=='TN'}">TN</option>
+                    <option value="tx" th:selected="${orgs.state=='TX'}">TX</option>
+
                     <option value="ut">UT</option>
                     <option value="vt">VT</option>
                     <option value="va">VA</option>
@@ -74,7 +77,7 @@
                 </select>
                 <div class="form-group">
                     <label for="zip">Zip:</label>
-                    <input id="zip" th:field="*{zip}" th:value="zip" disabled>
+                    <input id="zip" th:field="*{zip}" th:value="zip" >
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone:</label>

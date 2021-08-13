@@ -50,7 +50,7 @@ public class OrganizationController {
     @GetMapping("/organization/{id}/edit")
     public String orgEdit(@PathVariable long id, Model model){
         Organization organization = orgDao.getById(id);
-            model.addAttribute("orgs", organization);
+        model.addAttribute("orgs", organization);
             return "/organization/edit";
     }
 

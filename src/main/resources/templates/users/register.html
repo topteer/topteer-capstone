@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Register</title>
-<body>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head><title>Top-Teer Register an Account</title>
+    <link th:replace="partials/header.html :: header"/>
+</head>
 
+<body class="main">
+<nav th:replace="partials/navbar.html :: navbar"></nav>
 <h1>Create an account</h1>
 <form th:action="@{/register}" method="POST" th:object="${user}">
 
@@ -15,7 +16,7 @@
     <input id="lastname" th:field="*{lastName}" />
 
     <label for="username">Username</label>
-    <input id="username" th:field="*{username}" />
+    <input id="username" th:field="*{userName}" />
 
     <label for="email">Email</label>
     <input id="email" th:field="*{email}" />
