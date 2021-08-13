@@ -11,4 +11,5 @@ public interface OrganizationRepository extends JpaRepository<Organization, Long
 
     @Query("from Organization org where org.userId = :num ")
     Organization findByUserId(long num);
+
 }

@@ -1,12 +1,9 @@
 h1
 {
-    font-size: 100px;
+    font-size: 200px;
     color: black;
     display: inline;
     text-align: center;
-    alignment: center;
-
-
 }
 #quote
 {
@@ -16,6 +13,8 @@ h1
     border: solid black;
     margin: 10px;
     font-size: 30px;
+    background-color: lightskyblue;
+    color: black;
 }
 
 .wrapper {
