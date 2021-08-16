@@ -18,8 +18,9 @@ public class Organization {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
-    private long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    User user;
 
     //id relationship
    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
@@ -67,10 +68,8 @@ public class Organization {
     private String email;
 
 
-
-    public Organization(long id, long userId, String org_name, String address, String city, String state, String zip, String phone, String email) {
-        this.id = id;
-        this.userId = userId;
+    public Organization(User user, String org_name, String address, String city, String state, String zip, String phone, String email) {
+        this.user = user;
         this.org_name = org_name;
         this.address = address;
         this.city = city;
@@ -94,6 +93,21 @@ public class Organization {
 
     }
 
+    public Organization(User user) {
+        this.user = user;
+    }
+
+    public Organization(List<Events> events) {
+        this.events = events;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public long getId() {
         return id;
@@ -158,16 +172,6 @@ public class Organization {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public long getUserId() {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        userId = currentUser.getId();
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
     }
 
     public List<Events> getEvents() {

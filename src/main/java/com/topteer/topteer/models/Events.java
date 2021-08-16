@@ -30,7 +30,7 @@ public class Events {
 
     //Foreign Key relationship
     @ManyToOne
-    @JoinColumn (name = "eCoordID")
+    @JoinColumn (name = "e_coordid")
     private User user;
 
     //phone column creation
@@ -56,7 +56,7 @@ public class Events {
     private String location;
 
     //hours column creation
-    @NotBlank(message = "You must enter a minimum time voluteers must contribute")
+    @NotBlank(message = "You must enter a minimum time volunteers must contribute")
     @Column(nullable = false)
     private double hours;
 
@@ -65,17 +65,9 @@ public class Events {
     @Column(nullable = false)
     private double length;
 
-    @ManyToOne
-    @JoinColumn(name = "org_id_id")
-    private Organization org_id;
 
-    public Organization getOrg_id() {
-        return org_id;
-    }
 
-    public void setOrg_id(Organization org_id) {
-        this.org_id = org_id;
-    }
+
 
     public Events(long orgId, String title, String description, long eCoordId, String phone, String date, String time, String location, double hours, double length) {
     }
@@ -98,18 +90,6 @@ public class Events {
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Organization getOrg() {
-        return org;
-    }
-
-    public void setOrg(Organization org) {
-        this.org = org;
     }
 
     public String getTitle() {

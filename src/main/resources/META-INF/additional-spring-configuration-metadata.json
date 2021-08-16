@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "mapBoxAuthTOKEN",
+      "type": "java.lang.String",
+      "description": "Description for mapBoxAuthTOKEN."
+    },
+    {
+      "name": "mapBoxAuthTOKEN",
+      "type": "java.lang.String",
+      "description": "Description for mapBoxAuthTOKEN."
+    }
+  ] }

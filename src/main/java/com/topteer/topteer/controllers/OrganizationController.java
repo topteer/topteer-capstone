@@ -1,6 +1,9 @@
 package com.topteer.topteer.controllers;
 import com.topteer.topteer.models.Organization;
+import com.topteer.topteer.models.User;
 import com.topteer.topteer.repositories.OrganizationRepository;
+import com.topteer.topteer.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -11,12 +14,12 @@ import javax.validation.Valid;
 @Controller
 public class OrganizationController {
     private OrganizationRepository orgDao;
-
+    private UserRepository userDao;
 
 //    ========== Repository injection ============
-    public OrganizationController(OrganizationRepository orgDao) {
+    public OrganizationController(OrganizationRepository orgDao, UserRepository userDao) {
         this.orgDao = orgDao;
-
+        this.userDao = userDao;
     }
 
     //     ======== Show all events ============
@@ -39,7 +42,10 @@ public class OrganizationController {
             model.addAttribute("orgs", validOrg);
             return "/organization/create";
         }
-        Organization organization = new Organization(org_name, address, city, state, zip, phone, email);
+
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        Organization organization = new Organization(currentUser,org_name, address, city, state, zip, phone, email);
 
         orgDao.save(organization);
 
@@ -50,13 +56,18 @@ public class OrganizationController {
     @GetMapping("/organization/{id}/edit")
     public String orgEdit(@PathVariable long id, Model model){
         Organization organization = orgDao.getById(id);
+        String state = organization.getState();
+        model.addAttribute("state", state);
         model.addAttribute("orgs", organization);
             return "/organization/edit";
     }
 
     @PostMapping("/organization/{id}/edit")
-    public String orgEdit(@PathVariable long id, @RequestParam(name = "phone") String phone, @RequestParam(name = "email") String email){
+    public String orgEdit(@PathVariable long id, @RequestParam(name = "address") String address, @RequestParam(name = "city") String city, @RequestParam(name = "zip")String zip, @RequestParam(name = "phone") String phone, @RequestParam(name = "email") String email){
         Organization orgEdit = orgDao.getById(id);
+        orgEdit.setAddress(address);
+        orgEdit.setCity(city);
+        orgEdit.setZip(zip);
         orgEdit.setPhone(phone);
         orgEdit.setEmail(email);
         orgDao.save(orgEdit);
