@@ -14,27 +14,25 @@
         <li>
 <!--            ======== search modal ======= -->
             <div id="search-modal">
-                <div class="card-content">
-                    <h3 class="card-title bluer-text">What did you want to search?</h3>
-                    <form action="" th:action="@{/search}" method="post">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <p class="bluer-text">Search Options</p>
+                <div>
+                    <h3>What did you want to search?</h3>
+                    <div>
+                        <h3>What did you want to search?</h3>
+                        <form th:action="@{/search}" method="post">
+                            <div>
+                                <p>Search Options</p>
                                 <select id="search-params" name="search-params">
-                                    <!--                            <option value="3">General Search</option>-->
-                                    <option value="2">Event Title</option>
-                                    <option value="1">Organization Title</option>
+                                    <option value="2">Organization Title</option>
+                                    <option value="1">Event Title</option>
                                 </select>
                             </div>
-                            <div class="input-field col s12">
-                                <input id="query" name="query" type="text" class="validate" />
+                            <div>
+                                <input id="query" name="query" type="text" />
                                 <label for="query">Query</label>
                             </div>
-                        </div>
-                        <div class="modal-footer cyan lighten-5">
-                            <button type="submit" value="submit"><span class="help-this"><i class="fas fa-binoculars"></i>  Find</span></button>
-                        </div>
-                    </form>
+                            <button type="submit" value="submit">Search</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </li>

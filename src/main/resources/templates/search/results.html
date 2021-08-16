@@ -11,16 +11,19 @@
 
 <!--    =========== Search results (From home controller) for loop  ==========-->
 <div th:each="event : ${searchResults}" >
-<!--    ==== Link to result with short description ======-->
     <a th:href="@{'/events/' + ${event.id}}">
         <div>
             <h4 th:text="${event.title}"></h4>
             <p th:text="${event.description}"></p>
-
-<!--            =====  Link to coordinator ===== -->
-            <a  th:href="@{/users/{id}(id=${event.user.id})}">
-                <span class="right">Created by coordinator...<span th:text="${event.user.username}" /></span>
-            </a>
+        </div>
+    </a>
+</div>
+<div th:each="organization : ${searchResults2}" >
+    <!--    ==== Link to result with short description ======-->
+    <a th:href="@{'/organizations/' + ${organization.id}}">
+        <div>
+            <h4 th:text="${organization.org_name}"></h4>
+            <p th:text="${organization.description}"></p>
         </div>
     </a>
 </div>
