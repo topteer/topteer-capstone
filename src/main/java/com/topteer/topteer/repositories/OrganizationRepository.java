@@ -1,8 +1,11 @@
 package com.topteer.topteer.repositories;
 
+import com.topteer.topteer.models.Events;
 import com.topteer.topteer.models.Organization;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 public interface OrganizationRepository extends JpaRepository<Organization, Long> {
 
@@ -11,4 +14,6 @@ public interface OrganizationRepository extends JpaRepository<Organization, Long
 
     @Query("from Organization org where org.userId = :num ")
     Organization findByUserId(long num);
+
+    List<Organization> findAllByTitleContaining(String query);
 }

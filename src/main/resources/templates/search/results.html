@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Search results</title>
+</head>
+<body>
+<main>
+
+<h3>Look at what we found!</h3>
+
+<!--    =========== Search results (From home controller) for loop  ==========-->
+<div th:each="event : ${searchResults}" >
+<!--    ==== Link to result with short description ======-->
+    <a th:href="@{'/events/' + ${event.id}}">
+        <div>
+            <h4 th:text="${event.title}"></h4>
+            <p th:text="${event.description}"></p>
+
+<!--            =====  Link to coordinator ===== -->
+            <a  th:href="@{/users/{id}(id=${event.user.id})}">
+                <span class="right">Created by coordinator...<span th:text="${event.user.username}" /></span>
+            </a>
+        </div>
+    </a>
+</div>
+</main>
+</body>
+</html>

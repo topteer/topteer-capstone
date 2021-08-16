@@ -11,6 +11,33 @@
         <li><a th:href="@{/organizations}">All Organizations</a></li>
         <li><a href="#profile">Profile</a></li>
         <li class="right"><a href="#aboutUs">About Us</a></li>
+        <li>
+<!--            ======== search modal ======= -->
+            <div id="search-modal">
+                <div class="card-content">
+                    <h3 class="card-title bluer-text">What did you want to search?</h3>
+                    <form action="" th:action="@{/search}" method="post">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <p class="bluer-text">Search Options</p>
+                                <select id="search-params" name="search-params">
+                                    <!--                            <option value="3">General Search</option>-->
+                                    <option value="2">Event Title</option>
+                                    <option value="1">Organization Title</option>
+                                </select>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="query" name="query" type="text" class="validate" />
+                                <label for="query">Query</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer cyan lighten-5">
+                            <button type="submit" value="submit"><span class="help-this"><i class="fas fa-binoculars"></i>  Find</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </li>
     </ul>
 </nav>
 </body>

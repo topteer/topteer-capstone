@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Search index</title>
+</head>
+<body>
+<main class="container">
+    <div class="card cyan lighten-5">
+
+        <div>
+            <h3>What did you want to search?</h3>
+            <form th:action="@{/search}" method="post">
+                    <div>
+                        <p>Search Options</p>
+                        <select id="search-params" name="search-params">
+                            <option value="2">Organization Title</option>
+                            <option value="1">Event Title</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input id="query" name="query" type="text" class="validate" />
+                        <label for="query">Query</label>
+                    </div>
+                <button type="submit" value="submit"><i class="fas fa-search"></i>  Search</button>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>
