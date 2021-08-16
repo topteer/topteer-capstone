@@ -12,6 +12,31 @@
         <li><a th:href="@{/profile}">Profile</a></li>
         <img src="../../static/img/Top-TeerLogo-BlackOnWhite.png" th:src="@{/img/Top-TeerLogo-BlackOnWhite.png}" height="3%" width="3%" alt="The Logo"/>
         <li class="right"><a href="#aboutUs">About Us</a></li>
+        <li>
+<!--            ======== search modal ======= -->
+            <div id="search-modal">
+                <div>
+                    <h3>What did you want to search?</h3>
+                    <div>
+                        <h3>What did you want to search?</h3>
+                        <form th:action="@{/search}" method="post">
+                            <div>
+                                <p>Search Options</p>
+                                <select id="search-params" name="search-params">
+                                    <option value="2">Organization Title</option>
+                                    <option value="1">Event Title</option>
+                                </select>
+                            </div>
+                            <div>
+                                <input id="query" name="query" type="text" />
+                                <label for="query">Query</label>
+                            </div>
+                            <button type="submit" value="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </li>
     </ul>
 </nav>
 </body>

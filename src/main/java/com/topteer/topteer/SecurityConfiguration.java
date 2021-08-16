@@ -55,7 +55,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/register/*",
                         "/js/**", // had to add this to not restrict scripts
                         "/css/**", // had to add this to not restrict stylesheets
-                        "/img/**") // had to add this to not restrict images
+                        "/img/**", // had to add this to not restrict images
+                        "/search", "/search/results", "/users/{id}")
                 .permitAll()
                 .anyRequest().authenticated();
     }
