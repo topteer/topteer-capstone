@@ -9,7 +9,7 @@ public interface OrganizationRepository extends JpaRepository<Organization, Long
     @Query("from Organization org where org.org_name like %:term%")
     Organization findByName(String term);
 
-    @Query("from Organization org where org.userId = :num ")
+    @Query("from Organization org where org.user.id = :num ")
     Organization findByUserId(long num);
 
 }

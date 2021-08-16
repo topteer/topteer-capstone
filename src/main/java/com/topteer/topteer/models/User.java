@@ -1,6 +1,7 @@
 package com.topteer.topteer.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -10,6 +11,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+    List<Organization> organization;
 
     @Column(nullable = false, length = 35)
     private String firstName;

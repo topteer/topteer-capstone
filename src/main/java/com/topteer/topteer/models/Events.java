@@ -30,7 +30,7 @@ public class Events {
 
     //Foreign Key relationship
     @ManyToOne
-    @JoinColumn (name = "eCoordID")
+    @JoinColumn (name = "e_coordid")
     private User user;
 
     //phone column creation
@@ -56,7 +56,7 @@ public class Events {
     private String location;
 
     //hours column creation
-    @NotBlank(message = "You must enter a minimum time voluteers must contribute")
+    @NotBlank(message = "You must enter a minimum time volunteers must contribute")
     @Column(nullable = false)
     private double hours;
 

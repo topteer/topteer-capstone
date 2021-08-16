@@ -1,6 +1,9 @@
 package com.topteer.topteer.controllers;
 import com.topteer.topteer.models.Organization;
+import com.topteer.topteer.models.User;
 import com.topteer.topteer.repositories.OrganizationRepository;
+import com.topteer.topteer.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -11,12 +14,12 @@ import javax.validation.Valid;
 @Controller
 public class OrganizationController {
     private OrganizationRepository orgDao;
-
+    private UserRepository userDao;
 
 //    ========== Repository injection ============
-    public OrganizationController(OrganizationRepository orgDao) {
+    public OrganizationController(OrganizationRepository orgDao, UserRepository userDao) {
         this.orgDao = orgDao;
-
+        this.userDao = userDao;
     }
 
     //     ======== Show all events ============
@@ -39,7 +42,10 @@ public class OrganizationController {
             model.addAttribute("orgs", validOrg);
             return "/organization/create";
         }
-        Organization organization = new Organization(org_name, address, city, state, zip, phone, email);
+
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        Organization organization = new Organization(currentUser,org_name, address, city, state, zip, phone, email);
 
         orgDao.save(organization);
 
