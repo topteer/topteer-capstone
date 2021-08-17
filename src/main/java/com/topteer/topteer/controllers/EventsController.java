@@ -28,7 +28,7 @@ public class EventsController {
     }
 
 //    Show all events
-    @GetMapping("/events")
+    @GetMapping("/event")
     public String posts(Model model) {
         model.addAttribute("events", eventDao.findAll());
         return "event/index";
