@@ -20,7 +20,7 @@ public class Organization {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    User user;
+    private User user;
 
     //id relationship
    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
@@ -29,7 +29,7 @@ public class Organization {
     //org_name column generation
     @NotBlank(message = "You must enter a Organization name")
     @Column(nullable = false, length = 60)
-    private String org_name;
+    private String orgName;
 
     //address column generation
     @NotBlank(message = "You must enter an Address")
@@ -68,9 +68,9 @@ public class Organization {
     private String email;
 
 
-    public Organization(User user, String org_name, String address, String city, String state, String zip, String phone, String email) {
+    public Organization(User user, String orgName, String address, String city, String state, String zip, String phone, String email) {
         this.user = user;
-        this.org_name = org_name;
+        this.orgName = orgName;
         this.address = address;
         this.city = city;
         this.state = state;
@@ -80,7 +80,7 @@ public class Organization {
     }
 
     public Organization(String org_name, String address, String city, String state, String zip, String phone, String email) {
-        this.org_name = org_name;
+        this.orgName = orgName;
         this.address = address;
         this.city = city;
         this.state = state;
@@ -118,12 +118,12 @@ public class Organization {
     }
 
 
-    public String getOrg_name() {
-        return org_name;
+    public String getOrgName() {
+        return orgName;
     }
 
-    public void setOrg_name(String org_name) {
-        this.org_name = org_name;
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
     }
 
     public String getAddress() {
