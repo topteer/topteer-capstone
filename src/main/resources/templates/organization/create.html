@@ -11,7 +11,7 @@
         <form action="/organization/create" th:action="@{/organization/create}" method="post" th:object="${organization}">
             <div class="form-group">
                 <label for="orgName">Organization Name:</label>
-                <input id="orgName" th:field="*{org_name}">
+                <input id="orgName" th:field="*{orgName}">
                 <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('org_name')}" th:errors="*{org_name}"></p>
             </div>
             <div class="form-group">
