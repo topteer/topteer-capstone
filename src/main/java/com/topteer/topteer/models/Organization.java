@@ -19,7 +19,7 @@ public class Organization {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     private User user;
 
     //id relationship
@@ -79,7 +79,7 @@ public class Organization {
         this.email = email;
     }
 
-    public Organization(String org_name, String address, String city, String state, String zip, String phone, String email) {
+    public Organization(String orgName, String address, String city, String state, String zip, String phone, String email) {
         this.orgName = orgName;
         this.address = address;
         this.city = city;
