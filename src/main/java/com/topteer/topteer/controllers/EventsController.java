@@ -36,35 +36,38 @@ public class EventsController {
 
     @GetMapping("/create")
     public String showEventForm(Model model){
-
+        model.addAttribute("events", new Events());
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long eCoordId = currentUser.getId();
+        System.out.println(eCoordId);
         Organization organization = orgDao.findByUserId(eCoordId);
-        String org_name = organization.getOrgName();
+
+
+        String orgName = organization.getOrgName();
+
         model.addAttribute("eCoordId", eCoordId);
         model.addAttribute("eCoord", currentUser.getFirstName());
-        model.addAttribute("org_name", org_name);
-        model.addAttribute("orgId", organization.getId());
-        model.addAttribute("events", new Events());
+        model.addAttribute("orgName", orgName);
 
         return "event/create";
     }
 
-    @RequestMapping(value = "/event/create",method = RequestMethod.POST)
-    public String saveEvent(@RequestParam long orgId, @RequestParam String title, @RequestParam long eCoordId, @RequestParam String description, @RequestParam String phone, @RequestParam String date, @RequestParam String time, @RequestParam String location, @RequestParam double hours, @RequestParam double length, @Valid Events validEvent, Errors validation, Model model){
+    @RequestMapping(value = "/create",method = RequestMethod.POST)
+    public String saveEvent(@RequestParam String orgName, @RequestParam String title, @RequestParam long eCoordId, @RequestParam String description, @RequestParam String phone, @RequestParam String date, @RequestParam String time, @RequestParam String location, @RequestParam double hours, @RequestParam double length, @Valid Events validEvent, Errors validation, Model model){
         if(validation.hasErrors()){
             model.addAttribute("errors", validation);
             model.addAttribute("events", validEvent);
-            return "/event/create";
+            return "/create";
         }else{
-
+            Organization org = orgDao.findByName(orgName);
+            long orgId = org.getId();
 
             Events event = new Events(orgId, title, description, eCoordId, phone, date, time, location, hours, length);
             eventDao.save(event);
 
         }
 
-        return "redirect:/profile";
+        return "redirect:/event";
     }
     @GetMapping("/event/{id}/show")
     public String singleEvent(@PathVariable long id, Model model){

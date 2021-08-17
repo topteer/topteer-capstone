@@ -5,20 +5,19 @@
         <title>Welcome</title>
     </head>
     <body>
-        <form action="/event/create" th:action="@{/event/create}" method="post" th:object="${events}">
+        <form th:action="@{/create}" method="post" th:object="${events}">
 
 <!--            Pre-populated Organization name-->
             <div class="form-group">
-                <label for="org_name">Organization Name:</label>
-                <input id="org_name" th:value="${org_name}"  disabled>
-                <input type="hidden" th:value="${orgId}">
+                <label for="orgName">Organization Name:</label>
+                <input id="orgName" name="orgName" th:value="${orgName}"  disabled>
             </div>
 
             <!--            Pre-populated Event Coordinator name-->
             <div class="form-group">
                 <label for="eCoord">Event Coordinator:</label>
-                <input id="eCoord" th:value="${eCoord}" disabled>
-                <input type="hidden" th:value="${eCoordId}">
+                <input id="eCoord" name="eCoord" th:value="${eCoord}" disabled>
+                <input type="hidden" id="eCoordId" name="eCoordId" th:value="${eCoordId}">
             </div>
 
             <div class="form-group">
