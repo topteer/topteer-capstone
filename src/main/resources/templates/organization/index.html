@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>All events</title>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head><title>Top-Teer All events</title>
+    <link th:replace="partials/header.html :: header"/>
 </head>
-<body>
+
+<body class="main">
+<nav th:replace="partials/navbar.html :: navbar"></nav>
 
 <div th:each="organization: ${organizations}">
-    <h2 th:text="${organization.getOrg_name()}"></h2>
+    <h2 th:text="${organization.getOrgName()}"></h2>
     <p th:text="${organization.getAddress()}"></p>
     <p th:text="${organization.getCity()}"></p>
     <p th:text="${organization.getState()}"></p>

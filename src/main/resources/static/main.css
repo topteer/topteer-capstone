@@ -1,4 +1,22 @@
 h1
 {
-    font-size: xxx-large;
+    font-size: 200px;
+    color: black;
+    display: inline;
+    text-align: center;
+}
+#quote
+{
+    width: auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid black;
+    margin: 10px;
+    font-size: 30px;
+    background-color: lightskyblue;
+    color: black;
+}
+
+.wrapper {
+    min-height: calc(100vh - 110px);
 }

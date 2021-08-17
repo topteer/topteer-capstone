@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>All events</title>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head><title>Top-Teer All Events</title>
+    <link th:replace="partials/header.html :: header"/>
 </head>
-<body>
 
+<body class="main">
+<nav th:replace="partials/navbar.html :: navbar"></nav>
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users.
+
+    User ID: <span th:text="${#authentication.principal.id}"/>
+    Username: <span th:text="${#authentication.principal.username}"/>
+    Email: <span th:text="${#authentication.principal.email}"/>
+</div>
 <div th:each="event: ${events}">
     <h2 th:text="${event.getTitle()}"></h2>
     <p th:text="${event.getDescription()}"></p>

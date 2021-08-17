@@ -5,19 +5,26 @@
         <title>Welcome</title>
     </head>
     <body>
-        <form action="/event/create" th:action="@{/event/create}" method="post" th:object="${events}">
+        <form th:action="@{/create}" method="post" th:object="${events}">
 
 <!--            Pre-populated Organization name-->
             <div class="form-group">
                 <label for="orgName">Organization Name:</label>
-                <input id="orgName" th:field="*{org_name}" th:value="${}" th:object="orgs" disabled>
+                <input id="orgName" name="orgName" th:value="${orgName}"  disabled>
+            </div>
+
+            <!--            Pre-populated Event Coordinator name-->
+            <div class="form-group">
+                <label for="eCoord">Event Coordinator:</label>
+                <input id="eCoord" name="eCoord" th:value="${eCoord}" disabled>
+                <input type="hidden" id="eCoordId" name="eCoordId" th:value="${eCoordId}">
             </div>
 
             <div class="form-group">
                 <label for="title">Title:</label>
                 <input id="title" type="text" th:field="*{title}">
                 <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
-            </div
+            </div>
 
             <div class="form-group">
                 <label for="description">Description:</label>
@@ -25,32 +32,30 @@
                 <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
             </div>
 
-<!--            Pre-populated Event Coordinator name-->
-            <div class="form-group">
-                <label for="eCoord">Event Coordinator:</label>
-                <input id="eCoord" th:field="*{eCoord}" th:value="user.getFirstName" disabled>
-            </div>
-
-
-            <div class="form-group">
-                <label for="phone">City:</label>
-                <input id="phone" th:field="*{phone}">
-                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
-            </div>
-            <div class="form-group">
-                <label for="zip">Zip:</label>
-                <input id="zip" th:field="*{zip}">
-                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('zip')}" th:errors="*{zip}"></p>
-            </div>
             <div class="form-group">
                 <label for="phone">Phone:</label>
                 <input id="phone" th:field="*{phone}" />
                 <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
             </div>
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input th:type="email" id="email" th:field="*{email}" />
-                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                <label for="date">Date:</label>
+                <input id="date" type="date" th:field="*{date}">
+                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></p>
+            </div>
+            <div class="form-group">
+                <label for="time">Time:</label>
+                <input id="time" type="time" th:field="*{time}">
+                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></p>
+            </div>
+            <div class="form-group">
+                <label for="hours">Hours:</label>
+                <input id="hours" type="number" min=".5" step=".5" th:field="*{hours}">
+                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('hours')}" th:errors="*{hours}"></p>
+            </div>
+            <div class="form-group">
+                <label for="length">Length:</label>
+                <input id="length" type="number" min=".5" step=".5" th:field="*{length}" />
+                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('length')}" th:errors="*{length}"></p>
             </div>
             <button type="submit" name="sendCreate">Submit</button>
         </form>

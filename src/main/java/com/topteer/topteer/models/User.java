@@ -1,6 +1,7 @@
 package com.topteer.topteer.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -11,6 +12,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+    List<Organization> organization;
+
     @Column(nullable = false, length = 35)
     private String firstName;
 
@@ -18,7 +22,7 @@ public class User {
     private String lastName;
 
     @Column(nullable = false, length = 35)
-    private String userName;
+    private String username;
 
     @Column(length = 20, nullable = false, unique = true)
     private String email;
@@ -33,7 +37,7 @@ public class User {
         this.id = copy.id;
         this.firstName = copy.firstName;
         this.lastName = copy.lastName;
-        this.userName = copy.userName;
+        this.username = copy.username;
         this.email = copy.email;
         this.password = copy.password;
     }
@@ -42,7 +46,7 @@ public class User {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userName = userName;
+        this.username = username;
         this.email = email;
         this.password = password;
     }
@@ -71,12 +75,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {

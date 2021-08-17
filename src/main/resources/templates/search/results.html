@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Search results</title>
+</head>
+<body>
+<main>
+
+<h3>Look at what we found!</h3>
+
+<!--    =========== Search results (From home controller) for loop  ==========-->
+<div th:each="event : ${searchResults}" >
+    <a th:href="@{'/events/' + ${event.id}}">
+        <div>
+            <h4 th:text="${event.title}"></h4>
+            <p th:text="${event.description}"></p>
+        </div>
+    </a>
+</div>
+<div th:each="organization : ${searchResults2}" >
+    <!--    ==== Link to result with short description ======-->
+    <a th:href="@{'/organizations/' + ${organization.id}}">
+        <div>
+            <h4 th:text="${organization.org_name}"></h4>
+            <p th:text="${organization.description}"></p>
+        </div>
+    </a>
+</div>
+</main>
+</body>
+</html>

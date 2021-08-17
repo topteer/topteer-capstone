@@ -1,6 +1,7 @@
 package com.topteer.topteer.controllers;
 
 import com.topteer.topteer.models.Events;
+import com.topteer.topteer.models.Organization;
 import com.topteer.topteer.models.User;
 import com.topteer.topteer.repositories.EventRepository;
 import com.topteer.topteer.repositories.OrganizationRepository;
@@ -27,7 +28,7 @@ public class EventsController {
     }
 
 //    Show all events
-    @GetMapping("/events")
+    @GetMapping("/event")
     public String posts(Model model) {
         model.addAttribute("events", eventDao.findAll());
         return "event/index";
@@ -35,35 +36,45 @@ public class EventsController {
 
     @GetMapping("/create")
     public String showEventForm(Model model){
-
+        model.addAttribute("events", new Events());
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long eCoordId = currentUser.getId();
-        String org_name = orgDao.findByUserId(eCoordId).getOrg_name();
-        model.addAttribute("events", new Events());
+        System.out.println(eCoordId);
+        Organization organization = orgDao.findByUserId(eCoordId);
+
+
+        String orgName = organization.getOrgName();
+
+        model.addAttribute("eCoordId", eCoordId);
+        model.addAttribute("eCoord", currentUser.getFirstName());
+        model.addAttribute("orgName", orgName);
 
         return "event/create";
     }
 
-    @RequestMapping(value = "/event/create",method = RequestMethod.POST)
-    public String saveEvent(@RequestParam long orgId, @RequestParam String title, @RequestParam long eCoordId, @RequestParam String description, @RequestParam String phone, @RequestParam String date, @RequestParam String time, @RequestParam String location, @RequestParam double hours, @RequestParam double length, @Valid Events validEvent, Errors validation, Model model){
+    @RequestMapping(value = "/create",method = RequestMethod.POST)
+    public String saveEvent(@RequestParam String orgName, @RequestParam String title, @RequestParam long eCoordId, @RequestParam String description, @RequestParam String phone, @RequestParam String date, @RequestParam String time, @RequestParam String location, @RequestParam double hours, @RequestParam double length, @Valid Events validEvent, Errors validation, Model model){
         if(validation.hasErrors()){
             model.addAttribute("errors", validation);
             model.addAttribute("events", validEvent);
-            return "/event/create";
+            return "/create";
         }else{
-
+            Organization org = orgDao.findByName(orgName);
+            long orgId = org.getId();
 
             Events event = new Events(orgId, title, description, eCoordId, phone, date, time, location, hours, length);
             eventDao.save(event);
 
         }
 
-        return "redirect:/profile";
+        return "redirect:/event";
     }
     @GetMapping("/event/{id}/show")
     public String singleEvent(@PathVariable long id, Model model){
         Events events = eventDao.getById(id);
-        model.addAttribute("event", eventDao.getById(id));
+        String eventCoord = events.getUser().getFirstName();
+        model.addAttribute("event", events);
+        model.addAttribute("eCoord", eventCoord);
         return "event/show";
     }
 
