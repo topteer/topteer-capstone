@@ -36,7 +36,7 @@ public class OrganizationController {
         return "/organization/create";
     }
     @RequestMapping(value = "/organization/create", method = RequestMethod.POST)
-    public String saveOrg(@RequestParam String org_name, @RequestParam String address, @RequestParam String city, @RequestParam String state, @RequestParam String zip, @RequestParam String phone, @RequestParam String email, @Valid Organization validOrg, Errors validation, Model model){
+    public String saveOrg(@RequestParam String orgName, @RequestParam String address, @RequestParam String city, @RequestParam String state, @RequestParam String zip, @RequestParam String phone, @RequestParam String email, @Valid Organization validOrg, Errors validation, Model model){
         if(validation.hasErrors()){
             model.addAttribute("errors", validation);
             model.addAttribute("orgs", validOrg);
@@ -45,11 +45,11 @@ public class OrganizationController {
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        Organization organization = new Organization(currentUser,org_name, address, city, state, zip, phone, email);
+        Organization organization = new Organization(currentUser,orgName, address, city, state, zip, phone, email);
 
         orgDao.save(organization);
 
-        return "redirect:/profile";
+        return "redirect:/users/profile";
     }
 
 //    ======== Edit organization =========
