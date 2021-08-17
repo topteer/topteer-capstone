@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findByUserName(String username);
+    User findByUsername(String username);
 
     default List<User> findAllByUsernameContaining(String username) {
         return null;
