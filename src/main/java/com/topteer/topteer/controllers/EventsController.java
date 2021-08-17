@@ -40,7 +40,7 @@ public class EventsController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long eCoordId = currentUser.getId();
         Organization organization = orgDao.findByUserId(eCoordId);
-        String org_name = organization.getOrg_name();
+        String org_name = organization.getOrgName();
         model.addAttribute("eCoordId", eCoordId);
         model.addAttribute("eCoord", currentUser.getFirstName());
         model.addAttribute("org_name", org_name);
