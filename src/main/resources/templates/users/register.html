@@ -2,31 +2,42 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head><title>Top-Teer Register an Account</title>
     <link th:replace="partials/header.html :: header"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body class="main">
 <nav th:replace="partials/navbar.html :: navbar"></nav>
-<h2>Create an account</h2>
-<form th:action="@{/register}" method="POST" th:object="${user}">
 
-    <label for="firstname">First Name</label>
-    <input id="firstname" th:field="*{firstName}" />
-
-    <label for="lastname">Last Name</label>
-
-    <input id="lastname" th:field="*{lastName}" />
-
-    <label for="username">Username:</label>
-    <input id="username" th:field="*{username}" />
-
-    <label for="email">Email:</label>
-    <input id="email" th:field="*{email}" />
-
-    <label for="password">Password:</label>
-    <input id="password" type="password" th:field="*{password}" />
-
-    <input value="Sign me up!" type="submit" />
-</form>
-
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h2>Create an account</h2>
+            <form th:action="@{/register}" method="POST" th:object="${user}">
+                <div class="form-row">
+                    <div class="col-md-6 form-group">
+                        <label for="firstname">First Name</label>
+                        <input id="firstname" th:field="*{firstName}" />
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="lastname">Last Name</label>
+                        <input id="lastname" th:field="*{lastName}" />
+                </div>
+                    <div class="col-md-6 form-group">
+                        <label for="username">Username:</label>
+                        <input id="username" th:field="*{userName}" />
+                </div>
+                    <div class="col-md-6 form-group">
+                        <label for="email">Email:</label>
+                        <input id="email" th:field="*{email}" />
+                </div>
+                    <div class="col-md-6 form-group">
+                        <label for="password">Password:</label>
+                        <input id="password" type="password" th:field="*{password}" />
+                </div>
+                        <input value="Sign me up!" type="submit" />
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
