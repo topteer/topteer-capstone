@@ -41,7 +41,10 @@ public class EventsController {
         long eCoordId = currentUser.getId();
         System.out.println(eCoordId);
         Organization organization = orgDao.findByUserId(eCoordId);
+
+
         String orgName = organization.getOrgName();
+
         model.addAttribute("eCoordId", eCoordId);
         model.addAttribute("eCoord", currentUser.getFirstName());
         model.addAttribute("orgName", orgName);
