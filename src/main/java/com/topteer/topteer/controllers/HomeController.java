@@ -66,4 +66,9 @@ public class HomeController {
     public String showResults(@ModelAttribute(name = "searchResults") ArrayList<Event> searchResults,@ModelAttribute(name = "searchResults2") ArrayList<Organization> searchResults2) {
         return "search/results";
     }
+    @GetMapping("/about-us")
+    public String aboutUs() {
+        return "about-us";
+    }
+
 }
