@@ -34,7 +34,7 @@ public class EventsController {
         return "event/index";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/event/create")
     public String showEventForm(Model model){
         model.addAttribute("events", new Events());
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -42,24 +42,26 @@ public class EventsController {
         System.out.println(eCoordId);
         Organization organization = orgDao.findByUserId(eCoordId);
         String orgName = organization.getOrgName();
+        long orgId = organization.getId();
         model.addAttribute("eCoordId", eCoordId);
         model.addAttribute("eCoord", currentUser.getFirstName());
         model.addAttribute("orgName", orgName);
+        model.addAttribute("orgId", orgId);
 
         return "event/create";
     }
 
-    @RequestMapping(value = "/create",method = RequestMethod.POST)
-    public String saveEvent(@RequestParam String orgName, @RequestParam String title, @RequestParam long eCoordId, @RequestParam String description, @RequestParam String phone, @RequestParam String date, @RequestParam String time, @RequestParam String location, @RequestParam double hours, @RequestParam double length, @Valid Events validEvent, Errors validation, Model model){
+    @RequestMapping(value = "/event/create",method = RequestMethod.POST)
+    public String saveEvent(@RequestParam long orgId, @RequestParam String title, @RequestParam long eCoordId, @RequestParam String description, @RequestParam String phone, @RequestParam String date, @RequestParam String time, @RequestParam String location, @RequestParam double hours, @RequestParam double length, @Valid Events validEvent, Errors validation, Model model){
         if(validation.hasErrors()){
             model.addAttribute("errors", validation);
             model.addAttribute("events", validEvent);
-            return "/create";
+            return "/event/create";
         }else{
-            Organization org = orgDao.findByName(orgName);
-            long orgId = org.getId();
+            Organization org = orgDao.getById(orgId);
+            User user = userDao.getById(eCoordId);
 
-            Events event = new Events(orgId, title, description, eCoordId, phone, date, time, location, hours, length);
+            Events event = new Events(org, title, description, user, phone, date, time, location, hours, length);
             eventDao.save(event);
 
         }

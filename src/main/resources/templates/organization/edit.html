@@ -10,7 +10,7 @@
         <form th:action="@{/organization/{id}/edit(id=${orgs.id})}" method="post" th:object="${orgs}">
             <div class="form-group">
                 <label for="org_name">Organization Name:</label>
-                <input id="org_name" th:field="*{org_name}" th:value="${orgs.org_name}" disabled>
+                <input id="org_name" th:field="*{orgName}" th:value="${orgs.orgName}" disabled>
             </div>
             <div class="form-group">
                 <label for="address">Address:</label>

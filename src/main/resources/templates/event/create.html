@@ -5,12 +5,13 @@
         <title>Welcome</title>
     </head>
     <body>
-        <form th:action="@{/create}" method="post" th:object="${events}">
+        <form th:action="@{/event/create}" method="post" th:object="${events}">
 
 <!--            Pre-populated Organization name-->
             <div class="form-group">
                 <label for="orgName">Organization Name:</label>
                 <input id="orgName" name="orgName" th:value="${orgName}"  disabled>
+                <input type="hidden" name="orgId" th:value="${orgId}">
             </div>
 
             <!--            Pre-populated Event Coordinator name-->
@@ -47,15 +48,18 @@
                 <input id="time" type="time" th:field="*{time}">
                 <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></p>
             </div>
+            <div>
+                <label for="location">Location:</label>
+                <input id="location" type="text" th:field="*{location}">
+                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('location')}" th:errors="*{location}"></p>
+            </div>
             <div class="form-group">
                 <label for="hours">Hours:</label>
                 <input id="hours" type="number" min=".5" step=".5" th:field="*{hours}">
-                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('hours')}" th:errors="*{hours}"></p>
             </div>
             <div class="form-group">
                 <label for="length">Length:</label>
                 <input id="length" type="number" min=".5" step=".5" th:field="*{length}" />
-                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('length')}" th:errors="*{length}"></p>
             </div>
             <button type="submit" name="sendCreate">Submit</button>
         </form>
