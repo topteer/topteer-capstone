@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>About Us</title>
+    <link th:replace="partials/header.html :: header"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body class="main">
+<nav th:replace="partials/navbar.html :: navbar"></nav>
+<div class="container">
+
+<style>
+    :root {
+        --gradient: linear-gradient(to left top, lightblue 10%, dodgerblue 90%) !important;
+    }
+
+    body {
+        background-image: url('../img/wowpatterns-export.png'); !important;
+    }
+
+    .card {
+        background: #222;
+        border: 1px solid cornflowerblue;
+        color: rgba(250, 250, 250, 0.8);
+        margin-bottom: 2rem;
+    }
+
+    .btn {
+        border: 5px solid;
+        border-image-slice: 1;
+        background: var(--gradient) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        border-image-source:  var(--gradient) !important;
+        text-decoration: none;
+        transition: all .4s ease;
+    }
+
+    .btn:hover, .btn:focus {
+        background: var(--gradient) !important;
+        -webkit-background-clip: none !important;
+        -webkit-text-fill-color: #fff !important;
+        border: 5px solid #fff !important;
+        box-shadow: #222 1px 0 10px;
+        text-decoration: underline;
+    }
+</style>
+
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col">-->
+<!--            <h3>Meet The Team</h3>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div class="container mx-auto mt-4">
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="../static/img/Evan.jpeg" class="card-img-top" alt="..." th:src="@{/img/Evan.jpeg}"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Evan Williams</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Backend Development</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="https://www.linkedin.com/in/evanwilliams75/" class="btn mr-2"><i class="fas fa-link"></i>LinkedIn</a>
+                        <a href="https://github.com/evanwilliamsC137" class="btn "><i class="fab fa-github"></i> Github</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="../static/img/Jeff.jpeg" class="card-img-top" alt="..." th:src="@{/img/Jeff.jpeg}"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Jeffrey Rowe</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Backend Development</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="https://www.linkedin.com/in/jeffrowe58/" class="btn mr-2"><i class="fas fa-link"></i>LinkedIn</a>
+                        <a href="https://github.com/jeffRowe58" class="btn "><i class="fab fa-github"></i> Github</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="../static/img/Joseph.jpeg" class="card-img-top" alt="..." th:src="@{/img/Joseph.jpeg}"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Joseph Hopkins</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Backend Development/Designer</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="https://www.linkedin.com/in/joseph-r-hopkins/" class="btn mr-2"><i class="fas fa-link"></i>LinkedIn</a>
+                        <a href="https://github.com/JosephRHopkins88" class="btn "><i class="fab fa-github"></i> Github</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-6">
+                <div class="card" style="width: 18rem;">
+                    <img src="../static/img/Luke.jpeg" class="card-img-top" alt="..." th:src="@{/img/Luke.jpeg}"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Luke Curran</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Backend Development</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="https://www.linkedin.com/in/luke-curran-ba9926211/" class="btn mr-2"><i class="fas fa-link"></i>LinkedIn</a>
+                        <a href="https://github.com/lukepetercurran" class="btn "><i class="fab fa-github"></i> Github</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="card" style="width: 18rem;">
+                    <img src="../static/img/Roger.jpeg" class="card-img-top" alt="..." th:src="@{/img/Roger.jpeg}"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Roger Sandoval</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Designer</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="https://www.linkedin.com/in/rogeliosandoval/" class="btn mr-2"><i class="fas fa-link"></i>LinkedIn</a>
+                        <a href="https://github.com/rogeliosandoval" class="btn "><i class="fab fa-github"></i> Github</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
