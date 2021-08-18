@@ -12,7 +12,9 @@
             <div class="form-group">
                 <label for="orgName">Organization Name:</label>
                 <input id="orgName" th:field="*{orgName}">
+
                 <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('orgName')}" th:errors="*{orgName}"></p>
+
             </div>
             <div class="form-group">
                 <label for="address">Address:</label>

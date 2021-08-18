@@ -27,7 +27,7 @@ public class EventsController {
         this.userDao = userDao;
     }
 
-//    Show all events
+    //    Show all events
     @GetMapping("/event")
     public String posts(Model model) {
         model.addAttribute("events", eventDao.findAll());
@@ -41,6 +41,8 @@ public class EventsController {
         long eCoordId = currentUser.getId();
         System.out.println(eCoordId);
         Organization organization = orgDao.findByUserId(eCoordId);
+
+
         String orgName = organization.getOrgName();
         long orgId = organization.getId();
         model.addAttribute("eCoordId", eCoordId);
@@ -78,5 +80,3 @@ public class EventsController {
     }
 
 }
-
-//find by title suggested by Jeff, scrapped previous work.
