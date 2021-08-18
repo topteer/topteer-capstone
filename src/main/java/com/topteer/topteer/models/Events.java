@@ -161,4 +161,12 @@ public class Events {
     public void setLength(double length) {
         this.length = length;
     }
+
+    public Organization getOrg() {
+        return org;
+    }
+
+    public void setOrg(Organization org) {
+        this.org = org;
+    }
 }

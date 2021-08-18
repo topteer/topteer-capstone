@@ -12,17 +12,19 @@
             <p th:text="${event.phone}"></p>
             <p th:text="${event.date}"></p>
             <p th:text="${event.time}"></p>
-            <p th:text="${event.location}"></p>
+            <p th:text="${event.location}" id="location"></p>
             <div id="map" class="map"></div>
             <p th:text="${event.length}"></p>
             <p th:text="${event.hours}"></p>
         </div>
-
+        <script th:src="@{/js/keys.js}"></script>
         <script th:src="@{/js/geoCode.js}"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
         <script>
+            var location = ${#location}.innerHTML().value;
+            geocode(location, mapBoxAuthTOKEN)
             function geocode(search, token) {
                 var baseUrl = 'https://api.mapbox.com';
                 var endPoint = '/geocoding/v5/mapbox.places/';
