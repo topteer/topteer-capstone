@@ -37,6 +37,7 @@ public class UserController {
         return "redirect:/login";
     }
 
+
     @GetMapping("/users/edit")
     public String showUserEditForm(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -46,21 +47,21 @@ public class UserController {
     }
 
     @PostMapping("/users/edit")
-    public String saverUserUpdate(@ModelAttribute User user,@RequestParam(name = "firstName") String firstName,@RequestParam(name = "lastName") String lastName, @RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password, @RequestParam(name = "password-confirm") String confirm, @RequestParam(name = "phoneNumber") String phoneNumber) {
+    public String saverUserUpdate(@ModelAttribute User user,@RequestParam(name = "firstName") String firstName,@RequestParam(name = "lastName") String lastName, @RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password, @RequestParam(name = "password-confirm") String confirm) {
         if (!password.equals(confirm)) {
             return "redirect:/users/edit";
         }
         String hash = passwordEncoder.encode(password);
         user.setPassword(hash);
         user.setFirstName(firstName);
-        user.setFirstName(lastName);
+        user.setLastName(lastName);
         user.setUsername(username);
         user.setEmail(email);
         usersDao.save(user);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User userDetails = (User) authentication.getPrincipal();
-        userDetails.setUsername(firstName);
-        userDetails.setUsername(lastName);
+        userDetails.setFirstName(firstName);
+        userDetails.setLastName(lastName);
         userDetails.setUsername(username);
         userDetails.setEmail(email);
         userDetails.setPassword(hash);
@@ -73,4 +74,5 @@ public class UserController {
         model.addAttribute("user", user);
         return "users/profile";
     }
+
 }

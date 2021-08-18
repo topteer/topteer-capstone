@@ -11,6 +11,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByUsername(String username);
 
+
     default List<User> findAllByUsernameContaining(String username) {
         return null;
     }
