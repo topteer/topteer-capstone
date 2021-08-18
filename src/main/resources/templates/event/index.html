@@ -8,7 +8,7 @@
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 
 <div th:each="event: ${events}" class="card">
-    <h2 class="titles"><a th:text="${event.getTitle().toUpperCase()}" class="titles" th:href="@{/event/{id}/show (id= ${event.getOrg().getId()})}"></a></h2>
+    <h2 class="titles"><a th:text="${event.getTitle()}" class="titles" th:href="@{/event/{id}/show (id= ${event.getOrg().getId()})}"></a></h2>
     <p th:text="${'Description: ' + event.getDescription()}"></p>
     <p th:text="${'Coordinator name: ' + event.getUser().getFirstName()}"></p>
     <p th:text="${'Phone Number: ' + event.getPhone()}"></p>
