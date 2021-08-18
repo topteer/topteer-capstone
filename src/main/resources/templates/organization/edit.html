@@ -9,8 +9,8 @@
 <nav th:replace="partials/navbar.html :: navbar"></nav>
         <form th:action="@{/organization/{id}/edit(id=${orgs.id})}" method="post" th:object="${orgs}">
             <div class="form-group">
-                <label for="org_name">Organization Name:</label>
-                <input id="org_name" th:field="*{orgName}" th:value="${orgs.orgName}" disabled>
+                <label for="orgName">Organization Name:</label>
+                <input id="orgName" th:field="*{orgName}" th:value="${orgs.orgName}" disabled>
             </div>
             <div class="form-group">
                 <label for="address">Address:</label>
