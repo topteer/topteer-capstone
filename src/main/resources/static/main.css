@@ -20,3 +20,21 @@ h1
 .wrapper {
     min-height: calc(100vh - 110px);
 }
+
+.titles{
+    background: lightgray;
+    width: 100%;
+    text-align: center;
+    color: black;
+}
+
+.card{
+    margin: 10px;
+    display: flex;
+    width: 45vw;
+    height: fit-content;
+    border: 2px solid black;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+}

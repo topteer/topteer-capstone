@@ -45,18 +45,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/event/create")
+                        "/event/create","/organization/{id}/edit")
                 .authenticated()
                 .and()
                 .authorizeRequests()
                 .antMatchers(
                         "/*",
-                        "/organization/**", //TODO: remove this entry it was just so we could look at the org create forms without logging in
+                        "/organization/*", //TODO: remove this entry it was just so we could look at the org create forms without logging in
                         "/register/*",
                         "/js/**", // had to add this to not restrict scripts
                         "/css/**", // had to add this to not restrict stylesheets
                         "/img/**", // had to add this to not restrict images
-                        "/search", "/search/results", "/users/{id}")
+                        "/search", "/search/results")
                 .permitAll()
                 .anyRequest().authenticated();
     }
