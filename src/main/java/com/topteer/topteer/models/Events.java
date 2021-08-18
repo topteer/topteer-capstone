@@ -1,6 +1,9 @@
 package com.topteer.topteer.models;
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -56,21 +59,13 @@ public class Events {
     private String location;
 
     //hours column creation
-    @NotBlank(message = "You must enter a minimum time volunteers must contribute")
     @Column(nullable = false)
     private double hours;
 
     //length column creation
-    @NotBlank(message = "You must enter how long the even will be running for")
     @Column(nullable = false)
     private double length;
 
-
-
-
-
-    public Events(long orgId, String title, String description, long eCoordId, String phone, String date, String time, String location, double hours, double length) {
-    }
 
     public Events(Organization org, String title, String description, User user, String phone, String date, String time, String location, double hours, double length) {
         this.org = org;
@@ -86,6 +81,9 @@ public class Events {
     }
 
     public Events() {
+    }
+
+    public Events(Organization org, String title, String description, long eCoordId, String phone, String date, String time, String location, double hours, double length) {
     }
 
     public long getId() {
