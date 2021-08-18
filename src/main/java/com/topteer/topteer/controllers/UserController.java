@@ -33,4 +33,11 @@ public class UserController {
         usersDao.save(user);
         return "redirect:/login";
     }
+
+
+    @GetMapping("/profile")
+    public String returnProfile(Model model){
+        //model.addAttribute("user", new User());
+        return "users/profile";
+    }
 }

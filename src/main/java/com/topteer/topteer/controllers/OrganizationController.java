@@ -49,13 +49,18 @@ public class OrganizationController {
 
         orgDao.save(organization);
 
-        return "redirect:/users/profile";
+        return "redirect:/profile";
     }
 
 //    ======== Edit organization =========
     @GetMapping("/organization/{id}/edit")
     public String orgEdit(@PathVariable long id, Model model){
         Organization organization = orgDao.getById(id);
+        //TODO: check if current logged in user id matches the user id for
+        //this organization
+        //if not, give error / warning / don't allow them to proceed
+        //if so, show them the edit form so they can get back to work
+        //same problem for events
         String state = organization.getState();
         model.addAttribute("state", state);
         model.addAttribute("orgs", organization);

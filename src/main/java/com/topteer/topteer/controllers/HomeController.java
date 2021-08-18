@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -50,13 +51,11 @@ public class HomeController {
             //            ===== search for organization =========
             case ("2"):
                 searchResults2 = orgDao.findAllByOrgNameContaining(query);
-
                 model.addAttribute("searchResults2", searchResults2);
                 break;
             //            ===== search for event =========
             case ("1"):
                 searchResults = eventDao.findAllByTitleContaining(query);
-
                 model.addAttribute("searchResults", searchResults);
                 break;
         }
