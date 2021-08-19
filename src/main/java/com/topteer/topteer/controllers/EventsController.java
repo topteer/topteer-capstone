@@ -73,10 +73,16 @@ public class EventsController {
     @GetMapping("/event/{id}/show")
     public String singleEvent(@PathVariable long id, Model model){
         Events events = eventDao.getById(id);
+        Boolean isEventOwner = false;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser"){
+            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            isEventOwner = currentUser.getId() == events.getUser().getId();
+        }
         System.out.println(events.getId());
         String eventCoord = events.getUser().getFirstName();
         model.addAttribute("event", events);
         model.addAttribute("eCoord", eventCoord);
+        model.addAttribute("isEventOwner", isEventOwner);
         return "event/show";
     }
 
