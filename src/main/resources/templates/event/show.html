@@ -1,71 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <meta charset="UTF-8">
-        <title>Welcome</title>
+        <title>Event</title>
+        <link th:replace="partials/header.html :: header"/>
     </head>
     <body>
-        <div class="eventContainer" th:object="${event}">
-            <h3 class="eventHeader" th:text="${event.title}"></h3>
-            <p th:text="${event.description}"></p>
-            <p th:text="${event.getUser().getFirstName()}"></p>
-            <p th:text="${event.phone}"></p>
-            <p th:text="${event.date}"></p>
-            <p th:text="${event.time}"></p>
-            <p th:text="${event.location}" id="location"></p>
-            <div id="map" class="map"></div>
-            <p th:text="${event.length}"></p>
-            <p th:text="${event.hours}"></p>
+        <nav th:replace="partials/navbar.html :: navbar"></nav>
+        <div th:object="${event}" class="card">
+            <h3 class="titles" th:text="${event.title}"></h3>
+            <p th:text="${'Event Description: ' + event.description}"></p>
+            <p th:text="${'Event Coordinator: ' + event.getUser().getFirstName()}"></p>
+            <p th:text="${'Phone: ' + event.phone}"></p>
+            <p th:text="${'Event Date: ' + event.date}"></p>
+            <p th:text="${'Event Time: ' + event.time}"></p>
+            <p th:text="${'Event Location: ' + event.location}"></p>
+            <p th:text="${'Event Length: ' + event.length}"></p>
+            <p th:text="${'Volunteer hours options: ' + event.hours}"></p>
         </div>
-        <script th:src="@{/js/keys.js}"></script>
-        <script th:src="@{/js/geoCode.js}"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
-        <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
-        <script>
-            var location = ${#location}.innerHTML().value;
-            geocode(location, mapBoxAuthTOKEN)
-            function geocode(search, token) {
-                var baseUrl = 'https://api.mapbox.com';
-                var endPoint = '/geocoding/v5/mapbox.places/';
-                return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-                    .then(function(res) {
-                        return res.json();
-                        // to get all the data from the request, comment out the following three lines...
-                    }).then(function(data) {
-                        return data.features[0].center;
-                    });
-            }
-            mapboxgl.accessToken = 'mapBoxAuthTOKEN';
-            var map = new mapboxgl.Map({
-                container: 'map', // container ID
-                style: 'mapbox://styles/mapbox/streets-v11', // style URL
-                center: [-98.4896, 29.4268], // starting position [lng, lat]
-                zoom: 15 // starting zoom
-
-            });
-            map.scrollZoom.disable();
-            map.doubleClickZoom.disable();
-
-            var marker = new mapboxgl.Marker({
-                color:'red',
-                draggable: false
-
-            })
-                .setLngLat([-97.0403, 32.8998])
-                .addTo(map);
-
-            function success(pos) {
-                crd = pos.coords;
-                ll = new mapboxgl.LngLat(crd.longitude, crd.latitude);
-                rad = ll.toBounds(40233).toArray();
-                now = rad[0].concat(rad[1]);
-                geo()
-            }
-
-            function error(err){
-                console.warn(`ERROR(${err.code}): ${err.message}`);
-            }
-        </script>
     </body>
 </html>

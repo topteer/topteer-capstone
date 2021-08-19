@@ -29,6 +29,19 @@ public class OrganizationController {
         return "/organization/index";
     }
 
+    @GetMapping("/organization/{id}/show")
+    private String singleOrg(@PathVariable long id, Model model){
+        Organization org = orgDao.getById(id);
+        Boolean isOrgOwner = false;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser"){
+            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            isOrgOwner = currentUser.getId() == org.getUser().getId();
+        }
+        model.addAttribute("org", org);
+        model.addAttribute("isOrgOwner", isOrgOwner);
+        return "/organization/show";
+    }
+
 //    ========== Create organization ===============
     @GetMapping("/organization/create")
     private String showOrgForm(Model model){
