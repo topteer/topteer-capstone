@@ -91,4 +91,9 @@ public class OrganizationController {
         orgDao.save(orgEdit);
         return "redirect:/organization/" + id;
     }
+    @PostMapping("/organization/{id}/delete")
+    public String deleteEvent(@PathVariable long id){
+        orgDao.deleteById(id);
+        return "redirect:/organization";
+    }
 }
