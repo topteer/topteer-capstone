@@ -14,7 +14,7 @@
         <p th:text="${org.getEmail()}"></p>
         <div th:if="${isOrgOwner}">
             <div class="d-flex justify-content-center align-items-center">
-                <form th:action="@{/organization/{id}/show(id=${org.id})}" method="get">
+                <form th:action="@{/organization/{id}/edit(id=${org.id})}" method="get">
                     <button type="submit" name="editBtn" value="edit">Edit</button>
                 </form>
             </div>
