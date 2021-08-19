@@ -19,6 +19,9 @@
                 </form>
             </div>
         </div>
+        <form th:action="@{/organization/{id}/delete(id = ${org.id})}" method="post" th:object="${org}">
+            <button class="card-link" type="submit" th:value="*{id}" name="deleteEvent">Delete</button>
+        </form>
     </div>
 
 
