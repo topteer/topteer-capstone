@@ -73,6 +73,7 @@ public class EventsController {
     @GetMapping("/event/{id}/show")
     public String singleEvent(@PathVariable long id, Model model){
         Events events = eventDao.getById(id);
+        System.out.println(events.getId());
         String eventCoord = events.getUser().getFirstName();
         model.addAttribute("event", events);
         model.addAttribute("eCoord", eventCoord);
