@@ -16,9 +16,9 @@
         </li>
         <li sec:authorize="isAuthenticated()" ><a th:href="@{/event}">All Events</a></li>
         <li sec:authorize="isAuthenticated()" ><a th:href="@{/organizations}">All Organizations</a></li>
-        <li sec:authorize="isAuthenticated()" ><a th:href="@{/profile}">Profile</a></li>
+        <li sec:authorize="isAuthenticated()" ><a th:href="@{/users/profile}">Profile</a></li>
         <img src="../../static/img/Top-TeerLogo-BlackOnWhite.png" th:src="@{/img/Top-TeerLogo-BlackOnWhite.png}" height="3%" width="3%" alt="The Logo"/>
-        <li class="right"><a th:href="@{aboutUs}">About Us</a></li>
+        <li class="right"><a th:href="@{/about-us}">About Us</a></li>
         <li>
             <!--            ======== search modal ======= -->
             <div id="search-modal">

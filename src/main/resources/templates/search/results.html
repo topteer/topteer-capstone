@@ -11,7 +11,7 @@
 
 <!--    =========== Search results (From home controller) for loop  ==========-->
 <div th:each="event : ${searchResults}" >
-    <a th:href="@{'/events/' + ${event.id}}">
+    <a th:href="@{'/event/' + ${event.id}}">
         <div>
             <h4 th:text="${event.title}"></h4>
             <p th:text="${event.description}"></p>
@@ -23,7 +23,7 @@
     <a th:href="@{'/organizations/' + ${organization.id}}">
         <div>
             <h4 th:text="${organization.orgName}"></h4>
-            <p th:text="${organization.description}"></p>
+            <p th:text="${organization.phone}"></p>
         </div>
     </a>
 </div>
