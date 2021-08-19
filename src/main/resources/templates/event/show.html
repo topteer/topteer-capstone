@@ -16,6 +16,10 @@
             <p th:text="${'Event Location: ' + event.location}"></p>
             <p th:text="${'Event Length: ' + event.length}"></p>
             <p th:text="${'Volunteer hours options: ' + event.hours}"></p>
+            <form th:action="@{/event/{id}/delete(id = ${event.id})}" method="post" th:object="${event}">
+                <button class="card-link" type="submit" th:value="*{id}" name="deleteEvent">Delete</button>
+            </form>
+
         </div>
     </body>
 </html>
