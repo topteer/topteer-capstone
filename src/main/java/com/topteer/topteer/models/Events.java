@@ -80,10 +80,21 @@ public class Events {
         this.length = length;
     }
 
-    public Events() {
+    public Events(long id, Organization org, String title, String description, User user, String phone, String date, String time, String location, double hours, double length) {
+        this.id = id;
+        this.org = org;
+        this.title = title;
+        this.description = description;
+        this.user = user;
+        this.phone = phone;
+        this.date = date;
+        this.time = time;
+        this.location = location;
+        this.hours = hours;
+        this.length = length;
     }
 
-    public Events(Organization org, String title, String description, long eCoordId, String phone, String date, String time, String location, double hours, double length) {
+    public Events() {
     }
 
     public long getId() {
