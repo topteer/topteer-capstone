@@ -39,6 +39,17 @@ h1
     font-size: larger;
 }
 
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #7aa8b7;
+    border-radius: 6px;
+    outline: none;
+}
+
 /*.modal {*/
 /*    display: none; !* Hidden by default *!*/
 /*    position: fixed; !* Stay in place *!*/

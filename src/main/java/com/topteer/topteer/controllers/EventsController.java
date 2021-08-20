@@ -89,7 +89,7 @@ public class EventsController {
     @PostMapping("/event/{id}/delete")
     public String deleteEvent(@PathVariable long id){
         eventDao.deleteById(id);
-        return "redirect: /event";
+        return "redirect:/event";
     }
 
 }
