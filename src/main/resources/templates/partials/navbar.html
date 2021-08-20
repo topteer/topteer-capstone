@@ -21,22 +21,27 @@
         <li class="right"><a th:href="@{/about-us}">About Us</a></li>
         <li>
             <!--            ======== search modal ======= -->
-         <div id="search-modal">
-            <form th:action="@{/search}" method="post">
-                <div>
-                    <p>Search Options</p>
-                    <select id="search-params" name="search-params">
-                        <option value="2">Organization Title</option>
-                        <option value="1">Event Title</option>
-                    </select>
+
+            <div id="search-modal">
+                    <div>
+                        <h3>What do you want to search?</h3>
+                        <form th:action="@{/search}" method="post">
+                            <div>
+                                <p>Search Options</p>
+                                <select id="search-params" name="search-params">
+                                    <option value="2">Organizations</option>
+                                    <option value="1">Events</option>
+                                </select>
+                            </div>
+                            <div>
+                                <input id="query" name="query" type="text" />
+                                <label for="query">Query</label>
+                            </div>
+                            <button type="submit" value="submit">Search</button>
+                        </form>
+                    </div>
                 </div>
-                <div>
-                    <input id="query" name="query" type="text" />
-                    <label for="query">Query</label>
-                </div>
-                <button type="submit" value="submit">Search</button>
-            </form>
-        </div>
+
         </li>
     </ul>
 </nav>
