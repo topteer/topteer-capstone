@@ -2,18 +2,84 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head><title>Top-Teer Home Page</title>
     <link th:replace="partials/header.html :: header"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
+
+<style>
+
+    #intro {
+        /*font-weight: bold;*/
+        font-size: x-large;
+        text-align: center;
+    }
+
+    .button {
+        color: black;
+        border: 2px solid darkblue;
+        border-radius: 0px;
+        padding: 18px 36px;
+        display: inline-block;
+        font-family: "Lucida Console", Monaco, monospace;
+        font-size: 14px;
+        letter-spacing: 1px;
+        cursor: pointer;
+        box-shadow: inset 0 0 0 0 dodgerblue;
+        -webkit-transition: ease-out 0.4s;
+        -moz-transition: ease-out 0.4s;
+        transition: ease-out 0.4s;
+    }
+
+    .slide_down:hover {
+        box-shadow: inset 0 100px 0 0 dodgerblue;
+    }
+
+</style>
 
 <body class="main">
 <div class="wrapper">
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 
+    <div class="container d-flex justify-content-center mx-auto mt-4">
+        <img src="../static/img/top.png" th:src="@{/img/top.png}" alt="Top"/>
+        <img src="../static/img/volunteer-hands.jpeg" th:src="@{/img/volunteer-hands.jpeg}" width="500" height="225" alt="Hands of Volunteer"/>
+        <img src="../static/img/teer.png" th:src="@{/img/teer.png}" alt="Teer"/>
+    </div>
 
-<main>
+    <div class="container">
+        <p id="intro">Did you ever want to volunteer or host your own volunteering event? You came to the right place. Here you can find events to volunteer at and keep track of everything in the process. For those seeking volunteers feel free to create an event and watch the volunteers come to you!</p>
+        <br>
+        <a th:href="@{/register}" class="button slide_down d-flex justify-content-center">GET STARTED</a>
+    </div>
 
-    <h1>Top</h1>
-    <img src="../static/img/volunteer-hands.jpeg" th:src="@{/img/volunteer-hands.jpeg}" width="400" height="125" alt="Hands of Volunteer"/>
-    <h1>Teer</h1>
+    <!-- About Section -->
+    <div class="w3-container" style="padding:50px 16px" id="about">
+        <p class="w3-center w3-large"><strong>Key features of our company</strong></p>
+        <div class="w3-row-padding w3-center" style="margin-top:64px">
+            <div class="w3-quarter">
+                <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+                <p class="w3-large">Responsive</p>
+                <p>We make sure all of our applications are fast and reliable that way you get the best of your volunteering experience.</p>
+            </div>
+            <div class="w3-quarter">
+                <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+                <p class="w3-large">Passion</p>
+                <p>We encourage positivity and helping others and that is exactly what drives us to make the applications that we do. Giving back is who we are.</p>
+            </div>
+            <div class="w3-quarter">
+                <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
+                <p class="w3-large">Design</p>
+                <p>We design our applications so that it is easy for everyone to use whether you're a volunteer or a host. Life is already hard as it is let's make it easier for you.</p>
+            </div>
+            <div class="w3-quarter">
+                <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+                <p class="w3-large">Support</p>
+                <p>Any questions or concerns we always have your back. Just reach out and our team will get you ASAP. Thank you for having a good heart!</p>
+            </div>
+        </div>
+    </div>
 
 <!--    <div id="myModal" class="modal">-->
 <!--        <div class="modal-content">-->
@@ -29,8 +95,6 @@
 <!--            </div>-->
 <!--        </div>-->
 <!--    </div>-->
-
-</main>
 </div>
 <footer th:replace="partials/footer.html :: footer"></footer>
 </body>
