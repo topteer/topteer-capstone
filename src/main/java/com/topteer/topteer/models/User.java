@@ -1,5 +1,7 @@
 package com.topteer.topteer.models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,8 +17,10 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     List<Organization> organization;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
-    List<EventVolunteer> eventvolunteer;
+    @ManyToMany(cascade = CascadeType.ALL)
+
+    @JoinTable(name="eventVolunteer", joinColumns={@JoinColumn(name="user_id")},inverseJoinColumns={@JoinColumn(name="event_id")})
+    private List<Events> events;
 
     @Column(nullable = false, length = 35)
     private String firstName;

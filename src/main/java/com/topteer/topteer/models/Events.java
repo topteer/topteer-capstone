@@ -24,14 +24,14 @@ public class Events {
     @JoinColumn(name = "org_id")
     private Organization org;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
-    List<EventVolunteer> eventvolunteer;
+    @ManyToMany(mappedBy="events")
+    List<User> eventvolunteer;
 
     @NotBlank(message = "You must input a title")
     @Column(nullable = false, length = 80)
     private String title;
 
-    @NotBlank(message = "You must insert a descrtipion")
+    @NotBlank(message = "You must insert a description")
     @Column(nullable = false, length = 500)
     private String description;
 

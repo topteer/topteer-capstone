@@ -7,9 +7,9 @@
     <body>
         <nav th:replace="partials/navbar.html :: navbar"></nav>
         <div th:object="${event}" class="card">
-            <h3 class="titles" th:text="${event.getTitle().toUpperCase()}"></h3>
+            <h3 class="titles" th:text="${event.title}"></h3>
             <p th:text="${'Event Description: ' + event.description}"></p>
-            <p th:text="${'Event Coordinator: ' + event.getUser().getFirstName()}"></p>
+            <p th:text="${'Event Coordinator: ' + event.user.firstName}"></p>
             <p th:text="${'Phone: ' + event.phone}"></p>
             <p th:text="${'Event Date: ' + event.date}"></p>
             <p th:text="${'Event Time: ' + event.time}"></p>
