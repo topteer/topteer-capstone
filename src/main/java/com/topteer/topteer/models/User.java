@@ -15,6 +15,9 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     List<Organization> organization;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+    List<EventVolunteer> eventvolunteer;
+
     @Column(nullable = false, length = 35)
     private String firstName;
 
