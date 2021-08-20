@@ -1,23 +1,35 @@
 package com.topteer.topteer.controllers;
 
+import com.topteer.topteer.models.Organization;
 import com.topteer.topteer.models.User;
+import com.topteer.topteer.repositories.OrganizationRepository;
 import com.topteer.topteer.repositories.UserRepository;
+import org.springframework.boot.autoconfigure.cassandra.CassandraProperties;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class UserController {
 
     private UserRepository usersDao;
+    private OrganizationRepository orgDao;
     private PasswordEncoder passwordEncoder;
 
-    public UserController(UserRepository usersDao, PasswordEncoder passwordEncoder) {
+    public UserController(UserRepository usersDao, PasswordEncoder passwordEncoder, OrganizationRepository orgDao) {
         this.usersDao = usersDao;
         this.passwordEncoder = passwordEncoder;
+        this.orgDao = orgDao;
+
     }
 
     @GetMapping("/register")
@@ -68,6 +80,17 @@ public class UserController {
     @GetMapping("/users/profile")
     public String getProfilePage(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+
+        Organization organization = orgDao.findByUserId(user.getId());
+        long orgId = 0;
+        if(organization!= null)
+        {
+            orgId=organization.getId();
+        }
+        model.addAttribute("usersOrgId",orgId);
+
+
         model.addAttribute("user", user);
         return "users/profile";
     }

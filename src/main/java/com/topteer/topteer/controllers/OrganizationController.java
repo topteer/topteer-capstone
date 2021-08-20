@@ -8,7 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -45,8 +49,21 @@ public class OrganizationController {
 //    ========== Create organization ===============
     @GetMapping("/organization/create")
     private String showOrgForm(Model model){
-        model.addAttribute("organization", new Organization());
-        return "/organization/create";
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Organization organization = orgDao.findByUserId(user.getId());
+        if(organization == null)
+        {
+            model.addAttribute("organization", new Organization());
+            return "/organization/create";
+        }
+        else
+        {
+            return "redirect:/organization/"+organization.getId()+"/edit";
+        }
+
+
+
+
     }
     @RequestMapping(value = "/organization/create", method = RequestMethod.POST)
     public String saveOrg(@RequestParam String orgName, @RequestParam String address, @RequestParam String city, @RequestParam String state, @RequestParam String zip, @RequestParam String phone, @RequestParam String email, @Valid Organization validOrg, Errors validation, Model model){
@@ -66,29 +83,30 @@ public class OrganizationController {
     }
 
 //    ======== Edit organization =========
-    @GetMapping("/organization/{id}/edit")
-    public String orgEdit(@PathVariable long id, Model model){
-        Organization organization = orgDao.getById(id);
-        //TODO: check if current logged in user id matches the user id for
-        //this organization
-        //if not, give error / warning / don't allow them to proceed
-        //if so, show them the edit form so they can get back to work
-        //same problem for events
-        String state = organization.getState();
-        model.addAttribute("state", state);
+    @GetMapping("/organization/edit")
+    public String orgEdit(Model model){
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Organization organization = orgDao.findByUserId(user.getId());
+            String state = organization.getState();
         model.addAttribute("orgs", organization);
+            model.addAttribute("state", state);
             return "/organization/edit";
+
     }
 
-    @PostMapping("/organization/{id}/edit")
-    public String orgEdit(@PathVariable long id, @RequestParam(name = "address") String address, @RequestParam(name = "city") String city, @RequestParam(name = "zip")String zip, @RequestParam(name = "phone") String phone, @RequestParam(name = "email") String email){
-        Organization orgEdit = orgDao.getById(id);
+    @PostMapping("/organization/edit")
+    public String orgEdit(@RequestParam(name = "address") String address, @RequestParam(name = "city") String city, @RequestParam(name = "zip")String zip, @RequestParam(name = "phone") String phone, @RequestParam(name = "email") String email){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Organization organization = orgDao.findByUserId(user.getId());
+
+        Organization orgEdit = orgDao.getById(organization.getId());
         orgEdit.setAddress(address);
         orgEdit.setCity(city);
         orgEdit.setZip(zip);
         orgEdit.setPhone(phone);
         orgEdit.setEmail(email);
         orgDao.save(orgEdit);
-        return "redirect:/organization/" + id;
+        return "redirect:/organization/" + organization.getId() + "/show";
     }
 }
