@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 
 @Entity
@@ -23,11 +24,14 @@ public class Events {
     @JoinColumn(name = "org_id")
     private Organization org;
 
+    @ManyToMany(mappedBy="events")
+    List<User> eventvolunteer;
+
     @NotBlank(message = "You must input a title")
     @Column(nullable = false, length = 80)
     private String title;
 
-    @NotBlank(message = "You must insert a descrtipion")
+    @NotBlank(message = "You must insert a description")
     @Column(nullable = false, length = 500)
     private String description;
 

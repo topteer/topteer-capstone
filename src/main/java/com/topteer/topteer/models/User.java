@@ -1,5 +1,7 @@
 package com.topteer.topteer.models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,6 +16,11 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     List<Organization> organization;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+
+    @JoinTable(name="eventVolunteer", joinColumns={@JoinColumn(name="user_id")},inverseJoinColumns={@JoinColumn(name="event_id")})
+    private List<Events> events;
 
     @Column(nullable = false, length = 35)
     private String firstName;
@@ -50,6 +57,17 @@ public class User {
         this.email = email;
         this.password = password;
     }
+
+    public User(List<Events> events) {
+        this.events = events;
+    }
+
+    public User(long id, List<Events> events) {
+        this.id = id;
+        this.events = events;
+    }
+
+
 
     public long getId() {
         return id;
@@ -98,4 +116,15 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public List<Events> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Events> events) {
+        this.events = events;
+    }
 }
+
+
+
