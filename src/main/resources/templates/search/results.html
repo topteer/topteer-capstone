@@ -11,10 +11,11 @@
 
 <!--    =========== Search results (From home controller) for loop  ==========-->
 <div th:each="event : ${searchResults}" >
-    <a th:href="@{'/event/' + ${event.id}}">
+    <a th:href="@{'/event/' + ${event.id} + '/show'}">
         <div>
             <h4 th:text="${event.title}"></h4>
             <p th:text="${event.description}"></p>
+            <p th:text="${event.location}"></p>
         </div>
     </a>
 </div>
@@ -23,7 +24,11 @@
     <a th:href="@{'/organizations/' + ${organization.id}}">
         <div>
             <h4 th:text="${organization.orgName}"></h4>
-            <p th:text="${organization.phone}"></p>
+            <p th:text="'Phone: ' + ${organization.phone} + '   Email: ' + ${organization.email}">
+            </p>
+            <p th:text="${organization.address} + ' ' + ${organization.city} + ', ' + ${organization.state} + ' ' + ${organization.zip}">
+                <!-- this is the correct syntax to concantenate fields -->
+            </p>
         </div>
     </a>
 </div>

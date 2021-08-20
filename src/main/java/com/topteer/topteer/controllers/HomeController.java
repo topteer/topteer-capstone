@@ -50,12 +50,12 @@ public class HomeController {
         switch (params) {
             //            ===== search for organization =========
             case ("2"):
-                searchResults2 = orgDao.findAllByOrgNameContaining(query);
+                searchResults2 = orgDao.findAllByOrgsContainingQuery(query);
                 model.addAttribute("searchResults2", searchResults2);
                 break;
             //            ===== search for event =========
             case ("1"):
-                searchResults = eventDao.findAllByTitleContaining(query);
+                searchResults = eventDao.findAllEventsByTitleOrLocationContaining(query);
                 model.addAttribute("searchResults", searchResults);
                 break;
         }
