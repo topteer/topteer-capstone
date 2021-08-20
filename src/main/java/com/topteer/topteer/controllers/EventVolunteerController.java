@@ -1,5 +1,6 @@
 package com.topteer.topteer.controllers;
 
+import com.topteer.topteer.models.EventVolunteer;
 import com.topteer.topteer.models.Events;
 import com.topteer.topteer.models.User;
 import com.topteer.topteer.repositories.EventRepository;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class EventVolunteerController {
@@ -38,8 +40,13 @@ public class EventVolunteerController {
 
 
     @PostMapping("/event/{id}/register")
-    public String asd(@PathVariable long id, Model model) {
-        return "search/index";
+    public String postRegisterButton(@RequestParam long eventID, @RequestParam long currentUserID) {
+        Events event = eventDao.getById(eventID);
+        User user = userDao.getById(currentUserID);
+        EventVolunteer newvariablenameplaceholder = new EventVolunteer(event, user);
+        EVRepoDao.save(newvariablenameplaceholder);
+
+        return "redirect:/event";
     }
 
 }

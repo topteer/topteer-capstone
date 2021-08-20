@@ -22,7 +22,7 @@
             <form  th:action="@{/event/{id}/register(id = ${event.id})}">
                 <input th:value="${eventID}" type="hidden">
                 <input th:value="${currentUserID}" type="hidden">
-                <button class="card-link" type="submit" th:value="*{id}" name="registerEvent">Register</button>
+           <button class="card-link" type="submit" name="registerEvent">Register</button>
             </form>
 
         </div>
