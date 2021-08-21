@@ -19,5 +19,9 @@ public interface OrganizationRepository extends JpaRepository<Organization, Long
     @Query("from Organization org where org.orgName like %:query%")
     List<Organization> findAllByOrgNameContaining(String query);
 
+
+    @Query("from Organization org where org.orgName like %:query% or org.city like %:query% or org.zip like %:query%")
+    List<Organization> findAllByOrgsContainingQuery(String query);
+
     Organization getById(long orgId);
 }
