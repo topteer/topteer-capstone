@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head><title>Top-Teer profile page</title>
-    <link th:replace="partials/header.html :: header"/>
-    <nav th:replace="partials/navbar.html :: navbar"></nav>
-</head>
-<h2>Profile</h2>
-<body>
-<li><a class="button" th:href="@{/users/edit}">Edit Profile</a></li>
-<div th:object="${user}">
-    <h2 th:text="${user.firstName}"></h2>
-    <h2 th:text="${user.lastName}"></h2>
-    <h2 th:text="${user.username}"></h2>
-    <h2 th:text="${user.email}"></h2>
-</div>
-<ul>
-    <li th:if="${usersOrgId==0}"><a th:href="@{/organization/create}">Create Organization</a></li>
-    <li th:if="${usersOrgId!=0}"><a th:href="@{/organization/edit}">Edit Organization</a></li>
-    <li><a th:href="@{/users/edit}">Edit Profile</a></li>
-</ul>
-</body>
+    <head><title>Top-Teer profile page</title>
+        <link th:replace="partials/header.html :: header"/>
+        <nav th:replace="partials/navbar.html :: navbar"></nav>
+    </head>
+    <h2>Profile</h2>
+    <body>
+        <li><a class="button" th:href="@{/users/edit}">Edit Profile</a></li>
+        <div th:object="${user}">
+            <h2 th:text="${user.firstName}"></h2>
+            <h2 th:text="${user.lastName}"></h2>
+            <h2 th:text="${user.username}"></h2>
+            <h2 th:text="${user.email}"></h2>
+        </div>
+        <div class="card">
+            <h3 class="titles" th:text="Events"></h3>
+            <form th:each="event: ${user.getEvents()}">
+                <label th:text="${event.title}"></label>
+                <input type="checkbox" th:value="${event.id}">
+            </form>
+        </div>
+        <ul>
+            <li th:if="${usersOrgId==0}"><a th:href="@{/organization/create}">Create Organization</a></li>
+            <li th:if="${usersOrgId!=0}"><a th:href="@{/organization/edit}">Edit Organization</a></li>
+            <li><a th:href="@{/users/edit}">Edit Profile</a></li>
+        </ul>
+    </body>
 </html>

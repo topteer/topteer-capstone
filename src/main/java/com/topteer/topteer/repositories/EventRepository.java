@@ -11,7 +11,6 @@ import java.util.List;
 public interface EventRepository extends JpaRepository<Events, Long> {
     List<Events> findAllByTitleContaining(String query);
 
-
     @Query("from Events ev where ev.title like %:query% or ev.location like %:query% or ev.description like %:query%")
     List<Events> findAllEventsByTitleOrLocationContaining(String query);
 
