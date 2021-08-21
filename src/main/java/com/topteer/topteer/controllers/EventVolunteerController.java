@@ -27,12 +27,13 @@ public class EventVolunteerController {
         this.EVRepo = EVRepoDao;
     }
 
+
     @PostMapping("/event/{id}/register")
     public String placeholder1(@PathVariable long id){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         currentUser = userDao.getById(currentUser.getId());
         Events event = eventDao.getById(id);
-        List<Events> userEvents=currentUser.getEvents();
+        List<Events> userEvents = currentUser.getEvents();
         userEvents.add(event);
         currentUser.setEvents(userEvents);
         userDao.save(currentUser);

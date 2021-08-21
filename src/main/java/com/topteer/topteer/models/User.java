@@ -49,7 +49,7 @@ public class User {
         this.password = copy.password;
     }
 
-    public User(long id, String firstName, String lastName, String userName, String email, String password) {
+    public User(long id, String firstName, String lastName, String username, String email, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -123,6 +123,14 @@ public class User {
 
     public void setEvents(List<Events> events) {
         this.events = events;
+    }
+
+    public List<Organization> getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(List<Organization> organization) {
+        this.organization = organization;
     }
 }
 

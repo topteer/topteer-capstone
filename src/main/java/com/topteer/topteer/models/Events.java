@@ -24,7 +24,7 @@ public class Events {
     @JoinColumn(name = "org_id")
     private Organization org;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy="events")
+    @ManyToMany(mappedBy="events")
     List<User> eventvolunteer;
 
     @NotBlank(message = "You must input a title")
@@ -96,6 +96,10 @@ public class Events {
         this.location = location;
         this.hours = hours;
         this.length = length;
+    }
+
+    public Events(List<User> eventvolunteer) {
+        this.eventvolunteer = eventvolunteer;
     }
 
     public Events() {
@@ -183,5 +187,13 @@ public class Events {
 
     public void setOrg(Organization org) {
         this.org = org;
+    }
+
+    public List<User> getEventvolunteer() {
+        return eventvolunteer;
+    }
+
+    public void setEventvolunteer(List<User> eventvolunteer) {
+        this.eventvolunteer = eventvolunteer;
     }
 }
