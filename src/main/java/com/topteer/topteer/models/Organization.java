@@ -23,7 +23,7 @@ public class Organization {
     private User user;
 
     //id relationship
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "org")
    private List<Events> events;
 
     //org_name column generation

@@ -33,10 +33,10 @@ public class EventVolunteerController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         currentUser = userDao.getById(currentUser.getId());
         Events event = eventDao.getById(id);
-        List<Events> userEvents = currentUser.getEvents();
-        userEvents.add(event);
-        currentUser.setEvents(userEvents);
-        userDao.save(currentUser);
+        List<User> eventsUser = event.getEventvolunteer();
+        eventsUser.add(currentUser);
+        event.setEventvolunteer(eventsUser);
+        eventDao.save(event);
         return "redirect:/event/" + id + "/show";
     }
 }

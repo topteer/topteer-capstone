@@ -1,5 +1,6 @@
 package com.topteer.topteer.controllers;
 
+import com.topteer.topteer.models.Events;
 import com.topteer.topteer.models.Organization;
 import com.topteer.topteer.models.User;
 import com.topteer.topteer.repositories.OrganizationRepository;
@@ -80,7 +81,7 @@ public class UserController {
     @GetMapping("/users/profile")
     public String getProfilePage(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+        user = usersDao.getById(user.getId());
 
         Organization organization = orgDao.findByUserId(user.getId());
         long orgId = 0;

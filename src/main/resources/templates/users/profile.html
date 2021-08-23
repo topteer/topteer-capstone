@@ -15,7 +15,7 @@
         </div>
         <div class="card">
             <h3 class="titles" th:text="Events"></h3>
-            <form th:each="event: ${user.getEvents()}">
+            <form th:each="event: ${user.events}">
                 <label th:text="${event.title}"></label>
                 <input type="checkbox" th:value="${event.id}">
             </form>

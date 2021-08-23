@@ -24,7 +24,8 @@ public class Events {
     @JoinColumn(name = "org_id")
     private Organization org;
 
-    @ManyToMany(mappedBy="events")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="eventVolunteer", joinColumns={@JoinColumn(name="event_id")},inverseJoinColumns={@JoinColumn(name="user_id")})
     List<User> eventvolunteer;
 
     @NotBlank(message = "You must input a title")

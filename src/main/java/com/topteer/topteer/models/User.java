@@ -17,9 +17,7 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     List<Organization> organization;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-
-    @JoinTable(name="eventVolunteer", joinColumns={@JoinColumn(name="user_id")},inverseJoinColumns={@JoinColumn(name="event_id")})
+    @ManyToMany(mappedBy = "eventvolunteer")
     private List<Events> events;
 
     @Column(nullable = false, length = 35)
@@ -31,7 +29,7 @@ public class User {
     @Column(nullable = false, length = 35)
     private String username;
 
-    @Column(length = 20, nullable = false, unique = true)
+    @Column(length = 40, nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)

@@ -13,6 +13,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class EventsController {
@@ -88,7 +90,10 @@ public class EventsController {
 
     @PostMapping("/event/{id}/delete")
     public String deleteEvent(@PathVariable long id){
-        eventDao.deleteById(id);
+        Events eventFromDb = eventDao.getById(id);
+        eventFromDb.setEventvolunteer(new ArrayList<User>());
+        eventDao.save(eventFromDb);
+        eventDao.delete(eventFromDb);
         return "redirect:/event";
     }
 
