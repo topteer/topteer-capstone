@@ -26,7 +26,7 @@ public class OrganizationController {
         this.userDao = userDao;
     }
 
-    //     ======== Show all events ============
+    //     ======== Show all events ===========
     @GetMapping("/organizations")
     public String allOrgs(Model model) {
         model.addAttribute("organizations", orgDao.findAll());
