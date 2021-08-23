@@ -27,7 +27,7 @@ public class OrganizationController {
     }
 
     //     ======== Show all events ===========
-    @GetMapping("/organization")
+    @GetMapping("/organizations")
     public String allOrgs(Model model) {
         model.addAttribute("organizations", orgDao.findAll());
         return "/organization/index";
