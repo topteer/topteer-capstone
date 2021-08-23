@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head><title></title></head>
+
 <body>
 <nav th:fragment="navbar">
     <ul class="topnav">
@@ -28,17 +29,13 @@
                         <h3>What do you want to search?</h3>
                         <form th:action="@{/search}" method="post">
                             <div>
-                                <p>Search Options</p>
-                                <select id="search-params" name="search-params">
+                                <label for="search-params"></label><select id="search-params" name="search-params">
                                     <option value="2">Organizations</option>
                                     <option value="1">Events</option>
                                 </select>
+                                <label for="query"></label><input class="nosir" id="query" name="query" type="text" placeholder="Search" />
+                            <button class="yessir" type="submit" value="submit">Search</button>
                             </div>
-                            <div>
-                                <input id="query" name="query" type="text" />
-                                <label for="query">Query</label>
-                            </div>
-                            <button type="submit" value="submit">Search</button>
                         </form>
                     </div>
                 </div>
