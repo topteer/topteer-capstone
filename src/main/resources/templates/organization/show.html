@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <link th:replace="partials/header.html :: header"/>
-        <title>Welcome</title>
-    </head>
-    <body>
-    <nav th:replace="partials/navbar.html :: navbar"></nav>
-    <div class="card" th:object="${org}">
-        <h3 class="titles" th:text="${org.getOrgName()}"></h3>
-        <p th:text="${org.getAddress()}"></p>
-        <p th:text="${org.getCity() + ', ' + org.getState().toUpperCase() + ' ' + org.getZip()}"></p>
-        <p th:text="${org.getPhone()}"></p>
-        <p th:text="${org.getEmail()}"></p>
-        <div th:if="${isOrgOwner}">
-            <div class="d-flex justify-content-center align-items-center">
-                <form th:action="@{/organization/{id}/edit(id=${org.id})}" method="get">
-                    <button type="submit" name="editBtn" value="edit">Edit</button>
-                </form>
-                <div>
-                    <a th:href="@{/event/create}">Create Event</a>
-                </div>
+<head>
+    <link th:replace="partials/header.html :: header"/>
+    <title>Welcome</title>
+</head>
+<body>
+<nav th:replace="partials/navbar.html :: navbar"></nav>
+<div class="card" th:object="${org}">
+    <h3 class="titles" th:text="${org.getOrgName()}"></h3>
+    <p th:text="${org.getAddress()}"></p>
+    <p th:text="${org.getCity() + ', ' + org.getState().toUpperCase() + ' ' + org.getZip()}"></p>
+    <p th:text="${org.getPhone()}"></p>
+    <p th:text="${org.getEmail()}"></p>
+    <div th:if="${isOrgOwner}">
+        <div class="d-flex justify-content-center align-items-center">
+            <form th:action="@{/organization/edit}" method="get">
+                <button type="submit" name="editBtn" value="edit">Edit</button>
+            </form>
+            <div>
+                <a th:href="@{/event/create}">Create Event</a>
             </div>
         </div>
     </div>
+</div>
 
 
-    </body>
+</body>
 </html>
