@@ -29,7 +29,7 @@ public class EventVolunteerController {
 
 
     @PostMapping("/event/{id}/register")
-    public String placeholder1(@PathVariable long id){
+    public String eventRegister(@PathVariable long id){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         currentUser = userDao.getById(currentUser.getId());
         Events event = eventDao.getById(id);
