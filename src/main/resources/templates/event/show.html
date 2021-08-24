@@ -26,11 +26,13 @@
             </form>
         </div>
 <!--        Volunteer List-->
+<!--        ==== Needs to submit all names that are checked ==== -->
         <div th:if="${isEventOwner}" class="card">
             <h3 th:text="Volunteers" class="titles"></h3>
-            <form  th:each="user: ${event.getEventvolunteer()}">
+            <form method="post" th:action="@{/sendText/to/{id}(id=${user.id})}" th:each="user: ${event.getEventvolunteer()}">
                 <label th:text="${user.firstName} + ' ' + ${user.lastName}"></label>
-                <input type="checkbox" th:value="user.id">
+                <input type="checkbox" th:value="${user.id}">
+                <button type="submit" name="eventCompleted">Submit volunteer</button>
             </form>
         </div>
     </body>
