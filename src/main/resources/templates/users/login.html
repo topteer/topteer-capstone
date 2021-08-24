@@ -5,6 +5,12 @@
 </head>
 
 <style>
+
+    .avatar {
+        width: 90px;
+        height: 115px;
+    }
+
     body {
         font-family: Arial, Helvetica, sans-serif;
         background-image: url('../img/hands2.png');
@@ -140,13 +146,22 @@
             width: 100%;
         }
     }
+
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+
 </style>
 
 <body class="main">
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 <div class="container">
 
-    <p id="greeting">Welcome Back! Thank you for contributing to the good of society!</p>
+    <img src="../static/img/welcome.png" class="center" th:src="@{/img/welcome.png}" alt="welcomeBack"/>
+    <p id="greeting">Thank you for contributing to the good of society! You are what drives us.</p>
 
     <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="coolButton loginButton btn-block">Click Here To Login</button>
 
@@ -154,7 +169,7 @@
         <form class="modal-content animate" th:action="@{/login}" method="post">
             <div class="imgcontainer">
                 <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <img src="../img/volunteer-hands.jpeg" alt="Avatar" class="avatar">
+                <img src="../img/top-teer-logo.png" alt="Avatar" class="avatar">
             </div>
 
                 <div class="container">

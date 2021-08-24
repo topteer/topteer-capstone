@@ -1,9 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head><title>Edit Profile</title>
+    <link th:replace="partials/header.html :: header"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
 
+<style>
+
+    .container {
+        font-weight: bold;
+    }
+
+    body {
+        background-image: url('../img/hands.jpeg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    .w3-card-4{
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        color: white;
+        margin-top: 70px;
+    }
+
+</style>
 
 <body class="main">
+<nav th:replace="partials/navbar.html :: navbar"></nav>
+
 <main class="container">
+
+    <div class="w3-card-4 w3-margin-center w3-round-xlarge">
+        <div class="w3-center w3-orange w3-border">
+            <h2>Edit Your Profile</h2>
     <div>
         <div>
             <h3>Edit User Details</h3>
@@ -48,8 +80,100 @@
                 </div>
                 <button type="submit" id="submit" value="submit">Submit</button>
             </form>
+
         </div>
+
+        <form class="w3-center container w3-white w3-border" id="register-form" action="" th:action="@{/users/edit}" method="post" th:object="${user}">
+            <input id="id" name="id" type="hidden" th:field="${user.id}">
+
+            <div class="form-group">
+                    <label class="w3-text-orange" for="firstName"><b>First Name</b></label>
+                    <input width="25" class="w3-input w3-border w3-sand validate" id="firstName" name="firstName" type="text" th:field="${user.firstName}">
+            </div>
+
+            <div class="form-group">
+                <label class="w3-text-orange" for="lastName"><b>Last Name</b></label>
+                <input width="25" class="w3-input w3-border w3-sand validate" id="lastName" name="lastName" type="text" th:field="${user.lastName}">
+            </div>
+
+            <div class="form-group">
+                <label class="w3-text-orange" for="username"><b>Username</b></label>
+                <input width="25" class="w3-input w3-border w3-sand validate" id="username" name="username" type="text" th:field="${user.username}">
+            </div>
+
+            <div class="form-group">
+                <label class="w3-text-orange" for="email"><b>Email</b></label>
+                <input width="25" class="w3-input w3-border w3-sand validate" id="email" name="email" type="email" th:field="${user.email}">
+            </div>
+
+            <div class="form-group">
+                <label class="w3-text-orange" for="password"><b>Password</b></label>
+                <input width="25" class="w3-input w3-border w3-sand validate" id="password" name="password" type="password">
+            </div>
+
+            <div class="form-group">
+                <label class="w3-text-orange" for="password-confirm"><b>Confirm Password</b></label>
+                <input width="25" class="w3-input w3-border w3-sand validate" id="password-confirm" name="password-confirm" type="password">
+            </div>
+
+            <p>
+                <button class="w3-btn w3-orange" type="submit" name="sendCreate">Update</button>
+            </p>
+
+        </form>
     </div>
+
+
+
+
+<!--    <div>-->
+<!--        <div>-->
+<!--            <h3>Edit User Details</h3>-->
+
+<!--            <form id="register-form" action="" th:action="@{/users/edit}" method="post" th:object="${user}">-->
+<!--                <input id="id" name="id" type="hidden" th:field="${user.id}" />-->
+<!--                <div>-->
+<!--                    <div>-->
+<!--                        <input id="firstName" name="firstName" type="text" class="validate" th:field="${user.firstName}" />-->
+<!--                        <label for="firstName">First name</label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <div>-->
+<!--                        <input id="lastName" name="lastName" type="text" class="validate" th:field="${user.lastName}" />-->
+<!--                        <label for="lastName">Last name</label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <div>-->
+<!--                        <input id="username" name="username" type="text" class="validate" th:field="${user.username}" />-->
+<!--                        <label for="username">Username</label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <div>-->
+<!--                        <input id="email" name="email" type="email" class="validate" th:field="${user.email}" />-->
+<!--                        <label for="email">Email</label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <div>-->
+<!--                        <input id="password" name="password" type="password" class="validate" />-->
+<!--                        <label for="password">Password</label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <div>-->
+<!--                        <input id="password-confirm" name="password-confirm" type="password" class="validate" />-->
+<!--                        <label for="password-confirm">Confirm Password</label>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <button type="submit" id="submit" value="submit">Submit</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
 </main>
 </body>
 </html>
