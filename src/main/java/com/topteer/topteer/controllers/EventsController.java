@@ -67,11 +67,10 @@ public class EventsController {
 
             Events event = new Events(org, title, description, user, phone, date, time, location, hours, length);
             eventDao.save(event);
-
         }
-
         return "redirect:/event";
     }
+
     @GetMapping("/event/{id}/show")
     public String singleEvent(@PathVariable long id, Model model){
         Events events = eventDao.getById(id);
@@ -91,10 +90,9 @@ public class EventsController {
     @PostMapping("/event/{id}/delete")
     public String deleteEvent(@PathVariable long id){
         Events eventFromDb = eventDao.getById(id);
-        eventFromDb.setEventvolunteer(new ArrayList<User>());
+        eventFromDb.setEventvolunteer(new ArrayList<User >());
         eventDao.save(eventFromDb);
         eventDao.delete(eventFromDb);
         return "redirect:/event";
     }
-
 }

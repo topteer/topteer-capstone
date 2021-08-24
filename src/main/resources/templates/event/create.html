@@ -7,26 +7,25 @@
     <body>
         <form th:action="@{/event/create}" method="post" th:object="${events}">
 
-<!--            Pre-populated Organization name-->
+            <!--            Pre-populated Organization name-->
             <div class="form-group">
                 <label for="orgName">Organization Name:</label>
                 <input id="orgName" name="orgName" th:value="${orgName}"  disabled>
                 <input type="hidden" name="orgId" th:value="${orgId}">
             </div>
-
             <!--            Pre-populated Event Coordinator name-->
             <div class="form-group">
                 <label for="eCoord">Event Coordinator:</label>
                 <input id="eCoord" name="eCoord" th:value="${eCoord}" disabled>
                 <input type="hidden" id="eCoordId" name="eCoordId" th:value="${eCoordId}">
             </div>
-
+            <!--            Title Field -->
             <div class="form-group">
                 <label for="title">Title:</label>
                 <input id="title" type="text" th:field="*{title}">
                 <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
             </div>
-
+            <!--            Description Field-->
             <div class="form-group">
                 <label for="description">Description:</label>
                 <textarea id="description" cols="30" rows="10" th:field="*{description}"></textarea>
