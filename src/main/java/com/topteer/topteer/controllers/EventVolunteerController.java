@@ -31,6 +31,23 @@ public class EventVolunteerController {
         this.emailService = emailService;
     }
 
+    @GetMapping("/event/{id}/register")
+    public String eventRegister(@PathVariable long id, Model model){
+        boolean alreadyRegistered = false;
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long thisUser = currentUser.getId();
+        List<User> eventUser = eventDao.getById(id).getEventvolunteer();
+
+        for (User volunteer : eventUser){
+            if(volunteer.getId() == thisUser){
+                alreadyRegistered = true;
+            }
+        }
+        model.addAttribute("alreadyRegistered", alreadyRegistered);
+        return "/event/show";
+
+        }
+
 
     @PostMapping("/event/{id}/register")
     public String eventRegister(@PathVariable long id){
