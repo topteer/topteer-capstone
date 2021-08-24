@@ -2,17 +2,91 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
     <head><title>Top-Teer profile page</title>
         <link th:replace="partials/header.html :: header"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <nav th:replace="partials/navbar.html :: navbar"></nav>
     </head>
-    <h2>Profile</h2>
+
+    <style>
+
+        body {
+            background-image: url('../img/hands2.png');
+            /*background-image: url('../../static/img/hands2.png');*/
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+        }
+
+        .card {
+            flex-direction: row;
+            align-items: center;
+        }
+        .card-title {
+            font-weight: bold;
+        }
+        .card img {
+            width: 30%;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: calc(0.25rem - 1px);
+        }
+        @media only screen and (max-width: 768px) {
+            a {
+                display: none;
+            }
+            .card-body {
+                padding: 0.5em 1.2em;
+            }
+            .card-body .card-text {
+                margin: 0;
+            }
+            .card img {
+                width: 50%;
+            }
+        }
+        @media only screen and (max-width: 1200px) {
+            .card img {
+                width: 40%;
+            }
+        }
+
+    </style>
+
     <body>
-        <li><a class="button" th:href="@{/users/edit}">Edit Profile</a></li>
-        <div th:object="${user}">
-            <h2 th:text="${user.firstName}"></h2>
-            <h2 th:text="${user.lastName}"></h2>
-            <h2 th:text="${user.username}"></h2>
-            <h2 th:text="${user.email}"></h2>
+
+<!--    <img src="../../static/img/profile.png">-->
+    <img src="../img/profile.png">
+    <a href="#" class="btn btn-primary" th:href="@{/users/edit}"> <i class="fa fa-edit"> Edit Profile</i></a>
+
+    <div class="card">
+<!--        <img src="../../static/img/avatar.png">-->
+        <img src="../img/avatar.png">
+        <div class="card-body">
+            <div class="card-title" th:object="${user}">
+
+                <h1 th:text="${user.firstName}"></h1>
+                <h1 th:text="${user.lastName}"></h1>
+<!--                <h1>Full Name</h1>-->
+
+            </div>
+            <p class="card-text">
+
+            <i class="fa fa-address-book-o" style="font-size:24px" th:text="${user.username}"></i>
+                <br>
+            <i class="fa fa-envelope-o" style="font-size:24px" th:text="${user.email}"></i>
+<!--                <br>-->
+
+<!--            <i class="fa fa-address-book-o" style="font-size:24px"> Username Goes Here </i>-->
+<!--                <br>-->
+<!--            <i class="fa fa-envelope-o" style="font-size:24px"> Email Goes Here </i>-->
+
+
+            </p>
+            <a href="#" class="btn btn-success" th:href="@{/organization/create}"> <i class="fa fa-child"> Create Organization</i></a>
+            <a href="#" class="btn btn-primary" th:href="@{/organization/edit}"> <i class="fa fa-edit"> Edit Organization</i></a>
         </div>
+    </div>
+
         <div class="card">
             <h3 class="titles" th:text="Events"></h3>
             <form th:each="event: ${user.events}">
@@ -20,10 +94,28 @@
                 <input type="checkbox" th:value="${event.id}">
             </form>
         </div>
-        <ul>
-            <li th:if="${usersOrgId==0}"><a th:href="@{/organization/create}">Create Organization</a></li>
-            <li th:if="${usersOrgId!=0}"><a th:href="@{/organization/edit}">Edit Organization</a></li>
-            <li><a th:href="@{/users/edit}">Edit Profile</a></li>
-        </ul>
+
+<!--    <body>-->
+<!--        <li><a class="button" th:href="@{/users/edit}">Edit Profile</a></li>-->
+<!--        <div th:object="${user}">-->
+<!--            <h2 th:text="${user.firstName}"></h2>-->
+<!--            <h2 th:text="${user.lastName}"></h2>-->
+<!--            <h2 th:text="${user.username}"></h2>-->
+<!--            <h2 th:text="${user.email}"></h2>-->
+<!--        </div>-->
+<!--        <div class="card">-->
+<!--            <h3 class="titles" th:text="Events"></h3>-->
+<!--            <form th:each="event: ${user.events}">-->
+<!--                <label th:text="${event.title}"></label>-->
+<!--                <input type="checkbox" th:value="${event.id}">-->
+<!--            </form>-->
+<!--        </div>-->
+<!--        <ul>-->
+<!--            <li th:if="${usersOrgId==0}"><a th:href="@{/organization/create}">Create Organization</a></li>-->
+<!--            <li th:if="${usersOrgId!=0}"><a th:href="@{/organization/edit}">Edit Organization</a></li>-->
+<!--            <li><a th:href="@{/users/edit}">Edit Profile</a></li>-->
+<!--        </ul>-->
+
+
     </body>
 </html>
