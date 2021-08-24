@@ -40,7 +40,10 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String saveUser(@ModelAttribute User user){
+    public String saveUser(@ModelAttribute User user, @RequestParam(name = "password") String password, @RequestParam(name = "password-confirm") String confirm){
+        if (!password.equals(confirm)) {
+            return "redirect:/register";
+        }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         usersDao.save(user);
