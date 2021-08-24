@@ -30,7 +30,7 @@ public class OrganizationController {
     @GetMapping("/organizations")
     public String allOrgs(Model model) {
         model.addAttribute("organizations", orgDao.findAll());
-        return "/organization/index";
+        return "organization/index";
     }
 
     @GetMapping("/organization/{id}/show")
@@ -43,7 +43,7 @@ public class OrganizationController {
         }
         model.addAttribute("org", org);
         model.addAttribute("isOrgOwner", isOrgOwner);
-        return "/organization/show";
+        return "organization/show";
     }
 
 //    ========== Create organization ===============
@@ -54,7 +54,7 @@ public class OrganizationController {
         if(organization == null)
         {
             model.addAttribute("organization", new Organization());
-            return "/organization/create";
+            return "organization/create";
         }
         else
         {
@@ -70,7 +70,7 @@ public class OrganizationController {
         if(validation.hasErrors()){
             model.addAttribute("errors", validation);
             model.addAttribute("orgs", validOrg);
-            return "/organization/create";
+            return "organization/create";
         }
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -91,7 +91,7 @@ public class OrganizationController {
             String state = organization.getState();
         model.addAttribute("orgs", organization);
             model.addAttribute("state", state);
-            return "/organization/edit";
+            return "organization/edit";
 
     }
 
