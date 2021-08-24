@@ -79,7 +79,6 @@ public class EventsController {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             isEventOwner = currentUser.getId() == events.getUser().getId();
         }
-        System.out.println(events.getId());
         String eventCoord = events.getUser().getFirstName();
         model.addAttribute("event", events);
         model.addAttribute("eCoord", eventCoord);

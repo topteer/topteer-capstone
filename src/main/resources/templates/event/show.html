@@ -21,7 +21,7 @@
                 <button class="card-link" type="submit" th:value="*{id}" name="deleteEvent">Delete</button>
             </form>
 <!--            Register button-->
-            <form  method="post" th:action="@{/event/{id}/register(id = ${event.id})}">
+            <form method="post" th:action="@{/event/{id}/register(id = ${event.id})}" th:if="${alreadyRegistered}">
            <button class="card-link" type="submit" name="registerEvent">Register</button>
             </form>
         </div>
