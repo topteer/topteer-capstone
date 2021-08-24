@@ -84,7 +84,7 @@ public class EventsController {
         model.addAttribute("event", events);
         model.addAttribute("eCoord", eventCoord);
         model.addAttribute("isEventOwner", isEventOwner);
-        return "event/{id}/show";
+        return "event/show";
     }
 
     @PostMapping("/event/{id}/delete")
