@@ -16,8 +16,7 @@
         <div class="card">
             <h3 class="titles" th:text="Events"></h3>
             <form th:each="event: ${user.events}">
-                <label th:text="${event.title}"></label>
-                <input type="checkbox" th:value="${event.id}">
+                <a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a>
             </form>
         </div>
         <ul>
