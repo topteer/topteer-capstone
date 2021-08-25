@@ -6,6 +6,7 @@ import com.topteer.topteer.models.User;
 import com.topteer.topteer.repositories.EventRepository;
 import com.topteer.topteer.repositories.OrganizationRepository;
 import com.topteer.topteer.repositories.UserRepository;
+import com.topteer.topteer.services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,11 +24,13 @@ public class EventsController {
     private EventRepository eventDao;
     private OrganizationRepository orgDao;
     private UserRepository userDao;
+    private final EmailService emailService;
 
-    public EventsController(EventRepository eventDao, OrganizationRepository orgDao, UserRepository userDao) {
+    public EventsController(EventRepository eventDao, OrganizationRepository orgDao, UserRepository userDao, EmailService emailService) {
         this.eventDao = eventDao;
         this.orgDao = orgDao;
         this.userDao = userDao;
+        this.emailService = emailService;
     }
 
     //    Show all events
@@ -79,6 +83,17 @@ public class EventsController {
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             isEventOwner = currentUser.getId() == events.getUser().getId();
         }
+        boolean alreadyRegistered = false;
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long thisUser = currentUser.getId();
+        List<User> eventUser = eventDao.getById(id).getEventvolunteer();
+
+        for (User volunteer : eventUser){
+            if(volunteer.getId() == thisUser){
+                alreadyRegistered = true;
+            }
+        }
+        model.addAttribute("alreadyRegistered", alreadyRegistered);
         String eventCoord = events.getUser().getFirstName();
         model.addAttribute("event", events);
         model.addAttribute("eCoord", eventCoord);
@@ -93,5 +108,26 @@ public class EventsController {
         eventDao.save(eventFromDb);
         eventDao.delete(eventFromDb);
         return "redirect:/event";
+    }
+    @PostMapping("/event/{id}/register")
+    public String eventRegister(@PathVariable long id){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        currentUser = userDao.getById(currentUser.getId());
+        Events event = eventDao.getById(id);
+        List<User> eventsUser = event.getEventvolunteer();
+        eventsUser.add(currentUser);
+        event.setEventvolunteer(eventsUser);
+        eventDao.save(event);
+        return "redirect:/event/" + id + "/show";
+    }
+
+    @PostMapping("/sendText/to/{id}")
+    public String send(@PathVariable long id) throws IOException {
+        try {
+            emailService.sendTextEmail(userDao.getById(id));
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/users/profile";
     }
 }
