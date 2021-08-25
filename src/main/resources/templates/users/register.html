@@ -12,6 +12,7 @@
         background-image: url('../img/hands.jpeg');
         background-repeat: no-repeat;
         background-size: 100%;
+        background-attachment: fixed;
     }
 
     .w3-card-4{
@@ -51,10 +52,11 @@
                 <input class="w3-input w3-border w3-sand" name="password" type="password" placeholder="Password" id="password" minlength="6" th:field="*{password}" /></p>
             <p>
             <p>
-            <label class="w3-text-blue"><b>Password</b></label>
-            <input class="w3-input w3-border w3-sand" name="password-confirm" type="password" placeholder="Password confirm" id="password-confirm" minlength="6" /></p>
+            <label class="w3-text-blue"><b>Confirm Password</b></label>
+            <input class="w3-input w3-border w3-sand" name="password-confirm" type="password" placeholder="Confirm Password" id="password-confirm" minlength="6" /></p>
             <p>
-                <button class="w3-btn w3-blue">Register</button></p>
+                <button class="w3-btn w3-blue">Register</button>
+            </p>
         </form>
     </div>
 </div>
