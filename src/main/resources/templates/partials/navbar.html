@@ -5,7 +5,7 @@
 <body>
 <nav th:fragment="navbar">
     <ul class="topnav">
-        <li><a class="active" th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/}" ><img src="../../static/img/Top-TeerLogo-BlackOnWhite.png" th:src="@{/img/Top-TeerLogo-BlackOnWhite.png}" height="8%" width="8%" alt="The Logo"></a></li>
         <li sec:authorize="!isAuthenticated()" ><a th:href="@{/register}">Register</a></li>
         <li sec:authorize="!isAuthenticated()" class="nav-item">
             <a class="nav-link" th:href="@{/login}">Log-in</a>
@@ -18,7 +18,7 @@
         <li sec:authorize="isAuthenticated()" ><a th:href="@{/event}">All Events</a></li>
         <li sec:authorize="isAuthenticated()" ><a th:href="@{/organizations}">All Organizations</a></li>
         <li sec:authorize="isAuthenticated()" ><a th:href="@{/users/profile}">Profile</a></li>
-        <img src="../../static/img/Top-TeerLogo-BlackOnWhite.png" th:src="@{/img/Top-TeerLogo-BlackOnWhite.png}" height="3%" width="3%" alt="The Logo"/>
+
         <li class="right"><a th:href="@{/about-us}">About Us</a></li>
         <li>
             <!--            ======== search modal ======= -->
