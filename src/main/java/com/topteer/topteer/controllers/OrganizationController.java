@@ -79,7 +79,7 @@ public class OrganizationController {
 
         orgDao.save(organization);
 
-        return "redirect:/users/profile";
+        return "redirect:/organization/" + organization.getId() + "/show";
     }
 
 //    ======== Edit organization =========
