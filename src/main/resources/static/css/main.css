@@ -272,10 +272,10 @@ span.psw {
     background-attachment: fixed;
 }
 
-.card {
-    flex-direction: row;
-    align-items: center;
-}
+/*.card {*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*}*/
 .card-title {
     font-weight: bold;
 }
@@ -337,11 +337,13 @@ span.psw {
     background-attachment: fixed;
 }
 
-.card {
+.cardAboutMe {
     background: #222;
     border: 1px solid cornflowerblue;
     color: rgba(250, 250, 250, 0.8);
     margin-bottom: 2rem;
+    flex-direction: row;
+    align-items: center;
 }
 
 .btn {
