@@ -1,50 +1,53 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-    <head><title>Top-Teer profile page</title>
-        <link th:replace="partials/header.html :: header"/>
-        <nav th:replace="partials/navbar.html :: navbar"></nav>
-    </head>
+<head><title>Top-Teer profile page</title>
+	<link th:replace="partials/header.html :: header"/>
+	<nav th:replace="partials/navbar.html :: navbar"></nav>
+</head>
 
-    <body class="profileBody">
+<body class="profileBody">
 
 <!--    <img src="../../static/img/profile.png">-->
-    <img src="../img/profile.png">
-    <a href="#" class="btn btn-primary" th:href="@{/users/edit}"> <i class="fa fa-edit"> Edit Profile</i></a>
+<img src="../img/profile.png">
+<a href="#" class="btn btn-primary" th:href="@{/users/edit}"> <i class="fa fa-edit"> Edit Profile</i></a>
 
-    <div class="card">
-<!--        <img src="../../static/img/avatar.png">-->
-        <img src="../img/avatar.png">
-        <div class="card-body">
-            <div class="card-title" th:object="${user}">
+<div class="card">
+	<!--        <img src="../../static/img/avatar.png">-->
+	<img src="../img/avatar.png">
+	<div class="card-body">
+		<div class="card-title" th:object="${user}">
 
-                <h1 th:text="${user.firstName}"></h1>
-                <h1 th:text="${user.lastName}"></h1>
-<!--                <h1>Full Name</h1>-->
+			<h1 th:text="${user.firstName}"></h1>
+			<h1 th:text="${user.lastName}"></h1>
+			<!--                <h1>Full Name</h1>-->
 
-            </div>
-            <p class="card-text">
+		</div>
+		<p class="card-text">
 
-            <i class="fa fa-address-book-o" style="font-size:24px" th:text="${user.username}"></i>
-                <br>
-            <i class="fa fa-envelope-o" style="font-size:24px" th:text="${user.email}"></i>
+			<i class="fa fa-address-book-o" style="font-size:24px" th:text="${user.username}"></i>
+			<br>
+			<i class="fa fa-envelope-o" style="font-size:24px" th:text="${user.email}"></i>
 
 
-            </p>
-            <a href="#" class="btn btn-success" th:if="${usersOrgId==0}" th:href="@{/organization/create}"><i class="fa fa-calendar-plus-o"> Create Organization</i></a>
-            <a href="#" class="btn btn-primary" th:if="${usersOrgId!=0}" th:href="@{/organization/edit}"><i class="fa fa-edit"> Edit Organization</i></a>
-        </div>
-    </div>
-        <div class="card">
-            <h3 class="titles" th:text="Organization"></h3>
-            <form th:each="organization: ${user.organization}">
-                <h4 class="titles"><a class="titles" th:text="${organization.orgName}" th:href="@{/organization/{id}/show(id=${organization.id})}"></a></h4>
-            </form>
-        </div>
-        <div class="card">
-            <h3 class="titles" th:text="Events"></h3>
-            <form th:each="event: ${user.events}">
-                <h4 class="titles"><a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>
-            </form>
-        </div>
-    </body>
+		</p>
+		<a href="#" class="btn btn-success" th:if="${usersOrgId==0}" th:href="@{/organization/create}"><i
+				class="fa fa-calendar-plus-o"> Create Organization</i></a>
+		<a href="#" class="btn btn-primary" th:if="${usersOrgId!=0}" th:href="@{/organization/edit}"><i
+				class="fa fa-edit"> Edit Organization</i></a>
+	</div>
+</div>
+<div class="card">
+	<h3 class="titles" th:text="Organization"></h3>
+	<form th:each="organization: ${user.organization}">
+		<h4 class="titles"><a class="titles" th:text="${organization.orgName}"
+		                      th:href="@{/organization/{id}/show(id=${organization.id})}"></a></h4>
+	</form>
+</div>
+<div class="card">
+	<h3 class="titles" th:text="Events"></h3>
+	<form th:each="event: ${user.events}">
+		<h4 class="titles"><a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>
+	</form>
+</div>
+</body>
 </html>
