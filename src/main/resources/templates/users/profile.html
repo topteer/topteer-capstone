@@ -27,11 +27,6 @@
             <i class="fa fa-address-book-o" style="font-size:24px" th:text="${user.username}"></i>
                 <br>
             <i class="fa fa-envelope-o" style="font-size:24px" th:text="${user.email}"></i>
-<!--                <br>-->
-
-<!--            <i class="fa fa-address-book-o" style="font-size:24px"> Username Goes Here </i>-->
-<!--                <br>-->
-<!--            <i class="fa fa-envelope-o" style="font-size:24px"> Email Goes Here </i>-->
 
 
             </p>
@@ -39,41 +34,17 @@
             <a href="#" class="btn btn-primary" th:if="${usersOrgId!=0}" th:href="@{/organization/edit}"><i class="fa fa-edit"> Edit Organization</i></a>
         </div>
     </div>
-
         <div class="card">
             <h3 class="titles" th:text="Organization"></h3>
             <form th:each="organization: ${user.organization}">
-                <h2 class="titles"><a class="titles" th:text="${organization.getOrgName()}" th:href="@{/organization/{id}/show(id=${organization.getId()})}"></a></h2>
+                <h4 class="titles"><a class="titles" th:text="${organization.orgName}" th:href="@{/organization/{id}/show(id=${organization.id})}"></a></h4>
             </form>
         </div>
         <div class="card">
             <h3 class="titles" th:text="Events"></h3>
             <form th:each="event: ${user.events}">
-                <a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a>
+                <h4 class="titles"><a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>
             </form>
         </div>
-
-<!--    <body>-->
-<!--        <li><a class="button" th:href="@{/users/edit}">Edit Profile</a></li>-->
-<!--        <div th:object="${user}">-->
-<!--            <h2 th:text="${user.firstName}"></h2>-->
-<!--            <h2 th:text="${user.lastName}"></h2>-->
-<!--            <h2 th:text="${user.username}"></h2>-->
-<!--            <h2 th:text="${user.email}"></h2>-->
-<!--        </div>-->
-<!--        <div class="card">-->
-<!--            <h3 class="titles" th:text="Events"></h3>-->
-<!--            <form th:each="event: ${user.events}">-->
-<!--                <label th:text="${event.title}"></label>-->
-<!--                <input type="checkbox" th:value="${event.id}">-->
-<!--            </form>-->
-<!--        </div>-->
-<!--        <ul>-->
-<!--            <li th:if="${usersOrgId==0}"><a th:href="@{/organization/create}">Create Organization</a></li>-->
-<!--            <li th:if="${usersOrgId!=0}"><a th:href="@{/organization/edit}">Edit Organization</a></li>-->
-<!--            <li><a th:href="@{/users/edit}">Edit Profile</a></li>-->
-<!--        </ul>-->
-
-
     </body>
 </html>

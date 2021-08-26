@@ -60,7 +60,7 @@ public class EventsController {
     }
 
     @RequestMapping(value = "/event/create",method = RequestMethod.POST)
-    public String saveEvent(@RequestParam long orgId, @RequestParam String title, @RequestParam long eCoordId, @RequestParam String description, @RequestParam String phone, @RequestParam String date, @RequestParam String time, @RequestParam String location, @RequestParam double hours, @RequestParam double length, @Valid Events validEvent, Errors validation, Model model){
+    public String saveEvent(@RequestParam long orgId, @RequestParam String title, @RequestParam long eCoordId, @RequestParam String description, @RequestParam String phone, @RequestParam String date, @RequestParam String startTime, @RequestParam String endTime, @RequestParam String location, @RequestParam double hours, @Valid Events validEvent, Errors validation, Model model){
         if(validation.hasErrors()){
             model.addAttribute("errors", validation);
             model.addAttribute("events", validEvent);
@@ -69,7 +69,7 @@ public class EventsController {
             Organization org = orgDao.getById(orgId);
             User user = userDao.getById(eCoordId);
 
-            Events event = new Events(org, title, description, user, phone, date, time, location, hours, length);
+            Events event = new Events(org, title, description, user, phone, date, startTime, endTime, location, hours);
             eventDao.save(event);
         }
         return "redirect:/event";

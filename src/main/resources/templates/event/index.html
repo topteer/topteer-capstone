@@ -8,15 +8,15 @@
         <nav th:replace="partials/navbar.html :: navbar"></nav>
 
         <div th:each="event: ${events}" class="card">
-            <h2 class="titles"><a th:text="${event.getTitle().toUpperCase()}" class="titles" th:href="@{/event/{id}/show (id= ${event.getId()})}"></a></h2>
-            <p class="" th:text="${'Description: ' + event.getDescription()}"></p>
-            <p th:text="${'Coordinator name: ' + event.getUser().getFirstName()}"></p>
-            <p th:text="${'Phone Number: ' + event.getPhone()}"></p>
-            <p th:text="${'Date: ' + event.getDate()}"></p>
-            <p th:text="${'Time: ' + event.getTime()}"></p>
-            <p th:text="${'Location: ' + event.getLocation()}"></p>
-            <p th:text="${'Length: ' + event.getLength()}"></p>
-            <p th:text="${'Minimum Volunteer Hours: ' + event.getHours()}"></p>
+            <h2 class="titles"><a th:text="${event.title.toUpperCase()}" class="titles" th:href="@{/event/{id}/show (id= ${event.getId()})}"></a></h2>
+            <p class="" th:text="${'Description: ' + event.description}"></p>
+            <p th:text="${'Coordinator name: ' + event.user.firstName + ' ' + event.user.lastName}"></p>
+            <p th:text="${'Phone Number: ' + event.phone}"></p>
+            <p th:text="${'Date: ' + event.date}"></p>
+            <p th:text="${'Start Time: ' + event.startTime}"></p>
+            <p th:text="${'End Time ' + event.endTime}"></p>
+            <p th:text="${'Location: ' + event.location}"></p>
+            <p th:text="${'Minimum Volunteer Hours: ' + event.hours}"></p>
         </div>
     </body>
 </html>
