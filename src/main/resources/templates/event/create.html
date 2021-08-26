@@ -9,7 +9,7 @@
 <style>
 
     body {
-        background-image: url('../img/hands.jpeg');
+        background-image: url('../../static/img/hands.jpeg');
         background-repeat: no-repeat;
         background-size: 100%;
         background-attachment: fixed;
@@ -72,11 +72,15 @@
             </div>
 
             <div class="form-group">
-                <label class="w3-text-purple" for="time"><b>Time</b></label>
-                <input width="25" class="w3-input w3-border w3-sand" id="time" type="time" th:field="*{time}">
-                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></p>
+                <label class="w3-text-purple" for="startTime"><b>Start Time</b></label>
+                <input width="25" class="w3-input w3-border w3-sand" id="startTime" type="time" th:field="*{startTime}">
+                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('startTime')}" th:errors="*{startTime}"></p>
             </div>
-
+            <div class="form-group">
+                <label class="w3-text-purple" for="endTime"><b>End Time</b></label>
+                <input width="25" class="w3-input w3-border w3-sand" id="endTime" type="time" th:field="*{endTime}"/>
+                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('endTime')}" th:errors="*{endTime}"></p>
+            </div>
             <div class="form-group">
                 <label class="w3-text-purple" for="location"><b>Location</b></label>
                 <input width="25" class="w3-input w3-border w3-sand" placeholder="Location" id="location" type="text" th:field="*{location}">
@@ -87,78 +91,11 @@
                 <label class="w3-text-purple" for="hours"><b>Hours</b></label>
                 <input width="25" class="w3-input w3-border w3-sand" id="hours" type="number" min=".5" step=".5" th:field="*{hours}">
             </div>
-
-            <div class="form-group">
-                <label class="w3-text-purple" for="length"><b>Length</b></label>
-                <input width="25" class="w3-input w3-border w3-sand" id="length" type="number" min=".5" step=".5" th:field="*{length}"/>
-            </div>
-
             <p>
                 <button class="w3-btn w3-purple">Create</button>
             </p>
-
         </form>
     </div>
 </div>
-
-<!--        <form th:action="@{/event/create}" method="post" th:object="${events}">-->
-
-<!--            &lt;!&ndash;            Pre-populated Organization name&ndash;&gt;-->
-<!--            <div class="form-group">-->
-<!--                <label for="orgName">Organization Name:</label>-->
-<!--                <input id="orgName" name="orgName" th:value="${orgName}"  disabled>-->
-<!--                <input type="hidden" name="orgId" th:value="${orgId}">-->
-<!--            </div>-->
-<!--            &lt;!&ndash;            Pre-populated Event Coordinator name&ndash;&gt;-->
-<!--            <div class="form-group">-->
-<!--                <label for="eCoord">Event Coordinator:</label>-->
-<!--                <input id="eCoord" name="eCoord" th:value="${eCoord}" disabled>-->
-<!--                <input type="hidden" id="eCoordId" name="eCoordId" th:value="${eCoordId}">-->
-<!--            </div>-->
-<!--            &lt;!&ndash;            Title Field &ndash;&gt;-->
-<!--            <div class="form-group">-->
-<!--                <label for="title">Title:</label>-->
-<!--                <input id="title" type="text" th:field="*{title}">-->
-<!--                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>-->
-<!--            </div>-->
-<!--            &lt;!&ndash;            Description Field&ndash;&gt;-->
-<!--            <div class="form-group">-->
-<!--                <label for="description">Description:</label>-->
-<!--                <textarea id="description" cols="30" rows="10" th:field="*{description}"></textarea>-->
-<!--                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>-->
-<!--            </div>-->
-
-<!--            <div class="form-group">-->
-<!--                <label for="phone">Phone:</label>-->
-<!--                <input id="phone" th:field="*{phone}" />-->
-<!--                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                <label for="date">Date:</label>-->
-<!--                <input id="date" type="date" th:field="*{date}">-->
-<!--                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></p>-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                <label for="time">Time:</label>-->
-<!--                <input id="time" type="time" th:field="*{time}">-->
-<!--                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></p>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <label for="location">Location:</label>-->
-<!--                <input id="location" type="text" th:field="*{location}">-->
-<!--                <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('location')}" th:errors="*{location}"></p>-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                <label for="hours">Hours:</label>-->
-<!--                <input id="hours" type="number" min=".5" step=".5" th:field="*{hours}">-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                <label for="length">Length:</label>-->
-<!--                <input id="length" type="number" min=".5" step=".5" th:field="*{length}" />-->
-<!--            </div>-->
-<!--            <button type="submit" name="sendCreate">Submit</button>-->
-<!--        </form>-->
-
-
 </body>
 </html>

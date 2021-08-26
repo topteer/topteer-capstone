@@ -1,9 +1,6 @@
 package com.topteer.topteer.models;
 
-import org.hibernate.validator.constraints.Range;
-
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -53,10 +50,15 @@ public class Events {
     @Column(nullable = false, length = 13)
     private String date;
 
-    //time column creation
+    //Start time column creation
     @NotBlank(message = "You must enter a time for your event")
     @Column(nullable = false, length = 8)
-    private String time;
+    private String startTime;
+
+    //End time column creation
+    @NotBlank(message = "You must enter a end time for your event")
+    @Column(nullable = false, length = 8)
+    private String endTime;
 
     //location column creation
     @NotBlank(message ="You must enter a location for your event")
@@ -67,43 +69,40 @@ public class Events {
     @Column(nullable = false)
     private double hours;
 
-    //length column creation
-    @Column(nullable = false)
-    private double length;
-
-
-    public Events(Organization org, String title, String description, User user, String phone, String date, String time, String location, double hours, double length) {
-        this.org = org;
-        this.title = title;
-        this.description = description;
-        this.user = user;
-        this.phone = phone;
-        this.date = date;
-        this.time = time;
-        this.location = location;
-        this.hours = hours;
-        this.length = length;
-    }
-
-    public Events(long id, Organization org, String title, String description, User user, String phone, String date, String time, String location, double hours, double length) {
+    public Events(long id, Organization org, List<User> eventvolunteer, String title, String description, User user, String phone, String date, String startTime, String endTime, String location, double hours) {
         this.id = id;
         this.org = org;
+        this.eventvolunteer = eventvolunteer;
         this.title = title;
         this.description = description;
         this.user = user;
         this.phone = phone;
         this.date = date;
-        this.time = time;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.location = location;
         this.hours = hours;
-        this.length = length;
     }
 
     public Events(List<User> eventvolunteer) {
         this.eventvolunteer = eventvolunteer;
     }
 
+    public Events(Organization org, String title, String description, User user, String phone, String date, String startTime, String endTime, String location, double hours) {
+        this.org = org;
+        this.title = title;
+        this.description = description;
+        this.user = user;
+        this.phone = phone;
+        this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.location = location;
+        this.hours = hours;
+    }
+
     public Events() {
+
     }
 
     public long getId() {
@@ -150,12 +149,20 @@ public class Events {
         this.date = date;
     }
 
-    public String getTime() {
-        return time;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public String getLocation() {
@@ -172,14 +179,6 @@ public class Events {
 
     public void setHours(double hours) {
         this.hours = hours;
-    }
-
-    public double getLength() {
-        return length;
-    }
-
-    public void setLength(double length) {
-        this.length = length;
     }
 
     public Organization getOrg() {

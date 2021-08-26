@@ -7,14 +7,14 @@
     <body>
         <nav th:replace="partials/navbar.html :: navbar"></nav>
         <div th:object="${event}" class="card">
-            <h3 class="titles" th:text="${event.title}"></h3>
+            <h3 class="titles" th:text="${event.title.toUpperCase()}"></h3>
             <p th:text="${'Event Description: ' + event.description}"></p>
             <p th:text="${'Event Coordinator: ' + event.user.firstName}"></p>
             <p th:text="${'Phone: ' + event.phone}"></p>
             <p th:text="${'Event Date: ' + event.date}"></p>
-            <p th:text="${'Event Time: ' + event.time}"></p>
+            <p th:text="${'Event Start Time: ' + event.startTime}"></p>
+            <p th:text="${'Event End Time' + event.endTime}"></p>
             <p th:text="${'Event Location: ' + event.location}"></p>
-            <p th:text="${'Event Length: ' + event.length}"></p>
             <p th:text="${'Volunteer hours options: ' + event.hours}"></p>
 <!--            Delete button-->
             <form th:if="${isEventOwner}" th:action="@{/event/{id}/delete(id = ${event.id})}" method="post" th:object="${event}">
