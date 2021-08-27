@@ -3,20 +3,16 @@
 <head><title>Edit Profile</title>
     <link th:replace="partials/header.html :: header"/>
 </head>
-
-
-
-<body class="formBody">
-
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 
+<body class="formBody">
 <main class="container">
 
     <div class="w3-card-4 w3-margin-center w3-round-xlarge">
         <div class="w3-center w3-orange w3-border">
             <h2>Edit Your Profile</h2>
         </div>
-    <div>
+
 
         <form class="w3-center container w3-white w3-border" id="register-form" action="" th:action="@{/users/edit}" method="post" th:object="${user}">
             <input id="id" name="id" type="hidden" th:field="${user.id}">
@@ -56,6 +52,7 @@
             </p>
 
         </form>
+    </div>
 
 </main>
 </body>
