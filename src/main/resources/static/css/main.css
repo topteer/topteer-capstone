@@ -111,6 +111,14 @@ h3 {
     background-attachment: fixed;
 }
 
+.profileBody {
+    background-image: url('../img/hands2.png');
+    /*background-image: url('../../static/img/hands2.png');*/
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+}
+
 /* Full-width input fields */
 /*input[type=text], input[type=password] {*/
 /*    width: 100%;*/
