@@ -36,9 +36,9 @@
     </div>
         <div class="card">
             <h3 class="titles" th:text="Organization"></h3>
-            <form th:each="organization: ${user.organization}">
-                <h4 class="titles"><a class="titles" th:text="${organization.orgName}" th:href="@{/organization/{id}/show(id=${organization.id})}"></a></h4>
-            </form>
+            <div>
+                <h4 class="titles"><a class="titles" th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>
+            </div>
         </div>
         <div class="card">
             <h3 class="titles" th:text="Events"></h3>
