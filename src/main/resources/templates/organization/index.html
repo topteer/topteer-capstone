@@ -3,9 +3,9 @@
 <head><title>Top-Teer All events</title>
     <link th:replace="partials/header.html :: header"/>
 </head>
-
-<body class="main">
 <nav th:replace="partials/navbar.html :: navbar"></nav>
+
+<body class="createBody">
 
 <div class="card" th:each="organization: ${organizations}">
     <h2 class="titles"><a class="titles" th:text="${organization.getOrgName()}" th:href="@{/organization/{id}/show(id=${organization.getId()})}"></a></h2>
