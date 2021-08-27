@@ -8,6 +8,7 @@ import com.topteer.topteer.repositories.OrganizationRepository;
 import com.topteer.topteer.repositories.UserRepository;
 import com.topteer.topteer.services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -98,6 +99,7 @@ public class EventsController {
         model.addAttribute("event", events);
         model.addAttribute("eCoord", eventCoord);
         model.addAttribute("isEventOwner", isEventOwner);
+        model.addAttribute("currentUser", thisUser);
         return "event/show";
     }
 
@@ -118,7 +120,17 @@ public class EventsController {
         eventsUser.add(currentUser);
         event.setEventvolunteer(eventsUser);
         eventDao.save(event);
-        return "redirect:/event/" + id + "/show";
+        return "redirect:/users/profile";
+    }
+
+    @PostMapping("/sendRegVerify/to/{id}")
+    public String sendIt(@PathVariable long id) throws IOException{
+        try{
+            emailService.sendRegVerify(userDao.getById(id));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return "redirect:/users/profile";
     }
 
     @PostMapping("/sendText/to/{id}")

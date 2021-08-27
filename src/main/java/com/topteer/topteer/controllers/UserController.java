@@ -87,7 +87,10 @@ public class UserController {
         user = usersDao.getById(user.getId());
         long userId = user.getId();
         Organization organization = orgDao.findByUserId(userId);
-        String orgN = organization.getOrgName();
+        String orgN = "You currently don't own an organization";
+        if(organization != null) {
+            orgN = organization.getOrgName();
+        }
         long orgId = 0;
         if(organization!= null)
         {
