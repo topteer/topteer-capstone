@@ -85,16 +85,16 @@ public class UserController {
     public String getProfilePage(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         user = usersDao.getById(user.getId());
-
-        Organization organization = orgDao.findByUserId(user.getId());
+        long userId = user.getId();
+        Organization organization = orgDao.findByUserId(userId);
+        String orgN = organization.getOrgName();
         long orgId = 0;
         if(organization!= null)
         {
             orgId=organization.getId();
         }
+        model.addAttribute("orgN", orgN);
         model.addAttribute("usersOrgId",orgId);
-
-
         model.addAttribute("user", user);
         return "users/profile";
     }
