@@ -39,12 +39,12 @@ public class EmailService {
             throw ex;
         }
     }
-    public void sendRegVerify(User user) throws IOException {
+    public void sendRegVerify(User user, String message) throws IOException {
         // the sender email should be the same as we used to Create a Single Sender Verification
         Email from = new Email("tTeerCom@gmail.com");
         String subject = "Thank you for volunteering!";
         Email to = new Email(user.getEmail());
-        Content content = new Content("text/plain", "Your help is appreciated!");
+        Content content = new Content("text/plain", message);
         Mail mail = new Mail(from, subject, to, content);
 
         SendGrid sg = new SendGrid(sendGridKey);

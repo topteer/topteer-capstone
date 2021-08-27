@@ -6,6 +6,7 @@
     </head>
     <body>
         <nav th:replace="partials/navbar.html :: navbar"></nav>
+
         <div th:object="${event}" class="card">
             <h3 class="titles" th:text="${event.title.toUpperCase()}"></h3>
             <p th:text="${'Event Description: ' + event.description}"></p>
@@ -25,9 +26,8 @@
             <div th:if="${alreadyRegistered}">
                 <p class="text-danger">You have already Registered for this event :)</p>
             </div>
-
             <form method="post" th:action="@{/event/{id}/register(id = ${event.id})}" th:if="${!alreadyRegistered}">
-                <button th:action="@{/sendRegVerify/to/{id}(id=${currentUser})}" class="card-link" type="submit" name="registerEvent">Register</button>
+                <button class="card-link" type="submit" name="registerEvent">Register</button>
             </form>
         </div>
 <!--        Volunteer List-->
@@ -36,7 +36,7 @@
             <h3 th:text="Volunteers" class="titles"></h3>
             <form method="post" th:action="@{/sendText/to/{id}(id=${user.id})}" th:each="user: ${event.getEventvolunteer()}">
                 <label th:text="${user.firstName} + ' ' + ${user.lastName}"></label>
-                <input type="checkbox" th:value="${user.id}">
+                    <input type="checkbox" th:value="${user.id}">
                 <button type="submit" name="eventCompleted">Submit volunteer</button>
             </form>
         </div>

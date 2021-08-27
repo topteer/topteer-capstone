@@ -120,13 +120,9 @@ public class EventsController {
         eventsUser.add(currentUser);
         event.setEventvolunteer(eventsUser);
         eventDao.save(event);
-        return "redirect:/users/profile";
-    }
-
-    @PostMapping("/sendRegVerify/to/{id}")
-    public String sendIt(@PathVariable long id) throws IOException{
+        String message = "Thank you for volunteering for " + event.getTitle() + " at " + event.getLocation() +" on " + event.getDate() + ". If you have any questions please feel free to contact " + event.getUser().getFirstName() + " at " + event.getPhone();
         try{
-            emailService.sendRegVerify(userDao.getById(id));
+            emailService.sendRegVerify(userDao.getById(currentUser.getId()),message);
         }catch (IOException e){
             e.printStackTrace();
         }
