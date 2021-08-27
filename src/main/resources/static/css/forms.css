@@ -1,0 +1,33 @@
+.container {
+    font-weight: bold;
+}
+
+.editUserBody {
+    background-image: url('../img/hands.jpeg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+
+.registerBody {
+    background-image: url('../img/hands.jpeg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.profileBody {
+    background-image: url('../img/hands2.png');
+    /*background-image: url('../../static/img/hands2.png');*/
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+}
+
+
+.w3-card-4{
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    margin-top: 100px;
+}
