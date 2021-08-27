@@ -36,7 +36,10 @@
     </div>
         <div class="card">
             <h3 class="titles" th:text="Organization"></h3>
-            <div>
+            <div th:if="${!nullOrg}">
+                <p th:text="${orgN}"></p>
+            </div>
+            <div th:if="${nullOrg}">
                 <h4 class="titles"><a class="titles" th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>
             </div>
         </div>
