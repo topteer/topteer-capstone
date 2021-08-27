@@ -20,9 +20,14 @@
             <form th:if="${isEventOwner}" th:action="@{/event/{id}/delete(id = ${event.id})}" method="post" th:object="${event}">
                 <button class="card-link" type="submit" th:value="*{id}" name="deleteEvent">Delete</button>
             </form>
+
 <!--            Register button-->
+            <div th:if="${alreadyRegistered}">
+                <p class="text-danger">You have already Registered for this event :)</p>
+            </div>
+
             <form method="post" th:action="@{/event/{id}/register(id = ${event.id})}" th:if="${!alreadyRegistered}">
-           <button class="card-link" type="submit" name="registerEvent">Register</button>
+                <button th:action="@{/sendRegVerify/to/{id}(id=${currentUser})}" class="card-link" type="submit" name="registerEvent">Register</button>
             </form>
         </div>
 <!--        Volunteer List-->
