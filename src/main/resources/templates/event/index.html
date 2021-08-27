@@ -3,9 +3,9 @@
     <head><title>Top-Teer All Events</title>
         <link th:replace="partials/header.html :: header"/>
     </head>
-
-    <body class="main">
         <nav th:replace="partials/navbar.html :: navbar"></nav>
+
+    <body class="formBody">
 
         <div th:each="event: ${events}" class="card">
             <h2 class="titles"><a th:text="${event.title.toUpperCase()}" class="titles" th:href="@{/event/{id}/show (id= ${event.getId()})}"></a></h2>

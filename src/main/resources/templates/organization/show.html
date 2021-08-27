@@ -2,10 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link th:replace="partials/header.html :: header"/>
-    <title>Welcome</title>
+    <title>Show Organization</title>
 </head>
-<body>
+
 <nav th:replace="partials/navbar.html :: navbar"></nav>
+
+
+<body class="formBody">
 <div class="card" th:object="${org}">
     <h3 class="titles" th:text="${org.getOrgName()}"></h3>
     <p th:text="${org.getAddress()}"></p>
