@@ -27,8 +27,15 @@ h3 {
 }
 
 .titles{
-    background: lightgray;
-    width: 100%;
+    background: lightblue;
+    width: 75%;
+    text-align: center;
+    color: black;
+}
+
+.descriptions {
+    background: white;
+    width: 75%;
     text-align: center;
     color: black;
 }
@@ -38,7 +45,7 @@ h3 {
     display: flex;
     width: 45vw;
     height: fit-content;
-    border: 2px solid black;
+    border: none;
     justify-content: center;
     align-items: center;
     font-size: larger;
