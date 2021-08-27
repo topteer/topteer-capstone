@@ -88,14 +88,17 @@ public class UserController {
         long userId = user.getId();
         Organization organization = orgDao.findByUserId(userId);
         String orgN = "You currently don't own an organization";
+        boolean nullOrg = false;
         if(organization != null) {
             orgN = organization.getOrgName();
+            nullOrg = true;
         }
         long orgId = 0;
         if(organization!= null)
         {
             orgId=organization.getId();
         }
+        model.addAttribute("nullOrg", nullOrg);
         model.addAttribute("orgN", orgN);
         model.addAttribute("usersOrgId",orgId);
         model.addAttribute("user", user);

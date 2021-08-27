@@ -24,27 +24,21 @@
         <a href="#" class="btn btn-success" th:if="${usersOrgId==0}" th:href="@{/organization/create}"><i class="fa fa-calendar-plus-o"> Create Organization</i></a>
         <a href="#" class="btn btn-primary" th:if="${usersOrgId!=0}" th:href="@{/organization/edit}"><i class="fa fa-edit"> Edit Organization</i></a>
     </div>
-    <h3 class="titles" th:text="Organization"></h3>
-    <div>
-        <h4 class="descriptions"><a class="titles" th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>
-    </div>
-    <h3 class="titles" th:text="Events"></h3>
-    <form th:each="event: ${user.events}">
-        <h4 class="descriptions"><a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>
-    </form>
-</div>
-
-<!--<div class="card">-->
-<!--    <h3 class="titles" th:text="Organization"></h3>-->
-<!--    <div>-->
-<!--        <h4 class="titles"><a class="titles" th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--    <h3 class="titles" th:text="Events"></h3>-->
-<!--    <form th:each="event: ${user.events}">-->
-<!--        <h4 class="titles"><a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>-->
-<!--    </form>-->
-<!--</div>-->
-</body>
+        <div class="card">
+            <h3 class="titles" th:text="Organization"></h3>
+            <div th:if="${!nullOrg}">
+                <p th:text="${orgN}"></p>
+            </div>
+            <div th:if="${nullOrg}">
+                <h4 class="titles"><a class="titles" th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>
+            </div>
+        </div>
+        <div class="card">
+            <h3 class="titles" th:text="Events"></h3>
+            <form th:each="event: ${user.events}">
+                <h4 class="titles"><a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>
+            </form>
+        </div>
+    </body>
 </html>
+
