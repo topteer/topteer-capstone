@@ -19,7 +19,7 @@ public class EmailService {
 
     public void sendTextEmail(User user) throws IOException {
         // the sender email should be the same as we used to Create a Single Sender Verification
-        Email from = new Email("evan.b.williams95@gmail.com");
+        Email from = new Email("tTeerCom@gmail.com");
         String subject = "Thank you for volunteering!";
         Email to = new Email(user.getEmail());
         Content content = new Content("text/plain", "Your help is appreciated!");
@@ -41,7 +41,7 @@ public class EmailService {
     }
     public void sendRegVerify(User user) throws IOException {
         // the sender email should be the same as we used to Create a Single Sender Verification
-        Email from = new Email("evan.b.williams95@gmail.com");
+        Email from = new Email("tTeerCom@gmail.com");
         String subject = "Thank you for volunteering!";
         Email to = new Email(user.getEmail());
         Content content = new Content("text/plain", "Your help is appreciated!");
