@@ -12,15 +12,14 @@
             <div class="w3-center w3-purple w3-border">
                 <h2 ><a th:text="${event.title.toUpperCase()}" class="text-center" th:href="@{/event/{id}/show (id= ${event.getId()})}"></a></h2>
             </div>
-
-                <p class="text-black text-center" th:text="${'Description: ' + event.description}"></p>
-                <p class="text-black text-center" th:text="${'Coordinator name: ' + event.user.firstName + ' ' + event.user.lastName}"></p>
-                <p class="text-black text-center m-auto" th:text="${'Phone Number: ' + event.phone}"></p>
-                <p class="text-black text-center m-auto" th:text="${'Date: ' + event.date}"></p>
-                <p class="text-black text-center m-auto" th:text="${'Start Time: ' + event.startTime}"></p>
-                <p class="text-black text-center m-auto" th:text="${'End Time ' + event.endTime}"></p>
-                <p class="text-black text-center m-auto" th:text="${'Location: ' + event.location}"></p>
-                <p class="text-black text-center m-auto" th:text="${'Minimum Volunteer Hours: ' + event.hours}"></p>
+                <p class="text-black text-center m-1" th:text="${'Description: ' + event.description}"></p>
+                <p class="text-black text-center mt-1 mb-2" th:text="${'Coordinator name: ' + event.user.firstName + ' ' + event.user.lastName}"></p>
+                <p class="text-black text-center m-1" th:text="${'Phone Number: ' + event.phone}"></p>
+                <p class="text-black text-center m-1" th:text="${'Date: ' + event.date}"></p>
+                <p class="text-black text-center m-1" th:text="${'Start Time: ' + event.startTime}"></p>
+                <p class="text-black text-center m-1" th:text="${'End Time ' + event.endTime}"></p>
+                <p class="text-black text-center m-1" th:text="${'Location: ' + event.location}"></p>
+                <p class="text-black text-center m-1" th:text="${'Minimum Volunteer Hours: ' + event.hours}"></p>
             </div>
     </body>
 </html>
