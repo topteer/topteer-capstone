@@ -1,23 +1,15 @@
 package com.topteer.topteer.controllers;
 
-import com.topteer.topteer.models.Events;
 import com.topteer.topteer.models.Organization;
 import com.topteer.topteer.models.User;
 import com.topteer.topteer.repositories.OrganizationRepository;
 import com.topteer.topteer.repositories.UserRepository;
-import org.springframework.boot.autoconfigure.cassandra.CassandraProperties;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 public class UserController {
@@ -50,11 +42,9 @@ public class UserController {
         return "redirect:/login";
     }
 
-
     @GetMapping("/users/edit")
     public String showUserEditForm(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         model.addAttribute("user", user);
         return "users/edit";
     }

@@ -1,208 +1,115 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head><title>Top-Teer Edit an Organization</title>
-    <link th:replace="partials/header.html :: header"/>
-</head>
+    <head><title>Top-Teer Edit an Organization</title>
+        <link th:replace="partials/header.html :: header"/>
+    </head>
 
-<body class="profileBody">
+    <body class="profileBody">
 
-<nav th:replace="partials/navbar.html :: navbar"></nav>
+        <nav th:replace="partials/navbar.html :: navbar"></nav>
 
-<body class="createBody">
+        <main class="container">
 
-<main class="container">
-
-    <div class="w3-card-4 w3-margin-center w3-round-xlarge">
-        <div class="w3-center w3-orange w3-border">
-            <h2>Edit Your Organization</h2>
-        </div>
-
-        <form class="w3-center container w3-white w3-border" id="register-form" th:action="@{/organization/edit}" method="post" th:object="${orgs}">
-
-            <div class="form-group">
-                <label class="w3-text-orange" for="orgName"><b>Organization Name</b></label>
-                <input width="25" class="w3-input w3-border w3-sand validate" id="orgName" th:field="*{orgName}" th:value="${orgs.orgName}" disabled>
-            </div>
-
-            <div class="form-group">
-                <label class="w3-text-orange" for="address"><b>Address</b></label>
-                <input width="25" class="w3-input w3-border w3-sand validate" id="address" th:field="*{address}" th:value="${orgs.address}">
-            </div>
-
-            <div class="form-group">
-                <label class="w3-text-orange" for="city"><b>City</b></label>
-                <input width="25" class="w3-input w3-border w3-sand validate" id="city" th:field="*{city}" th:value="${orgs.city}">
-            </div>
-
-            <div class="form-group">
-                <label class="w3-text-orange" for="state"><b>State</b></label>
-                <select width="25" class="w3-input w3-border w3-sand" id="state" name="state" th:field="*{state}" disabled>-->
-                    <option value="al" th:selected="${orgs.state =='AL'}">AL</option>
-                    <option value="ak" th:selected="${orgs.state =='AK'}">AK</option>
-                    <option value="az" th:selected="${orgs.state =='AZ'}">AZ</option>
-                    <option value="ar" th:selected="${orgs.state =='AR'}">AR</option>
-                    <option value="ca" th:selected="${orgs.state =='CA'}">CA</option>
-                    <option value="co" th:selected="${orgs.state =='CO'}">CO</option>
-                    <option value="ct" th:selected="${orgs.state =='CT'}">CT</option>
-                    <option value="de" th:selected="${orgs.state =='DE'}">DE</option>
-                    <option value="fl" th:selected="${orgs.state =='FL'}">FL</option>
-                    <option value="ga" th:selected="${orgs.state =='GA'}">GA</option>
-                    <option value="hi" th:selected="${orgs.state =='HI'}">HI</option>
-                    <option value="id" th:selected="${orgs.state =='ID'}">ID</option>
-                    <option value="il" th:selected="${orgs.state =='IL'}">IL</option>
-                    <option value="in" th:selected="${orgs.state =='IN'}">IN</option>
-                    <option value="ia" th:selected="${orgs.state =='IA'}">IA</option>
-                    <option value="ks" th:selected="${orgs.state =='KS'}">KS</option>
-                    <option value="ky" th:selected="${orgs.state =='KY'}">KY</option>
-                    <option value="la" th:selected="${orgs.state =='LA'}">LA</option>
-                    <option value="me" th:selected="${orgs.state =='ME'}">ME</option>
-                    <option value="md" th:selected="${orgs.state =='MD'}">MD</option>
-                    <option value="ma" th:selected="${orgs.state =='MA'}">MA</option>
-                    <option value="mi" th:selected="${orgs.state =='MI'}">MI</option>
-                    <option value="mn" th:selected="${orgs.state =='MN'}">MN</option>
-                    <option value="ms" th:selected="${orgs.state =='MS'}">MS</option>
-                    <option value="mo" th:selected="${orgs.state =='MO'}">MO</option>
-                    <option value="mt" th:selected="${orgs.state =='MT'}">MT</option>
-                    <option value="ne" th:selected="${orgs.state =='NE'}">NE</option>
-                    <option value="nv" th:selected="${orgs.state =='NV'}">NV</option>
-                    <option value="nh" th:selected="${orgs.state =='NH'}">NH</option>
-                    <option value="nj" th:selected="${orgs.state =='NJ'}">NJ</option>
-                    <option value="nm" th:selected="${orgs.state =='NM'}">NM</option>
-                    <option value="ny" th:selected="${orgs.state =='NY'}">NY</option>
-                    <option value="nc" th:selected="${orgs.state =='NC'}">NC</option>
-                    <option value="nd" th:selected="${orgs.state =='ND'}">ND</option>
-                    <option value="oh" th:selected="${orgs.state =='OH'}">OH</option>
-                    <option value="ok" th:selected="${orgs.state =='OK'}">OK</option>
-                    <option value="or" th:selected="${orgs.state =='OR'}">OR</option>
-                    <option value="pa" th:selected="${orgs.state =='PA'}">PA</option>
-                    <option value="ri" th:selected="${orgs.state =='RI'}">RI</option>
-                    <option value="sc" th:selected="${orgs.state =='SC'}">SC</option>
-                    <option value="sd" th:selected="${orgs.state =='SD'}">SD</option>
-                    <option value="tn" th:selected="${orgs.state =='TN'}">TN</option>
-                    <option value="tx" th:selected="${orgs.state =='TX'}">TX</option>
-                    <option value="ut" th:selected="${orgs.state =='UT'}">UT</option>
-                    <option value="vt" th:selected="${orgs.state =='VT'}">VT</option>
-                    <option value="va" th:selected="${orgs.state =='VA'}">VA</option>
-                    <option value="wa" th:selected="${orgs.state =='WA'}">WA</option>
-                    <option value="wv" th:selected="${orgs.state =='WV'}">WV</option>
-                    <option value="wi" th:selected="${orgs.state =='WI'}">WI</option>
-                    <option value="wy" th:selected="${orgs.state =='WY'}">WY</option>
-                </select>
-
-                <div class="form-group">
-                    <label class="w3-text-orange" for="zip"><b>Zip</b></label>
-                    <input width="25" class="w3-input w3-border w3-sand validate" id="zip" th:field="*{zip}" th:value="${orgs.zip}">
+            <div class="w3-card-4 w3-margin-center w3-round-xlarge">
+                <div class="w3-center w3-green w3-border">
+                    <h2>Edit Your Organization</h2>
                 </div>
 
-                <div class="form-group">
-                    <label class="w3-text-orange" for="phone"><b>Phone</b></label>
-                    <input width="25" class="w3-input w3-border w3-sand validate" id="phone" th:field="*{phone}" th:value="${orgs.phone}">
-                    <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
-                </div>
+                <form class="w3-center container w3-white w3-border" id="register-form" th:action="@{/organization/edit}" method="post" th:object="${orgs}">
 
-                <div class="form-group">
-                    <label class="w3-text-orange" for="email"><b>Email</b></label>
-                    <input width="25" class="w3-input w3-border w3-sand validate" th:type="email" id="email" th:field="*{email}" th:value="${orgs.email}">
-                    <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
-                </div>
+                    <div class="form-group">
+                        <label class="w3-text-green" for="orgName"><b>Organization Name</b></label>
+                        <input width="25" class="w3-input w3-border w3-sand validate" id="orgName" th:field="*{orgName}" th:value="${orgs.orgName}" disabled>
+                    </div>
 
-                <p>
-                    <button class="w3-btn w3-orange" type="submit" name="sendCreate">Update</button>
-                </p>
+                    <div class="form-group">
+                        <label class="w3-text-green" for="address"><b>Address</b></label>
+                        <input width="25" class="w3-input w3-border w3-sand validate" id="address" th:field="*{address}" th:value="${orgs.address}">
+                    </div>
 
+                    <div class="form-group">
+                        <label class="w3-text-green" for="city"><b>City</b></label>
+                        <input width="25" class="w3-input w3-border w3-sand validate" id="city" th:field="*{city}" th:value="${orgs.city}">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="w3-text-green" for="state"><b>State</b></label>
+                        <select width="25" class="w3-input w3-border w3-sand" id="state" name="state" th:field="*{state}" disabled>-->
+                            <option value="al" th:selected="${orgs.state =='AL'}">AL</option>
+                            <option value="ak" th:selected="${orgs.state =='AK'}">AK</option>
+                            <option value="az" th:selected="${orgs.state =='AZ'}">AZ</option>
+                            <option value="ar" th:selected="${orgs.state =='AR'}">AR</option>
+                            <option value="ca" th:selected="${orgs.state =='CA'}">CA</option>
+                            <option value="co" th:selected="${orgs.state =='CO'}">CO</option>
+                            <option value="ct" th:selected="${orgs.state =='CT'}">CT</option>
+                            <option value="de" th:selected="${orgs.state =='DE'}">DE</option>
+                            <option value="fl" th:selected="${orgs.state =='FL'}">FL</option>
+                            <option value="ga" th:selected="${orgs.state =='GA'}">GA</option>
+                            <option value="hi" th:selected="${orgs.state =='HI'}">HI</option>
+                            <option value="id" th:selected="${orgs.state =='ID'}">ID</option>
+                            <option value="il" th:selected="${orgs.state =='IL'}">IL</option>
+                            <option value="in" th:selected="${orgs.state =='IN'}">IN</option>
+                            <option value="ia" th:selected="${orgs.state =='IA'}">IA</option>
+                            <option value="ks" th:selected="${orgs.state =='KS'}">KS</option>
+                            <option value="ky" th:selected="${orgs.state =='KY'}">KY</option>
+                            <option value="la" th:selected="${orgs.state =='LA'}">LA</option>
+                            <option value="me" th:selected="${orgs.state =='ME'}">ME</option>
+                            <option value="md" th:selected="${orgs.state =='MD'}">MD</option>
+                            <option value="ma" th:selected="${orgs.state =='MA'}">MA</option>
+                            <option value="mi" th:selected="${orgs.state =='MI'}">MI</option>
+                            <option value="mn" th:selected="${orgs.state =='MN'}">MN</option>
+                            <option value="ms" th:selected="${orgs.state =='MS'}">MS</option>
+                            <option value="mo" th:selected="${orgs.state =='MO'}">MO</option>
+                            <option value="mt" th:selected="${orgs.state =='MT'}">MT</option>
+                            <option value="ne" th:selected="${orgs.state =='NE'}">NE</option>
+                            <option value="nv" th:selected="${orgs.state =='NV'}">NV</option>
+                            <option value="nh" th:selected="${orgs.state =='NH'}">NH</option>
+                            <option value="nj" th:selected="${orgs.state =='NJ'}">NJ</option>
+                            <option value="nm" th:selected="${orgs.state =='NM'}">NM</option>
+                            <option value="ny" th:selected="${orgs.state =='NY'}">NY</option>
+                            <option value="nc" th:selected="${orgs.state =='NC'}">NC</option>
+                            <option value="nd" th:selected="${orgs.state =='ND'}">ND</option>
+                            <option value="oh" th:selected="${orgs.state =='OH'}">OH</option>
+                            <option value="ok" th:selected="${orgs.state =='OK'}">OK</option>
+                            <option value="or" th:selected="${orgs.state =='OR'}">OR</option>
+                            <option value="pa" th:selected="${orgs.state =='PA'}">PA</option>
+                            <option value="ri" th:selected="${orgs.state =='RI'}">RI</option>
+                            <option value="sc" th:selected="${orgs.state =='SC'}">SC</option>
+                            <option value="sd" th:selected="${orgs.state =='SD'}">SD</option>
+                            <option value="tn" th:selected="${orgs.state =='TN'}">TN</option>
+                            <option value="tx" th:selected="${orgs.state =='TX'}">TX</option>
+                            <option value="ut" th:selected="${orgs.state =='UT'}">UT</option>
+                            <option value="vt" th:selected="${orgs.state =='VT'}">VT</option>
+                            <option value="va" th:selected="${orgs.state =='VA'}">VA</option>
+                            <option value="wa" th:selected="${orgs.state =='WA'}">WA</option>
+                            <option value="wv" th:selected="${orgs.state =='WV'}">WV</option>
+                            <option value="wi" th:selected="${orgs.state =='WI'}">WI</option>
+                            <option value="wy" th:selected="${orgs.state =='WY'}">WY</option>
+                        </select>
+
+                        <div class="form-group">
+                            <label class="w3-text-green" for="zip"><b>Zip</b></label>
+                            <input width="25" class="w3-input w3-border w3-sand validate" id="zip" th:field="*{zip}" th:value="${orgs.zip}">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="w3-text-green" for="phone"><b>Phone</b></label>
+                            <input width="25" class="w3-input w3-border w3-sand validate" id="phone" th:field="*{phone}" th:value="${orgs.phone}">
+                            <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="w3-text-green" for="email"><b>Email</b></label>
+                            <input width="25" class="w3-input w3-border w3-sand validate" th:type="email" id="email" th:field="*{email}" th:value="${orgs.email}">
+                            <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                        </div>
+
+                        <p>
+                            <button class="w3-btn w3-green" type="submit" name="sendCreate">Update</button>
+                        </p>
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-</main>
-
-
-
-
-<!--        <form th:action="@{/organization/edit}" method="post" th:object="${orgs}">-->
-<!--            <div class="form-group">-->
-<!--                <label for="orgName">Organization Name:</label>-->
-<!--                <input id="orgName" th:field="*{orgName}" th:value="${orgs.orgName}" disabled>-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                <label for="address">Address:</label>-->
-<!--                <input id="address" th:field="*{address}" th:value="${orgs.address}" >-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                <label for="city">City:</label>-->
-<!--                <input id="city" th:field="*{city}" th:value="${orgs.city}" >-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                <label for="state">State:</label>-->
-<!--                <select id="state" name="state" th:field="*{state}" disabled>-->
-<!--                    <option value="al" th:selected="${orgs.state =='AL'}">AL</option>-->
-<!--                    <option value="ak" th:selected="${orgs.state =='AK'}">AK</option>-->
-<!--                    <option value="az" th:selected="${orgs.state =='AZ'}">AZ</option>-->
-<!--                    <option value="ar" th:selected="${orgs.state =='AR'}">AR</option>-->
-<!--                    <option value="ca" th:selected="${orgs.state =='CA'}">CA</option>-->
-<!--                    <option value="co" th:selected="${orgs.state =='CO'}">CO</option>-->
-<!--                    <option value="ct" th:selected="${orgs.state =='CT'}">CT</option>-->
-<!--                    <option value="de" th:selected="${orgs.state =='DE'}">DE</option>-->
-<!--                    <option value="fl" th:selected="${orgs.state =='FL'}">FL</option>-->
-<!--                    <option value="ga" th:selected="${orgs.state =='GA'}">GA</option>-->
-<!--                    <option value="hi" th:selected="${orgs.state =='HI'}">HI</option>-->
-<!--                    <option value="id" th:selected="${orgs.state =='ID'}">ID</option>-->
-<!--                    <option value="il" th:selected="${orgs.state =='IL'}">IL</option>-->
-<!--                    <option value="in" th:selected="${orgs.state =='IN'}">IN</option>-->
-<!--                    <option value="ia" th:selected="${orgs.state =='IA'}">IA</option>-->
-<!--                    <option value="ks" th:selected="${orgs.state =='KS'}">KS</option>-->
-<!--                    <option value="ky" th:selected="${orgs.state =='KY'}">KY</option>-->
-<!--                    <option value="la" th:selected="${orgs.state =='LA'}">LA</option>-->
-<!--                    <option value="me" th:selected="${orgs.state =='ME'}">ME</option>-->
-<!--                    <option value="md" th:selected="${orgs.state =='MD'}">MD</option>-->
-<!--                    <option value="ma" th:selected="${orgs.state =='MA'}">MA</option>-->
-<!--                    <option value="mi" th:selected="${orgs.state =='MI'}">MI</option>-->
-<!--                    <option value="mn" th:selected="${orgs.state =='MN'}">MN</option>-->
-<!--                    <option value="ms" th:selected="${orgs.state =='MS'}">MS</option>-->
-<!--                    <option value="mo" th:selected="${orgs.state =='MO'}">MO</option>-->
-<!--                    <option value="mt" th:selected="${orgs.state =='MT'}">MT</option>-->
-<!--                    <option value="ne" th:selected="${orgs.state =='NE'}">NE</option>-->
-<!--                    <option value="nv" th:selected="${orgs.state =='NV'}">NV</option>-->
-<!--                    <option value="nh" th:selected="${orgs.state =='NH'}">NH</option>-->
-<!--                    <option value="nj" th:selected="${orgs.state =='NJ'}">NJ</option>-->
-<!--                    <option value="nm" th:selected="${orgs.state =='NM'}">NM</option>-->
-<!--                    <option value="ny" th:selected="${orgs.state =='NY'}">NY</option>-->
-<!--                    <option value="nc" th:selected="${orgs.state =='NC'}">NC</option>-->
-<!--                    <option value="nd" th:selected="${orgs.state =='ND'}">ND</option>-->
-<!--                    <option value="oh" th:selected="${orgs.state =='OH'}">OH</option>-->
-<!--                    <option value="ok" th:selected="${orgs.state =='OK'}">OK</option>-->
-<!--                    <option value="or" th:selected="${orgs.state =='OR'}">OR</option>-->
-<!--                    <option value="pa" th:selected="${orgs.state =='PA'}">PA</option>-->
-<!--                    <option value="ri" th:selected="${orgs.state =='RI'}">RI</option>-->
-<!--                    <option value="sc" th:selected="${orgs.state =='SC'}">SC</option>-->
-<!--                    <option value="sd" th:selected="${orgs.state =='SD'}">SD</option>-->
-<!--                    <option value="tn" th:selected="${orgs.state =='TN'}">TN</option>-->
-<!--                    <option value="tx" th:selected="${orgs.state =='TX'}">TX</option>-->
-<!--                    <option value="ut" th:selected="${orgs.state =='UT'}">UT</option>-->
-<!--                    <option value="vt" th:selected="${orgs.state =='VT'}">VT</option>-->
-<!--                    <option value="va" th:selected="${orgs.state =='VA'}">VA</option>-->
-<!--                    <option value="wa" th:selected="${orgs.state =='WA'}">WA</option>-->
-<!--                    <option value="wv" th:selected="${orgs.state =='WV'}">WV</option>-->
-<!--                    <option value="wi" th:selected="${orgs.state =='WI'}">WI</option>-->
-<!--                    <option value="wy" th:selected="${orgs.state =='WY'}">WY</option>-->
-<!--                </select>-->
-<!--                <div class="form-group">-->
-<!--                    <label for="zip">Zip:</label>-->
-<!--                    <input id="zip" th:field="*{zip}" th:value="${orgs.zip}" >-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label for="phone">Phone:</label>-->
-<!--                    <input id="phone" th:field="*{phone}" th:value="${orgs.phone}">-->
-<!--                    <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label for="email">Email:</label>-->
-<!--                    <input th:type="email" id="email" th:field="*{email}" th:value="${orgs.email}">-->
-<!--                    <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <button type="submit" name="sendEdit">Submit</button>-->
-<!--        </form>-->
-
-
+        </main>
     </body>
 </html>

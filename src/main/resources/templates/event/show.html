@@ -20,15 +20,15 @@
             <p class="text-black text-center" th:text="${'Event Location: ' + event.location}"></p>
             <p class="text-black text-center" th:text="${'Volunteer hours options: ' + event.hours}"></p>
 <!--            Delete button-->
-            <form th:if="${isEventOwner}" th:action="@{/event/{id}/delete(id = ${event.id})}" method="post" th:object="${event}">
+            <form th:if="${isEventOwner}" class="d-flex justify-content-center mb-2" th:action="@{/event/{id}/delete(id = ${event.id})}" method="post" th:object="${event}">
                 <button class="w3-btn w3-purple text-center" type="submit" th:value="*{id}" name="deleteEvent">Delete</button>
             </form>
 
 <!--            Register button-->
             <div th:if="${alreadyRegistered}">
-                <p class="text-danger">You have already Registered for this event :)</p>
+                <p class="text-danger text-center">You have already Registered for this event :)</p>
             </div>
-            <form method="post" th:action="@{/event/{id}/register(id = ${event.id})}" th:if="${!alreadyRegistered}">
+            <form method="post" class="d-flex justify-content-center mb-2" th:action="@{/event/{id}/register(id = ${event.id})}" th:if="${!alreadyRegistered}">
                 <button class="w3-btn w3-purple" type="submit" name="registerEvent">Register</button>
             </form>
         </div>

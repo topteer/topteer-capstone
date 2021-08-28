@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link th:replace="partials/header.html :: header"/>
-    <title>Show Organization</title>
-</head>
-
-<nav th:replace="partials/navbar.html :: navbar"></nav>
-
-
-<body class="formBody">
-<div class="card" th:object="${org}">
-    <h3 class="titles" th:text="${org.getOrgName()}"></h3>
-    <p th:text="${org.getAddress()}"></p>
-    <p th:text="${org.getCity() + ', ' + org.getState().toUpperCase() + ' ' + org.getZip()}"></p>
-    <p th:text="${org.getPhone()}"></p>
-    <p th:text="${org.getEmail()}"></p>
-    <div th:if="${isOrgOwner}">
-        <div class="d-flex justify-content-center align-items-center">
-            <form th:action="@{/organization/edit}" method="get">
-                <button type="submit" name="editBtn" value="edit">Edit</button>
-            </form>
+    <head>
+        <link th:replace="partials/header.html :: header"/>
+        <title>Show Organization</title>
+    </head>
+    <body class="createBody">
+        <nav th:replace="partials/navbar.html :: navbar"></nav>
+        <div class="w3-card-4 w3-margin-center w3-round-xlarge" th:object="${org}">
             <div>
-                <a th:href="@{/event/create}">Create Event</a>
+                <h3 class="w3-center w3-green w3-border" th:text="${org.getOrgName()}"></h3>
+            </div>
+            <p class="text-black text-center m-auto" th:text="${org.getAddress()}"></p>
+            <p class="text-black text-center m-auto" th:text="${org.getCity() + ', ' + org.getState().toUpperCase() + ' ' + org.getZip()}"></p>
+            <p class="text-black text-center m-auto" th:text="${org.getPhone()}"></p>
+            <p class="text-black text-center m-auto" th:text="${org.getEmail()}"></p>
+            <div th:if="${isOrgOwner}">
+                <div class="d-flex justify-content-center align-items-center">
+                    <form th:action="@{/organization/edit}" method="get">
+                        <button class="w3-btn w3-green text-center" type="submit" name="editBtn" value="edit">Edit</button>
+                    </form>
+                </div>
+                <div class="text-center m-1">
+                    <a th:href="@{/event/create}"><button class="w3-btn w3-green">Create Event</button></a>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-
-
-</body>
+    </body>
 </html>
