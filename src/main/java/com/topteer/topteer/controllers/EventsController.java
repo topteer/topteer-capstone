@@ -136,4 +136,5 @@ public class EventsController {
         }
         return "redirect:/users/profile";
     }
+
 }

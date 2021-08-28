@@ -1,6 +1,8 @@
 package com.topteer.topteer.controllers;
+import com.topteer.topteer.models.Events;
 import com.topteer.topteer.models.Organization;
 import com.topteer.topteer.models.User;
+import com.topteer.topteer.repositories.EventRepository;
 import com.topteer.topteer.repositories.OrganizationRepository;
 import com.topteer.topteer.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -8,22 +10,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class OrganizationController {
     private OrganizationRepository orgDao;
     private UserRepository userDao;
+    private EventRepository eventDao;
 
 //    ========== Repository injection ============
-    public OrganizationController(OrganizationRepository orgDao, UserRepository userDao) {
+    public OrganizationController(OrganizationRepository orgDao, UserRepository userDao, EventRepository eventDao) {
         this.orgDao = orgDao;
         this.userDao = userDao;
+        this.eventDao = eventDao;
     }
 
     //     ======== Show all events ===========
@@ -43,6 +43,10 @@ public class OrganizationController {
         }
         model.addAttribute("org", org);
         model.addAttribute("isOrgOwner", isOrgOwner);
+
+            List<Events> events = eventDao.findByOrgId(id);
+            model.addAttribute("events", events);
+
         return "organization/show";
     }
 
@@ -60,11 +64,8 @@ public class OrganizationController {
         {
             return "redirect:/organization/"+organization.getId()+"/edit";
         }
-
-
-
-
     }
+
     @RequestMapping(value = "/organization/create", method = RequestMethod.POST)
     public String saveOrg(@RequestParam String orgName, @RequestParam String address, @RequestParam String city, @RequestParam String state, @RequestParam String zip, @RequestParam String phone, @RequestParam String email, @Valid Organization validOrg, Errors validation, Model model){
         if(validation.hasErrors()){
