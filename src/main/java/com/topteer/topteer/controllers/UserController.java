@@ -98,6 +98,16 @@ public class UserController {
     @GetMapping("/users/{id}/profile")
     public String getOtherProfilePage(Model model, @PathVariable long id) {
         User user = usersDao.getById(id);
+        long userId = user.getId();
+        String orgName = "User doesn't have own a organization.";
+        Organization organization = orgDao.findByUserId(userId);
+        boolean nullOrg = false;
+        if(organization != null) {
+            orgName = organization.getOrgName();
+            nullOrg = true;
+        }
+        model.addAttribute("nullOrg", nullOrg);
+        model.addAttribute("orgName", orgName);
         model.addAttribute("user", user);
         return "users/profile";
     }

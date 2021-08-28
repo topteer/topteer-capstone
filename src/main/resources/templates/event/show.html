@@ -23,7 +23,6 @@
             <form th:if="${isEventOwner}" class="d-flex justify-content-center mb-2" th:action="@{/event/{id}/delete(id = ${event.id})}" method="post" th:object="${event}">
                 <button class="w3-btn w3-purple text-center" type="submit" th:value="*{id}" name="deleteEvent">Delete</button>
             </form>
-
 <!--            Register button-->
             <div th:if="${alreadyRegistered}">
                 <p class="text-danger text-center">You have already Registered for this event :)</p>
@@ -38,10 +37,10 @@
             <div class="w3-center w3-purple w3-border">
                 <h3 th:text="Volunteers"></h3>
             </div>
-            <form method="post" th:action="@{/sendText/to/{id}(id=${user.id})}" th:each="user: ${event.getEventvolunteer()}">
-                <label class="text-black text-center" th:text="${user.firstName} + ' ' + ${user.lastName}"></label>
-                    <input type="checkbox" th:value="${user.id}">
-                <button type="submit" class="w3-btn w3-purple text-center" name="eventCompleted">Submit volunteer</button>
+            <form method="post" class="row" th:action="@{/sendText/to/{id}(id=${user.id})}" th:each="user: ${event.getEventvolunteer()}">
+                <a th:href="@{/users/{id}/profile(id=${user.id})}" class="col-3 m-1"><label class="text-black text-center" th:text="${user.firstName} + ' ' + ${user.lastName}"></label></a>
+                    <input class="col-3 m-1" type="checkbox" th:value="${user.id}">
+                <button type="submit" class="w3-btn w3-purple col-4 text-center m-1" name="eventCompleted">Submit volunteer</button>
             </form>
         </div>
     </body>

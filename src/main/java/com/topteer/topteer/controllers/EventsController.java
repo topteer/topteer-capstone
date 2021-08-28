@@ -8,16 +8,13 @@ import com.topteer.topteer.repositories.OrganizationRepository;
 import com.topteer.topteer.repositories.UserRepository;
 import com.topteer.topteer.services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Controller
