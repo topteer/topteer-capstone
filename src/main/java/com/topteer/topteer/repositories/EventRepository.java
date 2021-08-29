@@ -14,5 +14,8 @@ public interface EventRepository extends JpaRepository<Events, Long> {
     @Query("from Events ev where ev.title like %:query% or ev.location like %:query% or ev.description like %:query%")
     List<Events> findAllEventsByTitleOrLocationContaining(String query);
 
+    @Query("from Events ev where ev.org.id = :num")
+    List<Events> findByOrgId(long num);
+
     Collection<? extends Events> findAllByUserId(long id);
 }

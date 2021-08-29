@@ -1,23 +1,15 @@
 package com.topteer.topteer.controllers;
 
-import com.topteer.topteer.models.Events;
 import com.topteer.topteer.models.Organization;
 import com.topteer.topteer.models.User;
 import com.topteer.topteer.repositories.OrganizationRepository;
 import com.topteer.topteer.repositories.UserRepository;
-import org.springframework.boot.autoconfigure.cassandra.CassandraProperties;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 public class UserController {
@@ -50,11 +42,9 @@ public class UserController {
         return "redirect:/login";
     }
 
-
     @GetMapping("/users/edit")
     public String showUserEditForm(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         model.addAttribute("user", user);
         return "users/edit";
     }
@@ -88,14 +78,17 @@ public class UserController {
         long userId = user.getId();
         Organization organization = orgDao.findByUserId(userId);
         String orgN = "You currently don't own an organization";
+        boolean nullOrg = false;
         if(organization != null) {
             orgN = organization.getOrgName();
+            nullOrg = true;
         }
         long orgId = 0;
         if(organization!= null)
         {
             orgId=organization.getId();
         }
+        model.addAttribute("nullOrg", nullOrg);
         model.addAttribute("orgN", orgN);
         model.addAttribute("usersOrgId",orgId);
         model.addAttribute("user", user);
@@ -105,6 +98,16 @@ public class UserController {
     @GetMapping("/users/{id}/profile")
     public String getOtherProfilePage(Model model, @PathVariable long id) {
         User user = usersDao.getById(id);
+        long userId = user.getId();
+        String orgName = "User doesn't have own a organization.";
+        Organization organization = orgDao.findByUserId(userId);
+        boolean nullOrg = false;
+        if(organization != null) {
+            orgName = organization.getOrgName();
+            nullOrg = true;
+        }
+        model.addAttribute("nullOrg", nullOrg);
+        model.addAttribute("orgName", orgName);
         model.addAttribute("user", user);
         return "users/profile";
     }

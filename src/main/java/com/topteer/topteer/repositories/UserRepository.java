@@ -12,6 +12,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByUsername(String username);
 
+    @Query("from User u where u.events = :num")
+    Events eventId(long num);
+
     default List<User> findAllByUsernameContaining(String username) {
         return null;
     }

@@ -8,16 +8,13 @@ import com.topteer.topteer.repositories.OrganizationRepository;
 import com.topteer.topteer.repositories.UserRepository;
 import com.topteer.topteer.services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -107,7 +104,7 @@ public class EventsController {
     @PostMapping("/event/{id}/delete")
     public String deleteEvent(@PathVariable long id){
         Events eventFromDb = eventDao.getById(id);
-        eventFromDb.setEventvolunteer(new ArrayList<User >());
+        eventFromDb.setEventvolunteer(new ArrayList<User>());
         eventDao.save(eventFromDb);
         eventDao.delete(eventFromDb);
         return "redirect:/event";
@@ -139,4 +136,5 @@ public class EventsController {
         }
         return "redirect:/users/profile";
     }
+
 }
