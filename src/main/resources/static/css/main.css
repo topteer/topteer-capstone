@@ -56,7 +56,7 @@ h3 {
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
-    color: #ffffff;
+    color: black;
     background-color: #7aa8b7;
     border-radius: 6px;
     outline: none;
@@ -85,7 +85,7 @@ h3 {
 }
 
 .button {
-    color: white;
+    color: black;
     border: 2px solid darkblue;
     border-radius: 0px;
     padding: 18px 36px;

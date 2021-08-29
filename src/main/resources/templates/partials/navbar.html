@@ -5,7 +5,7 @@
 <body>
 <nav th:fragment="navbar">
     <ul class="topnav">
-        <li><a th:href="@{/}" ><img src="../../static/img/Top-TeerLogo-BlackOnWhite.png" th:src="@{/img/Top-TeerLogo-BlackOnWhite.png}" height="8%" width="8%" alt="The Logo"></a></li>
+        <li><a th:href="@{/}" ><img src="../../static/img/Top-TeerLogo-BlackOnWhite.png" th:src="@{/img/Top-TeerLogo-BlackOnWhite.png}" height="4%" width="4%" alt="The Logo"></a></li>
         <li sec:authorize="!isAuthenticated()" ><a th:href="@{/register}">Register</a></li>
         <li sec:authorize="!isAuthenticated()" class="nav-item">
             <a class="nav-link" th:href="@{/login}">Log-in</a>

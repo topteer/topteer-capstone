@@ -26,7 +26,7 @@
     </div>
     <h3 class="titles" th:text="Organization"></h3>
     <div>
-        <h4 class="descriptions"><a class="titles" th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>
+        <h4 class="descriptions"><a class="descriptions" th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>
     </div>
     <h3 class="titles" th:text="Events"></h3>
     <form th:each="event: ${user.events}">
