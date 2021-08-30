@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Event</title>
-        <link th:replace="partials/header.html :: header"/>
-    </head>
-    <body class="profileBody">
-        <nav th:replace="partials/navbar.html :: navbar"></nav>
+<head>
+    <title>Event</title>
+    <link th:replace="partials/header.html :: header"/>
+</head>
+<body class="profileBody">
+<nav th:replace="partials/navbar.html :: navbar"></nav>
 
-        <div th:object="${event}" class="w3-card-4 w3-margin-center w3-round-xlarge">
-            <div class="w3-center w3-purple w3-border">
-                <h3 th:text="${event.title.toUpperCase()}"></h3>
-            </div>
-            <p class="text-black text-center" th:text="${'Event Description: ' + event.description}"></p>
-            <p class="text-black text-center" th:text="${'Event Coordinator: ' + event.user.firstName}"></p>
-            <p class="text-black text-center" th:text="${'Phone: ' + event.phone}"></p>
-            <p class="text-black text-center" th:text="${'Event Date: ' + event.date}"></p>
-            <p class="text-black text-center" th:text="${'Event Start Time: ' + event.startTime}"></p>
-            <p class="text-black text-center" th:text="${'Event End Time' + event.endTime}"></p>
-            <a th:href="@{'https://www.google.com/maps/search/?api=1&query='+${event.location}}"><p class="text-black text-center" th:text="${'Event Location: ' + event.location}"></p></a>
-            <p class="text-black text-center" th:text="${'Volunteer hours options: ' + event.hours}"></p>
-<!--            Delete button-->
-            <form th:if="${isEventOwner}" class="d-flex justify-content-center mb-2" th:action="@{/event/{id}/delete(id = ${event.id})}" method="post" th:object="${event}">
-                <button class="w3-btn w3-purple text-center" type="submit" th:value="*{id}" name="deleteEvent">Delete</button>
-            </form>
-<!--            Register button-->
-            <div th:if="${alreadyRegistered}">
-                <p class="text-danger text-center">You have already Registered for this event :)</p>
-            </div>
-            <form method="post" class="d-flex justify-content-center mb-2" th:action="@{/event/{id}/register(id = ${event.id})}" th:if="${!alreadyRegistered}">
-                <button class="w3-btn w3-purple" type="submit" name="registerEvent">Register</button>
-            </form>
-        </div>
+<div th:object="${event}" class="w3-card-4 w3-margin-center w3-round-xlarge">
+    <div class="w3-center w3-purple w3-border">
+        <h3 th:text="${event.title.toUpperCase()}"></h3>
+    </div>
+    <p class="text-black text-center" th:text="${'Event Description: ' + event.description}"></p>
+    <p class="text-black text-center" th:text="${'Event Coordinator: ' + event.user.firstName}"></p>
+    <p class="text-black text-center" th:text="${'Phone: ' + event.phone}"></p>
+    <p class="text-black text-center" th:text="${'Event Date: ' + event.date}"></p>
+    <p class="text-black text-center" th:text="${'Event Start Time: ' + event.startTime}"></p>
+    <p class="text-black text-center" th:text="${'Event End Time' + event.endTime}"></p>
+    <a th:href="@{'https://www.google.com/maps/search/?api=1&query='+${event.location}}"><p
+            class="text-black text-center" th:text="${'Event Location: ' + event.location}"></p></a>
+    <p class="text-black text-center" th:text="${'Volunteer hours options: ' + event.hours}"></p>
+    <!--            Delete button-->
+    <form th:if="${isEventOwner}" class="d-flex justify-content-center mb-2"
+          th:action="@{/event/{id}/delete(id = ${event.id})}" method="post" th:object="${event}">
+        <button class="w3-btn w3-purple text-center" type="submit" th:value="*{id}" name="deleteEvent">Delete</button>
+    </form>
+    <!--            Register button-->
+    <div th:if="${alreadyRegistered}">
+        <p class="text-danger text-center">You have already Registered for this event :)</p>
+    </div>
+    <form method="post" class="d-flex justify-content-center mb-2" th:action="@{/event/{id}/register(id = ${event.id})}"
+          th:if="${!alreadyRegistered}">
+        <button class="w3-btn w3-purple" type="submit" name="registerEvent">Register</button>
+    </form>
+</div>
 <!--        Volunteer List-->
 <!--        ==== Needs to submit all names that are checked ==== -->
-        <div th:if="${isEventOwner}" class="w3-card-4 w3-margin-center w3-round-xlarge">
-            <div class="w3-center w3-purple w3-border">
-                <h3 th:text="Volunteers"></h3>
-            </div>
-            <form method="post" class="row" th:action="@{/sendText/to/{id}(id=${user.id})}" th:each="user: ${event.getEventvolunteer()}">
-                <a th:href="@{/users/{id}/profile(id=${user.id})}" class="col-3 m-1"><label class="text-black text-center" th:text="${user.firstName} + ' ' + ${user.lastName}"></label></a>
-                    <input class="col-3 m-1" type="checkbox" th:value="${user.id}">
-                <button type="submit" class="w3-btn w3-purple col-4 text-center m-1" name="eventCompleted">Submit volunteer</button>
-            </form>
-        </div>
-    </body>
+<div th:if="${isEventOwner}" class="w3-card-4 w3-margin-center w3-round-xlarge">
+    <div class="w3-center w3-purple w3-border">
+        <h3 th:text="Volunteers"></h3>
+    </div>
+    <form method="post" class="row" th:action="@{/sendText/to/{id}(id=${user.id})}"
+          th:each="user: ${event.getEventvolunteer()}">
+        <a th:href="@{/users/{id}/profile(id=${user.id})}" class="col-4 m-1"><label class="text-black text-center"
+                                                                                    th:text="${user.firstName} + ' ' + ${user.lastName}"></label></a>
+        <input class="col-3 m-1" type="checkbox" th:value="${user.id}">
+        <button type="submit" class="w3-btn w3-purple col-4 text-center m-1" name="eventCompleted">Submit volunteer
+        </button>
+    </form>
+</div>
+</body>
 </html>
