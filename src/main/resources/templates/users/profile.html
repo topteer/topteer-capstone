@@ -32,7 +32,10 @@
         </a>
         <div class="text-black">
             <h3 class="profileH3" th:text="Organization"></h3>
-            <div>
+            <div th:if="${!nullOrg}">
+                <h4 th:text="${orgN}"></h4>
+            </div>
+            <div th:if="${nullOrg}">
                 <h4><a th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>
             </div>
             <h3 class="profileH3" th:text="Events"></h3>
