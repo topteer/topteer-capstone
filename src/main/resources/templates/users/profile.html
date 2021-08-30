@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-    <head><title>Top-Teer profile page</title>
-        <link th:replace="partials/header.html :: header"/>
-        <nav th:replace="partials/navbar.html :: navbar"></nav>
-    </head>
+<head><title>Top-Teer profile page</title>
+    <link th:replace="partials/header.html :: header"/>
+    <nav th:replace="partials/navbar.html :: navbar"></nav>
+</head>
 
-    <body class="profileBody">
+<body class="profileBody">
 
-        <div class="card">
-            <div class="card-body">
-                <div class="card-title" th:object="${user}">
-                    <h1 th:text="${user.firstName}"></h1>
-                    <h1 th:text="${user.lastName}"></h1>
-                </div>
+<div class="card">
+    <div class="card-body">
+        <div class="card-title" th:object="${user}">
+            <h1 th:text="${user.firstName}"></h1>
+            <h1 th:text="${user.lastName}"></h1>
+        </div>
 
-                <p class="card-text">
-                    <i class="fa fa-address-book-o" style="font-size:24px" th:text="${user.username}"></i>
-                    <br>
-                    <i class="fa fa-envelope-o" style="font-size:24px" th:text="${user.email}"></i>
+        <p class="card-text">
+            <i class="fa fa-address-book-o" style="font-size:24px" th:text="${user.username}"></i>
+            <br>
+            <i class="fa fa-envelope-o" style="font-size:24px" th:text="${user.email}"></i>
 
                 </p>
                 <a class="btn btn-primary" th:href="@{/users/edit}"> <i class="fa fa-edit"> Edit Profile</i></a>
@@ -47,3 +47,17 @@
     </body>
 </html>
 
+<!--<div class="card">-->
+<!--    <h3 class="titles" th:text="Organization"></h3>-->
+<!--    <div>-->
+<!--        <h4 class="titles"><a class="titles" th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="card">-->
+<!--    <h3 class="titles" th:text="Events"></h3>-->
+<!--    <form th:each="event: ${user.events}">-->
+<!--        <h4 class="titles"><a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>-->
+<!--    </form>-->
+<!--</div>-->
+</body>
+</html>
