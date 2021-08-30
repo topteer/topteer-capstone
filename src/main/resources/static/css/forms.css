@@ -16,6 +16,15 @@
     background-attachment: fixed;
 }
 
+.resultCard {
+    height: 440px;
+    width: 1000px;
+    overflow: auto;
+    position: relative;
+    margin-left: -250px;
+    margin-top: 450px;
+}
+
 
 .w3-card-4{
     width: 500px;
