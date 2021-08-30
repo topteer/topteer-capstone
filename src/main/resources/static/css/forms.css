@@ -5,7 +5,9 @@
 .formBody {
     background-image: url('../img/hands.jpeg');
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
 
 /*Create event*/
@@ -14,6 +16,15 @@
     background-repeat: no-repeat;
     background-size: 100%;
     background-attachment: fixed;
+}
+
+.resultCard {
+    height: 440px;
+    width: 1000px;
+    overflow: auto;
+    position: relative;
+    margin-left: -250px;
+    margin-top: 600px;
 }
 
 

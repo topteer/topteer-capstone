@@ -11,18 +11,18 @@
 <main class="w3-card-4 w3-margin-center w3-round-xlarge">
 
 
-    <div class="w3-center w3-blue w3-border">
-        <h3>This is what we've found!</h3>
+    <div class="w3-center w3-blue w3-border resultCard">
+        <h1>This is what we found!</h1>
 
         <!--    =========== Search results (From home controller) for loop  ==========-->
         <div class="w3-center container w3-white w3-border" th:each="event : ${searchResults}">
             <a th:href="@{'/event/' + ${event.id} + '/show'}">
+                <h2 th:text="${event.title}"></h2>
+            </a>
                 <div>
-                    <h4 th:text="${event.title}"></h4>
                     <p th:text="${event.description}"></p>
                     <p th:text="${event.location}"></p>
                 </div>
-            </a>
         </div>
 
 
@@ -30,15 +30,16 @@
         <div class="w3-center container w3-white w3-border" th:each="organization : ${searchResults2}">
             <!--    ==== Link to result with short description ======-->
             <a th:href="@{'/organization/' + ${organization.id} + '/show'}">
-                <div>
-                    <h4 th:text="${organization.orgName}"></h4>
-                    <p th:text="'Phone: ' + ${organization.phone}"></p>
-                    <p th:text="'Email: ' + ${organization.email}"></p>
-                    <p th:text="${organization.address} + ' ' + ${organization.city} + ', ' + ${organization.state.toUpperCase()} + ' ' + ${organization.zip}">
-                        <!-- this is the correct syntax to concatenate fields -->
-                    </p>
-                </div>
+
+                <h2 th:text="${organization.orgName}"></h2>
             </a>
+            <div>
+                <p th:text="'Phone: ' + ${organization.phone}"></p>
+                <p th:text="'Email: ' + ${organization.email}"></p>
+                <p th:text="${organization.address} + ' ' + ${organization.city} + ', ' + ${organization.state} + ' ' + ${organization.zip}">
+                    <!-- this is the correct syntax to concatenate fields -->
+                </p>
+            </div>
         </div>
     </div>
 
