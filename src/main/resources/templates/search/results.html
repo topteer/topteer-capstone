@@ -34,7 +34,7 @@
                     <h4 th:text="${organization.orgName}"></h4>
                     <p th:text="'Phone: ' + ${organization.phone}"></p>
                     <p th:text="'Email: ' + ${organization.email}"></p>
-                    <p th:text="${organization.address} + ' ' + ${organization.city} + ', ' + ${organization.state} + ' ' + ${organization.zip}">
+                    <p th:text="${organization.address} + ' ' + ${organization.city} + ', ' + ${organization.state.toUpperCase()} + ' ' + ${organization.zip}">
                         <!-- this is the correct syntax to concatenate fields -->
                     </p>
                 </div>
