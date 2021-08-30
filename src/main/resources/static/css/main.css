@@ -146,11 +146,8 @@ h1
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
+    position:fixed;bottom:0;left:0;right:0;height:30px;
     width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 400px;
 }
 
 /* Taller footer on small screens */
