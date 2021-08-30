@@ -145,6 +145,35 @@ h1
     text-align: center;
 }
 
+.footer {
+    position:fixed;bottom:0;left:0;right:0;height:30px;
+    width: 100%;
+}
+
+/* Taller footer on small screens */
+@media (max-width: 567em) {
+    body {
+        margin-bottom: 700px;
+    }
+    .footer {
+        height: 400px;
+    }
+}
+
+/* Sticky footer style and color
+-------------------------------------------------- */
+footer {
+    padding-top: 30px;
+    background-color: black;
+    color: #bbb;
+}
+
+footer a {
+    color: #999;
+    text-decoration:none;
+}
+
+
 /* Set a style for all buttons */
 .coolButton {
     background-color: dodgerblue;

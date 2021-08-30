@@ -4,49 +4,6 @@
     <link th:replace="partials/header.html :: header"/>
 </head>
 
-<style>
-
-    /*#about {*/
-    /*    font-size: large;*/
-    /*    font-weight: bold;*/
-    /*    color: black;*/
-    /*    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;*/
-    /*}*/
-
-    /*body {*/
-    /*    background-image: url('../img/hands2.png');*/
-    /*    background-repeat: no-repeat;*/
-    /*    background-size: 100%;*/
-    /*    background-attachment: fixed;*/
-    /*}*/
-
-    /*#intro {*/
-    /*    !*font-weight: bold;*!*/
-    /*    font-size: x-large;*/
-    /*    text-align: center;*/
-    /*}*/
-
-    /*.button {*/
-    /*    color: white;*/
-    /*    border: 2px solid darkblue;*/
-    /*    border-radius: 0px;*/
-    /*    padding: 18px 36px;*/
-    /*    display: inline-block;*/
-    /*    font-family: "Lucida Console", Monaco, monospace;*/
-    /*    font-size: 14px;*/
-    /*    letter-spacing: 1px;*/
-    /*    cursor: pointer;*/
-    /*    box-shadow: inset 0 0 0 0 dodgerblue;*/
-    /*    -webkit-transition: ease-out 0.4s;*/
-    /*    -moz-transition: ease-out 0.4s;*/
-    /*    transition: ease-out 0.4s;*/
-    /*}*/
-
-    /*.slide_down:hover {*/
-    /*    box-shadow: inset 0 100px 0 0 dodgerblue;*/
-    /*}*/
-
-</style>
 
 <body class="homeBody">
 <div class="wrapper">
@@ -89,7 +46,10 @@
             </div>
         </div>
     </div>
+    <p id="quote"></p>
+    <script type="text/javascript" th:src="@{/js/quotes.js}"> </script>
 </div>
-<footer th:replace="partials/footer.html :: footer"></footer>
+
 </body>
+<!--<footer th:replace="partials/footer.html :: footer"></footer>-->
 </html>
