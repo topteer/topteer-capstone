@@ -30,6 +30,7 @@
         <div class="w3-center container w3-white w3-border" th:each="organization : ${searchResults2}">
             <!--    ==== Link to result with short description ======-->
             <a th:href="@{'/organization/' + ${organization.id} + '/show'}">
+
                 <h2 th:text="${organization.orgName}"></h2>
             </a>
             <div>
@@ -45,7 +46,7 @@
 
 </main>
 </body>
-<div>
-    <footer th:replace="partials/footer.html :: footer"></footer>
-</div>
+<!--<div>-->
+<!--    <footer th:replace="partials/footer.html :: footer"></footer>-->
+<!--</div>-->
 </html>

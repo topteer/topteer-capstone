@@ -6,49 +6,62 @@
 </head>
 
 <body class="profileBody">
+<!--profile card-->
+<div class="lineUp">
+    <div class="w3-card-4 w3-round-xlarge text-center text-black profileColor">
+        <div class="text-center">
+            <div class="profileColor">
+                <div th:object="${user}">
+                    <h1 th:text="${user.firstName}"></h1>
+                    <h1 th:text="${user.lastName}"></h1>
+                </div>
+                <hr>
 
-<div class="w3-card-4 w3-margin-center w3-round-xlarge">
-    <div class="text-center">
-        <div class="profileColor">
-            <div th:object="${user}">
-                <h1 th:text="${user.firstName}"></h1>
-                <h1 th:text="${user.lastName}"></h1>
-            </div>
-
-            <p>
                 <i class="fa fa-address-book-o m-2" style="font-size:24px" th:text="'&nbsp' + ${user.username}"></i>
                 <br>
                 <i class="fa fa-envelope-o m-2" style="font-size:24px" th:text="'&nbsp' + ${user.email}"></i>
-            </p>
+
+            </div>
+            <a th:href="@{/users/edit}">
+                <button class="btn-hover color-7">Edit Profile</button>
+            </a>
         </div>
-        <a th:href="@{/users/edit}">
-            <button class="btn-hover color-7">Edit Profile</button>
-        </a>
+    </div>
+
+    <!--organization card-->
+    <div class="w3-card-4 w3-round-xlarge text-center text-black profileColor">
+        <h2 th:text="Organization"></h2>
+        <hr>
+        <div th:if="${!nullOrg}">
+            <h4 th:text="${orgN}"></h4>
+        </div>
+        <div th:if="${nullOrg}">
+            <h4><a th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>
+        </div>
+        <br>
+        <br>
         <a th:if="${usersOrgId==0}" th:href="@{/organization/create}">
             <button class="btn-hover color-7">Create Organization</button>
         </a>
         <a th:if="${usersOrgId!=0}" th:href="@{/organization/edit}">
             <button class="btn-hover color-7">Edit Organization</button>
         </a>
-        <div class="text-black">
-            <h3 class="profileH3" th:text="Organization"></h3>
-            <div th:if="${!nullOrg}">
-                <h4 th:text="${orgN}"></h4>
-            </div>
-            <div th:if="${nullOrg}">
-                <h4><a th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>
-            </div>
-            <h3 class="profileH3" th:text="Events"></h3>
+    </div>
+
+    <!--events card-->
+    <div class="w3-card-4 w3-round-xlarge text-center text-black profileColor">
+        <h2 th:text="Events"></h2>
+        <hr>
+        <div class="scrollCard">
             <form th:each="event: ${user.events}">
                 <h4><a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>
             </form>
         </div>
     </div>
 </div>
-
 </body>
-<div>
-    <footer th:replace="partials/footer.html :: footer"></footer>
-</div>
+<!--<div>-->
+<!--    <footer th:replace="partials/footer.html :: footer"></footer>-->
+<!--</div>-->
 </html>
 
