@@ -11,25 +11,25 @@
             <div class="w3-center w3-purple w3-border">
                 <h3 th:text="${event.title.toUpperCase()}"></h3>
             </div>
-            <p class="text-black text-center" th:text="${'Event Description: ' + event.description}"></p>
+            <p class="text-black text-center" th:text="${'Description: ' + event.description}"></p>
             <p class="text-black text-center" th:text="${'Event Coordinator: ' + event.user.firstName}"></p>
             <p class="text-black text-center" th:text="${'Phone: ' + event.phone}"></p>
-            <p class="text-black text-center" th:text="${'Event Date: ' + event.date}"></p>
-            <p class="text-black text-center" th:text="${'Event Start Time: ' + event.startTime}"></p>
-            <p class="text-black text-center" th:text="${'Event End Time' + event.endTime}"></p>
-            <a th:href="@{'https://www.google.com/maps/search/?api=1&query='+${event.location}}" target="_blank"><p class="text-black text-center" th:text="${'Event Location: ' + event.location}"></p></a>
-            <p class="text-black text-center" th:text="${'Volunteer hours options: ' + event.hours}"></p>
+            <p class="text-black text-center" th:text="${'Date: ' + event.date}"></p>
+            <p class="text-black text-center" th:text="${'Start Time: ' + event.startTime}"></p>
+            <p class="text-black text-center" th:text="${'End Time' + event.endTime}"></p>
+            <a th:href="@{'https://www.google.com/maps/search/?api=1&query='+${event.location}}" target="_blank"><p class="text-black text-center" th:text="${'Location: ' + event.location}"></p></a>
+            <p class="text-black text-center" th:text="${'Volunteer hours: ' + event.hours}"></p>
 <!--            Delete button-->
             <form th:if="${isEventOwner}" class="d-flex justify-content-center mb-2" th:action="@{/event/{id}/delete(id = ${event.id})}" method="post" th:object="${event}">
                 <button class="w3-btn w3-purple text-center" type="submit" th:value="*{id}" name="deleteEvent">Delete</button>
             </form>
 <!--           Message if already registered-->
             <div th:if="${alreadyRegistered}">
-                <p class="text-danger text-center">You have already Registered for this event :)</p>
+                <p class="text-danger text-center">You have already registered for this event :)</p>
             </div>
 <!--            Register button-->
             <form method="post" class="d-flex justify-content-center mb-2" th:action="@{/event/{id}/register(id = ${event.id})}" th:if="${!alreadyRegistered}">
-                <button class="w3-btn w3-purple" type="submit" name="registerEvent">Register</button>
+                <button class="w3-btn w3-purple m-3" type="submit" name="registerEvent">Register</button>
             </form>
         </div>
 <!--        Volunteer List-->
