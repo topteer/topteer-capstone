@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -75,30 +77,34 @@ public class EventsController {
     }
 
     @GetMapping("/event/{id}/show")
-    public String singleEvent(@PathVariable long id, Model model){
-        Events events = eventDao.getById(id);
-        Boolean isEventOwner = false;
-        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser"){
-            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            isEventOwner = currentUser.getId() == events.getUser().getId();
-        }
-        boolean alreadyRegistered = false;
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        long thisUser = currentUser.getId();
-        List<User> eventUser = eventDao.getById(id).getEventvolunteer();
-
-        for (User volunteer : eventUser){
-            if(volunteer.getId() == thisUser){
-                alreadyRegistered = true;
+    public String singleEvent(@PathVariable long id, Model model) throws EntityNotFoundException {
+        try {
+            Events events = eventDao.getById(id);
+            Boolean isEventOwner = false;
+            if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
+                User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+                isEventOwner = currentUser.getId() == events.getUser().getId();
             }
+            boolean alreadyRegistered = false;
+            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            long thisUser = currentUser.getId();
+            List<User> eventUser = eventDao.getById(id).getEventvolunteer();
+
+            for (User volunteer : eventUser) {
+                if (volunteer.getId() == thisUser) {
+                    alreadyRegistered = true;
+                }
+            }
+            model.addAttribute("alreadyRegistered", alreadyRegistered);
+            String eventCoord = events.getUser().getFirstName();
+            model.addAttribute("event", events);
+            model.addAttribute("eCoord", eventCoord);
+            model.addAttribute("isEventOwner", isEventOwner);
+            model.addAttribute("currentUser", thisUser);
+            return "event/show";
+        }catch(EntityNotFoundException enfe){
+            return "redirect:/event";
         }
-        model.addAttribute("alreadyRegistered", alreadyRegistered);
-        String eventCoord = events.getUser().getFirstName();
-        model.addAttribute("event", events);
-        model.addAttribute("eCoord", eventCoord);
-        model.addAttribute("isEventOwner", isEventOwner);
-        model.addAttribute("currentUser", thisUser);
-        return "event/show";
     }
 
     @PostMapping("/event/{id}/delete")
