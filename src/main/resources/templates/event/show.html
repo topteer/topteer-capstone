@@ -6,7 +6,7 @@
     </head>
     <body class="profileBody">
         <nav th:replace="partials/navbar.html :: navbar"></nav>
-
+<!--        Event card-->
         <div th:object="${event}" class="w3-card-4 w3-margin-center w3-round-xlarge">
             <div class="w3-center w3-purple w3-border">
                 <h3 th:text="${event.title.toUpperCase()}"></h3>
@@ -23,10 +23,11 @@
             <form th:if="${isEventOwner}" class="d-flex justify-content-center mb-2" th:action="@{/event/{id}/delete(id = ${event.id})}" method="post" th:object="${event}">
                 <button class="w3-btn w3-purple text-center" type="submit" th:value="*{id}" name="deleteEvent">Delete</button>
             </form>
-<!--            Register button-->
+<!--           Message if already registered-->
             <div th:if="${alreadyRegistered}">
                 <p class="text-danger text-center">You have already Registered for this event :)</p>
             </div>
+<!--            Register button-->
             <form method="post" class="d-flex justify-content-center mb-2" th:action="@{/event/{id}/register(id = ${event.id})}" th:if="${!alreadyRegistered}">
                 <button class="w3-btn w3-purple" type="submit" name="registerEvent">Register</button>
             </form>

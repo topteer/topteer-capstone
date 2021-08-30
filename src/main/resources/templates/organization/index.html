@@ -6,7 +6,7 @@
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 
 <body class="createBody">
-
+<!--Display all orgs-->
 <div class="w3-card-4 w3-margin-center w3-round-xlarge" th:each="organization: ${organizations}">
 	<div class="w3-center w3-green w3-border">
 		<h2><a th:text="${organization.getOrgName()}"
