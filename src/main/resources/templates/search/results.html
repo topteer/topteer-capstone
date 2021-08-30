@@ -15,7 +15,7 @@
         <h3>This is what we've found!</h3>
 
         <!--    =========== Search results (From home controller) for loop  ==========-->
-        <div class="w3-center container w3-white w3-border" th:each="event : ${searchResults}" >
+        <div class="w3-center container w3-white w3-border" th:each="event : ${searchResults}">
             <a th:href="@{'/event/' + ${event.id} + '/show'}">
                 <div>
                     <h4 th:text="${event.title}"></h4>
@@ -27,9 +27,9 @@
 
 
         <!--    Org Search Results-->
-        <div class="w3-center container w3-white w3-border" th:each="organization : ${searchResults2}" >
+        <div class="w3-center container w3-white w3-border" th:each="organization : ${searchResults2}">
             <!--    ==== Link to result with short description ======-->
-            <a th:href="@{'/organizations/' + ${organization.id}}">
+            <a th:href="@{'/organization/' + ${organization.id} + '/show'}">
                 <div>
                     <h4 th:text="${organization.orgName}"></h4>
                     <p th:text="'Phone: ' + ${organization.phone}"></p>
@@ -41,7 +41,6 @@
             </a>
         </div>
     </div>
-
 
 
 </main>

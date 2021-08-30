@@ -1,41 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head><title></title></head>
 
 <body>
 <nav th:fragment="navbar">
-    <ul class="topnav">
-        <li><a th:href="@{/}" ><img src="../../static/img/Top-TeerLogo-BlackOnWhite.png" th:src="@{/img/Top-TeerLogo-BlackOnWhite.png}" height="4%" width="4%" alt="The Logo"></a></li>
-        <li sec:authorize="!isAuthenticated()" ><a th:href="@{/register}">Register</a></li>
-        <li sec:authorize="!isAuthenticated()" class="nav-item">
-            <a class="nav-link" th:href="@{/login}">Log-in</a>
-        </li>
-        <li sec:authorize="isAuthenticated()" class="nav-item">
-            <form th:action="@{/logout}" th:method="post">
-                <button class="btn nav-link">Logout</button>
-            </form>
-        </li>
-        <li sec:authorize="isAuthenticated()" ><a th:href="@{/event}">All Events</a></li>
-        <li sec:authorize="isAuthenticated()" ><a th:href="@{/organizations}">All Organizations</a></li>
-        <li sec:authorize="isAuthenticated()" ><a th:href="@{/users/profile}">Profile</a></li>
-
-        <li class="right"><a th:href="@{/about-us}">About Us</a></li>
-        <li>
-            <!--            ======== search modal ======= -->
-            <div id="search-modal">
-                <form th:action="@{/search}" method="post">
-                    <div>
-                        <label for="search-params"></label><select id="search-params" name="search-params">
-                            <option value="2">Organizations</option>
-                            <option value="1">Events</option>
-                        </select>
-                        <label for="query"></label><input class="nosir" id="query" name="query" type="text" placeholder="Search" />
-                    <button class="yessir" type="submit" value="submit">Search</button>
-                    </div>
+    <div class="topnav">
+        <div class="d-flex h-10 justify-content-between">
+            <a th:href="@{/}"><img src="../../static/img/top-teer-logo.png" th:src="@{/img/top-teer-logo.png}"
+                                   height="80px" width="80px" alt="The Logo"></a>
+            <a sec:authorize="!isAuthenticated()" th:href="@{/register}">
+                <button class="btn-hover color-8">Register</button>
+            </a>
+            <a sec:authorize="!isAuthenticated()" th:href="@{/login}">
+                <button class="btn-hover color-8">Log-in</button>
+            </a>
+            <a sec:authorize="isAuthenticated()">
+                <form th:action="@{/logout}" th:method="post">
+                    <button class="btn-hover color-8">Logout</button>
                 </form>
-            </div>
-        </li>
-    </ul>
+            </a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/event}">
+                <button class="btn-hover color-8">All Events</button>
+            </a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/organizations}">
+                <button class="btn-hover color-8">All Organizations</button>
+            </a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/users/profile}">
+                <button class="btn-hover color-8">Profile</button>
+            </a>
+            <a th:href="@{/about-us}">
+                <button class="btn-hover color-8">About Us</button>
+            </a>
+        </div>
+
+        <!--            ======== search modal ======= -->
+        <div id="search-modal">
+            <form th:action="@{/search}" method="post">
+                <div>
+                    <label for="search-params"></label><select id="search-params" name="search-params">
+                    <option value="2">Organizations</option>
+                    <option value="1">Events</option>
+                </select>
+                    <label for="query"></label><input class="nosir" id="query" name="query" type="text"
+                                                      placeholder="Search"/>
+                    <button class="yessir" type="submit" value="submit">Search</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
 </nav>
 </body>
 </html>

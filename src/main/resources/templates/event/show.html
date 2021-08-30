@@ -34,15 +34,18 @@
         </div>
 <!--        Volunteer List-->
 <!--        ==== Needs to submit all names that are checked ==== -->
-        <div th:if="${isEventOwner}" class="w3-card-4 w3-margin-center w3-round-xlarge">
-            <div class="w3-center w3-purple w3-border">
-                <h3 th:text="Volunteers"></h3>
-            </div>
-            <form method="post" class="row" th:action="@{/sendText/to/{id}(id=${user.id})}" th:each="user: ${event.getEventvolunteer()}">
-                <a th:href="@{/users/{id}/profile(id=${user.id})}" class="col-3 m-1"><label class="text-black text-center" th:text="${user.firstName} + ' ' + ${user.lastName}"></label></a>
-                    <input class="col-3 m-1" type="checkbox" th:value="${user.id}">
-                <button type="submit" class="w3-btn w3-purple col-4 text-center m-1" name="eventCompleted">Submit volunteer</button>
-            </form>
-        </div>
-    </body>
+<div th:if="${isEventOwner}" class="w3-card-4 w3-margin-center w3-round-xlarge">
+    <div class="w3-center w3-purple w3-border">
+        <h3 th:text="Volunteers"></h3>
+    </div>
+    <form method="post" class="row" th:action="@{/sendText/to/{id}(id=${user.id})}"
+          th:each="user: ${event.getEventvolunteer()}">
+        <a th:href="@{/users/{id}/profile(id=${user.id})}" class="col-4 m-1"><label class="text-black text-center"
+                                                                                    th:text="${user.firstName} + ' ' + ${user.lastName}"></label></a>
+        <input class="col-3 m-1" type="checkbox" th:value="${user.id}">
+        <button type="submit" class="w3-btn w3-purple col-4 text-center m-1" name="eventCompleted">Submit volunteer
+        </button>
+    </form>
+</div>
+</body>
 </html>

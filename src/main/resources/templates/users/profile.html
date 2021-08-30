@@ -7,57 +7,41 @@
 
 <body class="profileBody">
 
-<div class="card">
-    <div class="card-body">
-        <div class="card-title" th:object="${user}">
-            <h1 th:text="${user.firstName}"></h1>
-            <h1 th:text="${user.lastName}"></h1>
-        </div>
-
-        <p class="card-text">
-            <i class="fa fa-address-book-o" style="font-size:24px" th:text="${user.username}"></i>
-            <br>
-            <i class="fa fa-envelope-o" style="font-size:24px" th:text="${user.email}"></i>
-
-                </p>
-                <a class="btn btn-primary" th:href="@{/users/edit}"> <i class="fa fa-edit"> Edit Profile</i></a>
-<!--                Create or edit org switches based on if org already attached to user-->
-                <a href="#" class="btn btn-success" th:if="${usersOrgId==0}" th:href="@{/organization/create}"><i class="fa fa-calendar-plus-o"> Create Organization</i></a>
-                <a href="#" class="btn btn-primary" th:if="${usersOrgId!=0}" th:href="@{/organization/edit}"><i class="fa fa-edit"> Edit Organization</i></a>
+<div class="w3-card-4 w3-margin-center w3-round-xlarge">
+    <div class="text-center">
+        <div class="profileColor">
+            <div th:object="${user}">
+                <h1 th:text="${user.firstName}"></h1>
+                <h1 th:text="${user.lastName}"></h1>
             </div>
-<!--            Lists orgs that a user is the owner of-->
-                <div class="card">
-                    <h3 class="titles" th:text="Organization"></h3>
-                    <div th:if="${!nullOrg}">
-                        <p th:text="${orgN}"></p>
-                    </div>
-<!--                    If no org display-->
-                    <div th:if="${nullOrg}">
-                        <h4 class="titles"><a class="titles" th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>
-                    </div>
-                </div>
-<!--                Creates list of user events-->
-                <div class="card">
-                    <h3 class="titles" th:text="Events"></h3>
-                    <form th:each="event: ${user.events}">
-                        <h4 class="titles"><a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>
-                    </form>
-                </div>
-        </div>
-    </body>
-</html>
 
-<!--<div class="card">-->
-<!--    <h3 class="titles" th:text="Organization"></h3>-->
-<!--    <div>-->
-<!--        <h4 class="titles"><a class="titles" th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--    <h3 class="titles" th:text="Events"></h3>-->
-<!--    <form th:each="event: ${user.events}">-->
-<!--        <h4 class="titles"><a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>-->
-<!--    </form>-->
-<!--</div>-->
+            <p>
+                <i class="fa fa-address-book-o m-2" style="font-size:24px" th:text="'&nbsp' + ${user.username}"></i>
+                <br>
+                <i class="fa fa-envelope-o m-2" style="font-size:24px" th:text="'&nbsp' + ${user.email}"></i>
+            </p>
+        </div>
+        <a th:href="@{/users/edit}">
+            <button class="btn-hover color-7">Edit Profile</button>
+        </a>
+        <a th:if="${usersOrgId==0}" th:href="@{/organization/create}">
+            <button class="btn-hover color-7">Create Organization</button>
+        </a>
+        <a th:if="${usersOrgId!=0}" th:href="@{/organization/edit}">
+            <button class="btn-hover color-7">Edit Organization</button>
+        </a>
+        <div class="text-black">
+            <h3 class="profileH3" th:text="Organization"></h3>
+            <div>
+                <h4><a th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>
+            </div>
+            <h3 class="profileH3" th:text="Events"></h3>
+            <form th:each="event: ${user.events}">
+                <h4><a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>
+            </form>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
