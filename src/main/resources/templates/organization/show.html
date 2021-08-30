@@ -27,8 +27,11 @@
         </div>
         <div th:name="id" th:value="${org.id}" class="w3-card-4 w3-margin-center w3-round-xlarge">
             <h3 class="w3-center w3-green w3-border">Events</h3>
-            <!--                Displays all events linked to org with links-->
-            <div th:each="event : ${events}">
+            <!-- Displays all events linked to org with links-->
+            <div th:if="${noEvnt}">
+               <p class="text-black text-center" th:text="${events}"></p>
+            </div>
+            <div th:if="${!noEvnt}" th:each="event : ${events}">
                 <a th:href="@{/event/{id}/show(id=${event.id})}"><p class="text-black text-center m-auto" th:text="${event.title}"></p></a>
             </div>
         </div>

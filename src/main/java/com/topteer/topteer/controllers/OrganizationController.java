@@ -45,11 +45,20 @@ public class OrganizationController {
         }
         model.addAttribute("org", org);
         model.addAttribute("isOrgOwner", isOrgOwner);
-
         List<Events> events = eventDao.findByOrgId(id);
-        model.addAttribute("events", events);
+        boolean noEvnt = false;
+        if(events.isEmpty()){
+            noEvnt = true;
+            String event = "There are no events for this organization";
+            model.addAttribute("events", event);
+            model.addAttribute("noEvnt", noEvnt);
+            return "organization/show";
+        }else {
+            model.addAttribute("noEvnt", noEvnt);
+            model.addAttribute("events", events);
 
-        return "organization/show";
+            return "organization/show";
+        }
     }
 
     //    ========== Create organization ===============
