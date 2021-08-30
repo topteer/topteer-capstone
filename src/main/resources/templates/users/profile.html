@@ -20,19 +20,23 @@
                     <i class="fa fa-envelope-o" style="font-size:24px" th:text="${user.email}"></i>
 
                 </p>
-                <a href="#" class="btn btn-primary" th:href="@{/users/edit}"> <i class="fa fa-edit"> Edit Profile</i></a>
+                <a class="btn btn-primary" th:href="@{/users/edit}"> <i class="fa fa-edit"> Edit Profile</i></a>
+<!--                Create or edit org switches based on if org already attached to user-->
                 <a href="#" class="btn btn-success" th:if="${usersOrgId==0}" th:href="@{/organization/create}"><i class="fa fa-calendar-plus-o"> Create Organization</i></a>
                 <a href="#" class="btn btn-primary" th:if="${usersOrgId!=0}" th:href="@{/organization/edit}"><i class="fa fa-edit"> Edit Organization</i></a>
             </div>
+<!--            Lists orgs that a user is the owner of-->
                 <div class="card">
                     <h3 class="titles" th:text="Organization"></h3>
                     <div th:if="${!nullOrg}">
                         <p th:text="${orgN}"></p>
                     </div>
+<!--                    If no org display-->
                     <div th:if="${nullOrg}">
                         <h4 class="titles"><a class="titles" th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>
                     </div>
                 </div>
+<!--                Creates list of user events-->
                 <div class="card">
                     <h3 class="titles" th:text="Events"></h3>
                     <form th:each="event: ${user.events}">

@@ -4,28 +4,10 @@
     <link th:replace="partials/header.html :: header"/>
 </head>
 
-<!--<style>-->
-
-<!--    body {-->
-<!--        background-image: url('../../static/img/hands.jpeg');-->
-<!--        background-repeat: no-repeat;-->
-<!--        background-size: 100%;-->
-<!--        background-attachment: fixed;-->
-<!--    }-->
-
-<!--    .w3-card-4{-->
-<!--        width: 500px;-->
-<!--        color: white;-->
-<!--        margin: 25px auto;-->
-<!--    }-->
-
-</style>
 
 <body class="profileBody">
 
 <nav th:replace="partials/navbar.html :: navbar"></nav>
-
-<body class="createBody">
 
 <div class="container">
 
@@ -33,7 +15,7 @@
         <div class="w3-center w3-purple w3-border">
             <h2>Create An Event</h2>
         </div>
-
+<!--        Create event form-->
         <form class="w3-center container w3-white w3-border" th:action="@{/event/create}" method="post" th:object="${events}">
 
             <div class="form-group">
