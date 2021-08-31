@@ -31,20 +31,15 @@
             <div class="organizationHeader">
                 <h3 class="m-0" th:text="${org.getOrgName()}"></h3>
             </div>
-            <div class="eventBody">
+            <div class="eventBodyCard">
                 <p class="eventText" th:text="${org.getAddress()}"></p>
                 <p class="eventText" th:text="${org.getCity() + ', ' + org.getState().toUpperCase() + ' ' + org.getZip()}"></p>
                 <p class="eventText" th:text="${org.getPhone()}"></p>
-                <p class="eventText" th:text="${org.getEmail()}"></p>
+                <p class="eventText m-0" th:text="${org.getEmail()}"></p>
             </div>
             <div th:if="${isOrgOwner}">
-                <div class="d-flex justify-content-center align-items-center">
-                    <form th:action="@{/organization/edit}" method="get">
-                        <button class="w3-btn w3-green text-center m-3" type="submit" name="editBtn" value="edit">Edit</button>
-                    </form>
-                </div>
-                <div class="text-center m-1">
-                    <a th:href="@{/event/create}"><button class="w3-btn w3-green">Create Event</button></a>
+                <div class="eventBodyCard">
+                    <a th:href="@{/event/create}"><button class="btn-hover color-5">Create Event</button></a>
                 </div>
             </div>
         </div>

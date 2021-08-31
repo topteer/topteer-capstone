@@ -11,6 +11,10 @@ h1
     color: black;
 }
 
+.checkbox{
+    vertical-align: middle;
+}
+
 .profileColor {
     color: #6253e1;
 }
@@ -227,6 +231,11 @@ footer a {
 .btn-hover.color-3 {
     background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
     box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+}
+
+.btn-hover.color-5 {
+    background-image: linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673);
+    box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
 }
 
 .btn-hover.color-7 {
@@ -448,6 +457,13 @@ span.psw {
     height: min-content;
     margin-bottom: 110px;
 }
+.eventBodyCard{
+    background: white;
+    opacity: .9;
+    color: black;
+    text-align: center;
+}
+
 .eventText{
     color:black;
     text-align: center;
