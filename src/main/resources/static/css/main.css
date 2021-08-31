@@ -21,7 +21,7 @@ h1
     padding: 10px;
     border-radius: 10px;
     border: solid black;
-    margin: 10px 10px 95px 10px;
+    margin: 10px;
     font-size: 30px;
     background-color: lightskyblue;
     color: black;
@@ -208,6 +208,11 @@ footer a {
     outline: none;
 }
 
+.btn-hover.color-3 {
+    background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
+    box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+}
+
 .btn-hover.color-7 {
     background-image: linear-gradient(to right, #6253e1, #852D91, #A3A1FF, #F24645);
     box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);
@@ -218,6 +223,10 @@ footer a {
 .btn-hover.color-8 {
     background-image: linear-gradient(to right, #29323c, #485563, #2b5876, #4e4376);
     box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}
+
+.btn-hover.color-11 {
+    background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
 }
 /*end of logout button and navbar*/
 
@@ -399,6 +408,32 @@ span.psw {
 
 .bio {
     font-size: small;
+}
+
+.eventsHeaderEvent{
+    background-color: rgb(183, 132, 188);
+    text-align: center;
+}
+.eventBody{
+    background: white;
+    opacity: .9;
+    color: black;
+    height: min-content;
+    margin-bottom: 110px;
+}
+.eventText{
+    color:black;
+    text-align: center;
+}
+
+.organizationHeader{
+    background-color: rgb(162, 190, 134);
+    text-align: center;
+}
+
+.userHeader{
+    background-color: rgb(126, 132, 247);
+    text-align: center;
 }
 
 /*.modal {*/

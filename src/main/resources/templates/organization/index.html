@@ -8,16 +8,17 @@
 <body class="createBody">
 <!--Display all orgs-->
 <div class="w3-card-4 w3-margin-center w3-round-xlarge" th:each="organization: ${organizations}">
-	<div class="w3-center w3-green w3-border">
-		<h2><a th:text="${organization.getOrgName()}"
+	<div class="organizationHeader">
+		<h2 class="m-0"><a th:text="${organization.getOrgName()}"
 		       th:href="@{/organization/{id}/show(id=${organization.getId()})}"></a></h2>
 	</div>
-	<p th:text="${organization.getAddress()}" class="text-black text-center m-auto"></p>
-	<p th:text="${organization.getCity() + ', ' + organization.getState().toUpperCase() + ' ' + organization.getZip()}"
-	   class="text-black text-center m-auto"></p>
-	<p th:text="${organization.getPhone()}" class="text-black text-center m-auto"></p>
-	<p th:text="${organization.getEmail()}" class="text-black text-center m-auto"></p>
-
+	<div class="eventBody">
+		<p th:text="${organization.getAddress()}" class="eventText"></p>
+		<p th:text="${organization.getCity() + ', ' + organization.getState().toUpperCase() + ' ' + organization.getZip()}"
+		   class="eventText"></p>
+		<p th:text="${organization.getPhone()}" class="eventText"></p>
+		<p th:text="${organization.getEmail()}" class="eventText"></p>
+	</div>
 </div>
 
 </body>
