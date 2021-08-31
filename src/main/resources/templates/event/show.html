@@ -30,7 +30,7 @@
 <!--        Event card-->
         <div th:object="${event}" class="w3-card-4 w3-margin-center w3-round-xlarge">
             <div class="eventsHeaderEvent">
-                <h3 th:text="${event.title.toUpperCase()}"></h3>
+                <h3 class="m-0" th:text="${event.title.toUpperCase()}"></h3>
             </div>
             <div class="eventBody m-0">
                 <p class="eventText" th:text="${'Description: ' + event.description}"></p>

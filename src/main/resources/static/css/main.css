@@ -23,10 +23,11 @@ h1
 
 .topnav {
     background-color: black;
+    height: 60px;
 }
 
 .fa-search {
-margin-top: 20px;
+margin-top: 14px;
     margin-left: 8px;
     color: white;
     font-size: 25px;
@@ -35,12 +36,7 @@ margin-top: 20px;
 #quote
 {
     width: auto;
-    padding: 10px;
-    border-radius: 10px;
-    border: solid black;
-    margin: 10px;
-    font-size: 30px;
-    background-color: rgb(248, 177, 215);
+    font-size: 15px;
     color: black;
     justify-content: center;
     text-align: center;
@@ -86,11 +82,12 @@ margin-top: 20px;
     /*font-weight: bold;*/
     font-size: x-large;
     text-align: center;
-    padding:20px;
+    padding:0;
     position:relative;
     background: rgba(237, 244, 248, 0.8);
     border-radius: 5%;
     border: whitesmoke 5px;
+    margin-bottom: 0;
 }
 
 
@@ -149,6 +146,14 @@ footer a {
     text-decoration:none;
 }
 
+
+
+.welcomeImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
 
 
 .loginButton {
@@ -310,6 +315,9 @@ span.psw {
 .userHeader{
     background-color: rgb(126, 132, 247);
     text-align: center;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+
 }
 
 .modal {
