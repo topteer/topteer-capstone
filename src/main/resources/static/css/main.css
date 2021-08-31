@@ -21,7 +21,7 @@ h1
     padding: 10px;
     border-radius: 10px;
     border: solid black;
-    margin: 10px;
+    margin: 10px 10px 95px 10px;
     font-size: 30px;
     background-color: lightskyblue;
     color: black;
@@ -122,8 +122,13 @@ h1
 }
 
 .footer {
-    position:fixed;bottom:0;left:0;right:0;height:30px;
-    width: 100%;
+    position:fixed;bottom:0;left:auto;right:auto;height:30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
 }
 
 /* Taller footer on small screens */
