@@ -4,7 +4,7 @@
         <title>Event</title>
         <link th:replace="partials/header.html :: header"/>
     </head>
-    <body class="profileBody">
+    <body class="createBody">
         <nav th:replace="partials/navbar.html :: navbar"></nav>
         <div class="wrapper">
             <div id="myModal" class="modal">
@@ -43,7 +43,7 @@
                 <p class="eventText mb-0" th:text="${'Volunteer hours: ' + event.hours}"></p>
             </div>
 <!--            Delete button-->
-            <form th:if="${isEventOwner}" class="eventBody text-center m-0" th:action="@{/event/{id}/delete(id = ${event.id})}" method="post" th:object="${event}">
+            <form th:if="${isEventOwner}" class="eventBodyCard text-center m-0" th:action="@{/event/{id}/delete(id = ${event.id})}" method="post" th:object="${event}">
                 <button class="btn-hover color-11" type="submit" th:value="*{id}" name="deleteEvent">Delete</button>
             </form>
 <!--           Message if already registered-->
@@ -51,7 +51,7 @@
                 <p class="eventBody text-danger text-center">You have already registered for this event :)</p>
             </div>
 <!--            Register button-->
-            <form method="post" class="eventBody text-center" th:action="@{/event/{id}/register(id = ${event.id})}" th:if="${!alreadyRegistered}">
+            <form method="post" class="eventBodyCard text-center" th:action="@{/event/{id}/register(id = ${event.id})}" th:if="${!alreadyRegistered}">
                 <button class="btn-hover color-3" type="submit" name="registerEvent">Register</button>
             </form>
         </div>
@@ -61,11 +61,11 @@
     <div class="eventsHeaderEvent">
         <h3 class="m-0" th:text="Volunteers"></h3>
     </div>
-    <div class="eventBody">
-        <form method="post" class="row" th:action="@{/sendText/to/{id}(id=${user.id})}"
+    <div class="eventBodyCard">
+        <form method="post" class="d-flex align-items-center" th:action="@{/sendText/to/{id}(id=${user.id})}"
               th:each="user: ${event.getEventvolunteer()}">
             <a th:href="@{/users/{id}/profile(id=${user.id})}" class="col-4 m-1"><label class="eventText" th:text="${user.firstName} + ' ' + ${user.lastName}"></label></a>
-            <input class="col-3 m-1 eventText" type="checkbox" th:value="${user.id}">
+            <input class="col-3 m-1 checkbox" type="checkbox" th:value="${user.id}">
             <button type="submit" class="btn-hover color-3 col-3 m-1" name="eventCompleted">Submit</button>
         </form>
     </div>
