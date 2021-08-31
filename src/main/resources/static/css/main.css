@@ -15,6 +15,17 @@ h1
     color: #6253e1;
 }
 
+.topnav {
+    background-color: black;
+}
+
+.fa-search {
+margin-top: 20px;
+    margin-left: 8px;
+    color: white;
+    font-size: 25px;
+}
+
 #quote
 {
     width: auto;
@@ -27,9 +38,9 @@ h1
     color: black;
 }
 
-.wrapper {
-    min-height: calc(100vh - 110px);
-}
+/*.wrapper {*/
+/*    min-height: calc(100vh - 110px);*/
+/*}*/
 
 .titles{
     background: lightblue;
@@ -239,6 +250,13 @@ footer a {
     background-image: linear-gradient(to right, #29323c, #485563, #2b5876, #4e4376);
     box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
 }
+/*search button*/
+
+.btn-hover.color-9 {
+    background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+}
+
 /*end of logout button and navbar*/
 
 
@@ -279,43 +297,43 @@ span.psw {
 }
 
 /* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-}
+/*.modal {*/
+/*    display: none; !* Hidden by default *!*/
+/*    position: fixed; !* Stay in place *!*/
+/*    z-index: 1; !* Sit on top *!*/
+/*    left: 0;*/
+/*    top: 0;*/
+/*    width: 100%; !* Full width *!*/
+/*    height: 100%; !* Full height *!*/
+/*    overflow: auto; !* Enable scroll if needed *!*/
+/*    background-color: rgb(0,0,0); !* Fallback color *!*/
+/*    background-color: rgba(0,0,0,0.4); !* Black w/ opacity *!*/
+/*    padding-top: 60px;*/
+/*}*/
 
 /* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-}
+/*.modal-content {*/
+/*    background-color: #fefefe;*/
+/*    margin: 5% auto 15% auto; !* 5% from the top, 15% from the bottom and centered *!*/
+/*    border: 1px solid #888;*/
+/*    width: 80%; !* Could be more or less, depending on screen size *!*/
+/*}*/
 
 /* The Close Button (x) */
-.close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-}
+/*.close {*/
+/*    position: absolute;*/
+/*    right: 25px;*/
+/*    top: 0;*/
+/*    color: #000;*/
+/*    font-size: 35px;*/
+/*    font-weight: bold;*/
+/*}*/
 
-.close:hover,
-.close:focus {
-    color: red;
-    cursor: pointer;
-}
+/*.close:hover,*/
+/*.close:focus {*/
+/*    color: red;*/
+/*    cursor: pointer;*/
+/*}*/
 
 /* Add Zoom Animation */
 .animate {
@@ -421,64 +439,64 @@ span.psw {
     font-size: small;
 }
 
-/*.modal {*/
-/*    display: none; !* Hidden by default *!*/
-/*    position: fixed; !* Stay in place *!*/
-/*    z-index: 1; !* Sit on top *!*/
-/*    left: 0;*/
-/*    top: 0;*/
-/*    width: 100%; !* Full width *!*/
-/*    height: 100%; !* Full height *!*/
-/*    overflow: auto; !* Enable scroll if needed *!*/
-/*    background-color: rgb(0,0,0); !* Fallback color *!*/
-/*    background-color: rgba(0,0,0,0.4); !* Black w/ opacity *!*/
-/*}*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 
-/*!* Modal Content/Box *!*/
-/*.modal-content {*/
-/*    background-color: #fefefe;*/
-/*    margin: 15% auto; !* 15% from the top and centered *!*/
-/*    padding: 20px;*/
-/*    border: 1px solid #888;*/
-/*    width: 80%; !* Could be more or less, depending on screen size *!*/
-/*}*/
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
 
-/*!* The Close Button *!*/
-/*.close {*/
-/*    color: #aaa;*/
-/*    float: right;*/
-/*    font-size: 28px;*/
-/*    font-weight: bold;*/
-/*}*/
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
 
-/*.close:hover,*/
-/*.close:focus {*/
-/*    color: black;*/
-/*    text-decoration: none;*/
-/*    cursor: pointer;*/
-/*}*/
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 
-/** {*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*}*/
+* {
+    margin: 0;
+    padding: 0;
+}
 
-/*.layer1_class {*/
-/*    position: absolute;*/
-/*    z-index: 1;*/
-/*    top: 100px;*/
-/*    left: 50%;*/
-/*    -webkit-transform: translateX(-50%);*/
-/*    transform: translateX(-50%);*/
-/*    visibility: visible;*/
-/*}*/
-/*.layer2_class {*/
-/*    position: absolute;*/
-/*    z-index: 2;*/
-/*    top: 10px;*/
-/*    left: 10px;*/
-/*    visibility: hidden*/
-/*}*/
-/*.hidden{*/
-/*    display: none;*/
-/*}*/
+.layer1_class {
+    position: absolute;
+    z-index: 1;
+    top: 100px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    visibility: visible;
+}
+.layer2_class {
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    left: 10px;
+    visibility: hidden
+}
+.hidden{
+    display: none;
+}
