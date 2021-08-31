@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+
 h1
 {
     font-size: 200px;
@@ -520,6 +522,7 @@ span.psw {
 * {
     margin: 0;
     padding: 0;
+    font-family: 'M PLUS Rounded 1c',"Times New Roman", Times, serif;
 }
 
 .layer1_class {
@@ -540,4 +543,12 @@ span.psw {
 }
 .hidden{
     display: none;
+}
+@font-face {
+    font-family: 'M PLUS Rounded 1c', 'phenomenalight';
+    src: url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+    src: url('https://top-teer-capstone/src/main/resources/static/css/main.css/phenomena-light-webfont.eot') format('woff2'),
+    url('https://top-teer-capstone/src/main/resources/static/css/main.css/phenomena-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
