@@ -29,40 +29,40 @@
 <div class="container">
 
 	<div class="w3-card-4 w3-margin-center w3-round-xlarge">
-		<div class="w3-center w3-blue w3-border">
-			<h2>Create An Account</h2>
+		<div class="userHeader">
+			<h2 class="m-0">Create An Account</h2>
 		</div>
-		<form class="w3-center container w3-white w3-border" th:action="@{/register}" method="POST" th:object="${user}">
-			<p>
-				<label class="w3-text-blue"><b>First Name</b></label>
-				<input width="25" class="w3-input w3-border w3-sand" name="first" type="text" placeholder="First Name"
-				       id="firstname" th:field="*{firstName}"/></p>
-			<p>
-				<label class="w3-text-blue"><b>Last Name</b></label>
-				<input class="w3-input w3-border w3-sand" name="last" type="text" placeholder="Last Name" id="lastname"
-				       th:field="*{lastName}"/></p>
-			<p>
-				<label class="w3-text-blue"><b>Username</b></label>
-				<input class="w3-input w3-border w3-sand" name="last" type="text" placeholder="Username" id="username"
-				       th:field="*{username}"/></p>
-			<p>
-				<label class="w3-text-blue"><b>Email</b></label>
-				<input class="w3-input w3-border w3-sand" name="last" type="text" placeholder="Email" id="email"
-				       th:field="*{email}"/></p>
-			<p>
-			<p>
-				<label class="w3-text-blue"><b>Password</b></label>
-				<input class="w3-input w3-border w3-sand" name="password" type="password" placeholder="Password"
-				       id="password" minlength="6" th:field="*{password}"/></p>
-			<p>
-			<p>
-				<label class="w3-text-blue"><b>Confirm Password</b></label>
-				<input class="w3-input w3-border w3-sand" name="password-confirm" type="password"
-				       placeholder="Confirm Password" id="password-confirm" minlength="6"/></p>
-			<p>
-				<button class="w3-btn w3-blue">Register</button>
-			</p>
-		</form>
+		<div class="eventBody">
+			<form th:action="@{/register}" method="POST" th:object="${user}">
+				<p class="eventText">
+					<label>First Name</label>
+					<input width="25" class="w3-input w3-border mx-2" name="first" type="text" placeholder="First Name"
+						   id="firstname" th:field="*{firstName}"/></p>
+				<p class="eventText">
+					<label>Last Name</label>
+					<input class="w3-input w3-border mx-2" name="last" type="text" placeholder="Last Name" id="lastname"
+						   th:field="*{lastName}"/></p>
+				<p class="eventText">
+					<label>Username</label>
+					<input class="w3-input w3-border mx-2" name="last" type="text" placeholder="Username" id="username"
+						   th:field="*{username}"/></p>
+				<p class="eventText">
+					<label>Email</label>
+					<input class="w3-input w3-border mx-2" name="last" type="text" placeholder="Email" id="email"
+						   th:field="*{email}"/></p>
+				<p class="eventText">
+					<label>Password</label>
+					<input class="w3-input w3-border mx-2" name="password" type="password" placeholder="Password"
+						   id="password" minlength="6" th:field="*{password}"/></p>
+				<p class="eventText">
+					<label>Confirm Password</label>
+					<input class="w3-input w3-border" name="password-confirm" type="password"
+						   placeholder="Confirm Password" id="password-confirm" minlength="6"/></p>
+				<p>
+					<button class="btn-hover color-9 eventText">Register</button>
+				</p>
+			</form>
+		</div>
 	</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
