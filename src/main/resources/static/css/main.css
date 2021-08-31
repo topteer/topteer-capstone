@@ -270,6 +270,12 @@ footer a {
 
 /*end of logout button and navbar*/
 
+.welcomeImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
 
 .loginButton {
     font-size: xx-large;
