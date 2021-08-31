@@ -7,8 +7,9 @@
 <nav th:fragment="navbar">
     <div class="topnav">
         <div class="d-flex h-10 justify-content-between">
+            <div class="d-flex h-10 justify-content-around align-items-center">
             <a th:href="@{/}"><img src="../../static/img/top-teer-logo.png" th:src="@{/img/top-teer-logo.png}"
-                                   height="80px" width="80px" alt="The Logo"></a>
+                                   height="60px" width="60px" alt="The Logo"></a>
             <a sec:authorize="!isAuthenticated()" th:href="@{/register}">
                 <button class="btn-hover color-8">Register</button>
             </a>
@@ -20,6 +21,11 @@
                     <button class="btn-hover color-8">Logout</button>
                 </form>
             </a>
+            <div>
+                <i class="fas fa-search" id="searchBar"></i>
+            </div>
+        </div>
+            <div class="d-flex h-10 justify-content-end align-items-center">
             <a sec:authorize="isAuthenticated()" th:href="@{/event}">
                 <button class="btn-hover color-8">All Events</button>
             </a>
@@ -32,24 +38,11 @@
             <a th:href="@{/about-us}">
                 <button class="btn-hover color-8">About Us</button>
             </a>
+            </div>
         </div>
-
-        <!--            ======== search modal ======= -->
-        <div id="search-modal">
-            <form th:action="@{/search}" method="post">
-                <div>
-                    <label for="search-params"></label><select id="search-params" name="search-params">
-                    <option value="2">Organizations</option>
-                    <option value="1">Events</option>
-                </select>
-                    <label for="query"></label><input class="nosir" id="query" name="query" type="text"
-                                                      placeholder="Search"/>
-                    <button class="yessir" type="submit" value="submit">Search</button>
-                </div>
-            </form>
-        </div>
-
     </div>
 </nav>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{/js/modal.js}"> </script>
 </body>
 </html>
