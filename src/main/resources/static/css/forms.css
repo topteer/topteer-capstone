@@ -14,7 +14,7 @@
 .createBody {
     background-image: url('../img/hands.jpeg');
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
     background-attachment: fixed;
 }
 
