@@ -79,7 +79,7 @@ h1
 .homeBody {
     background-image: url('../img/hands2.png');
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
     background-attachment: fixed;
 }
 
@@ -87,6 +87,11 @@ h1
     /*font-weight: bold;*/
     font-size: x-large;
     text-align: center;
+    padding:20px;
+    position:relative;
+    background: rgba(237, 244, 248, 0.8);
+    border-radius: 5%;
+    border: whitesmoke 5px;
 }
 
 
@@ -357,9 +362,9 @@ span.psw {
 }
 
 .aboutUsBody {
-    background-image: url('../img/drawings.jpeg');
+    background-image: url('../img/blue.png');
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
     background-attachment: fixed;
 }
 
