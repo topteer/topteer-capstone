@@ -481,6 +481,9 @@ span.psw {
 .userHeader{
     background-color: rgb(126, 132, 247);
     text-align: center;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+
 }
 
 .modal {
