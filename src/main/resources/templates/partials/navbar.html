@@ -9,23 +9,10 @@
         <div class="d-flex h-10 justify-content-between">
             <div class="d-flex h-10 justify-content-around align-items-center">
             <a th:href="@{/}"><img src="../../static/img/top-teer-logo.png" th:src="@{/img/top-teer-logo.png}"
-                                   height="60px" width="60px" alt="The Logo"></a>
+                                   height="35px" width="35px" alt="The Logo"></a>
             <a sec:authorize="!isAuthenticated()" th:href="@{/register}">
                 <button class="btn-hover color-8">Register</button>
             </a>
-            <a sec:authorize="!isAuthenticated()" th:href="@{/login}">
-                <button class="btn-hover color-8">Log-in</button>
-            </a>
-            <a sec:authorize="isAuthenticated()">
-                <form th:action="@{/logout}" th:method="post">
-                    <button class="btn-hover color-8">Logout</button>
-                </form>
-            </a>
-            <div>
-                <i class="fas fa-search" id="searchBar"></i>
-            </div>
-        </div>
-            <div class="d-flex h-10 justify-content-end align-items-center">
             <a sec:authorize="isAuthenticated()" th:href="@{/event}">
                 <button class="btn-hover color-8">All Events</button>
             </a>
@@ -35,12 +22,29 @@
             <a sec:authorize="isAuthenticated()" th:href="@{/users/profile}">
                 <button class="btn-hover color-8">Profile</button>
             </a>
-            <a th:href="@{/about-us}">
-                <button class="btn-hover color-8">About Us</button>
-            </a>
+            </div>
+                <div class="d-flex h-10 justify-content-end align-items-center">
+                    <div>
+                    <i class="fas fa-search" id="searchBar"></i>
+                </div>
+                <a sec:authorize="!isAuthenticated()" th:href="@{/login}">
+                    <button class="btn-hover color-8">Log-in</button>
+                </a>
+                <a sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" th:method="post">
+                        <button class="btn-hover color-8">Logout</button>
+                    </form>
+                </a>
+
+
+                    <a th:href="@{/about-us}">
+                        <button class="btn-hover color-8">About Us</button>
+                    </a>
+            </div>
+
             </div>
         </div>
-    </div>
+
 </nav>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script type="text/javascript" th:src="@{/js/modal.js}"> </script>
