@@ -30,9 +30,10 @@
     </div>
 </div>
 
-<div class="container">
+<div class="theContainer">
+    <div class="contentWrap">
 
-    <div class="w3-card-4 w3-margin-center w3-round-xlarge">
+    <div class="card-4">
         <div class="eventsHeaderEvent">
             <h2 class="m-0">Create An Event</h2>
         </div>
@@ -40,71 +41,70 @@
         <form class="eventBody" th:action="@{/event/create}" method="post" th:object="${events}">
 
             <div class="form-group">
-                <label class="eventText" for="orgName"><b>Organization Name</b></label>
-                <input width="25" class="w3-input w3-border" id="orgName" name="orgName" th:value="${orgName}" disabled>
-                <input width="25" class="w3-input w3-border" type="hidden" name="orgId" th:value="${orgId}">
+                <label class="eventText" for="orgName"><b>Organization Name</b></label><br>
+                <input class="input" id="orgName" name="orgName" th:value="${orgName}" disabled>
+                <input type="hidden" name="orgId" th:value="${orgId}">
             </div>
 
             <div class="form-group">
                 <label class="eventText" for="eCoord"><b>Event Coordinator</b></label>
-                <input width="25" class="w3-input w3-border" id="eCoord" name="eCoord" th:value="${eCoord}" disabled>
-                <input width="25" class="w3-input w3-border" type="hidden" id="eCoordId" name="eCoordId" th:value="${eCoordId}">
+                <input class="input" id="eCoord" name="eCoord" th:value="${eCoord}" disabled>
+                <input class="input" type="hidden" id="eCoordId" name="eCoordId" th:value="${eCoordId}">
             </div>
 
             <div class="form-group">
                 <label class="eventText" for="title"><b>Title</b></label>
-                <input width="25" class="w3-input w3-border" placeholder="Title"id="title" type="text" th:field="*{title}">
+                <input class="input" placeholder="Title"id="title" type="text" th:field="*{title}">
                 <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
             </div>
 
             <div class="form-group">
                 <label class="eventText" for="description"><b>Description</b></label>
-                <textarea width="25" class="w3-input w3-border" placeholder="What is your event about?"id="description" cols="30" rows="10" th:field="*{description}"></textarea>
+                <textarea class="input" style="resize: none" placeholder="What is your event about?"id="description" cols="30" rows="10" th:field="*{description}"></textarea>
                 <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
             </div>
 
             <div class="form-group">
                 <label class="eventText" for="phone"><b>Phone</b></label>
-                <input width="25" class="w3-input w3-border" placeholder="Phone"id="phone" th:field="*{phone}"/>
+                <input class="input" placeholder="Phone"id="phone" th:field="*{phone}"/>
                 <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
             </div>
 
             <div class="form-group">
                 <label class="eventText" for="date"><b>Date</b></label>
-                <input width="25" class="w3-input w3-border" id="date" type="date" th:field="*{date}">
+                <input class="input" id="date" type="date" th:field="*{date}">
                 <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></p>
             </div>
 
             <div class="form-group">
                 <label class="eventText" for="startTime"><b>Start Time</b></label>
-                <input width="25" class="w3-input w3-border" id="startTime" type="time" th:field="*{startTime}">
+                <input class="input" id="startTime" type="time" th:field="*{startTime}">
                 <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('startTime')}" th:errors="*{startTime}"></p>
             </div>
             <div class="form-group">
                 <label class="eventText" for="endTime"><b>End Time</b></label>
-                <input width="25" class="w3-input w3-border" id="endTime" type="time" th:field="*{endTime}"/>
+                <input class="input" id="endTime" type="time" th:field="*{endTime}"/>
                 <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('endTime')}" th:errors="*{endTime}"></p>
             </div>
             <div class="form-group">
                 <label class="eventText" for="location"><b>Location</b></label>
-                <input width="25" class="w3-input w3-border" placeholder="Location" id="location" type="text" th:field="*{location}">
+                <input class="input" placeholder="Location" id="location" type="text" th:field="*{location}">
                 <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('location')}" th:errors="*{location}"></p>
             </div>
 
             <div class="form-group">
                 <label class="eventText" for="hours"><b>Hours</b></label>
-                <input width="25" class="w3-input w3-border" id="hours" type="number" min=".5" step=".5" th:field="*{hours}">
+                <input class="input" id="hours" type="number" min=".5" step=".5" th:field="*{hours}">
             </div>
             <p class="d-flex justify-content-center">
                 <button class="btn-hover color-3 m-2">Create</button>
             </p>
         </form>
     </div>
+    </div>
+    <footer th:replace="partials/footer.html :: footer"></footer>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script type="text/javascript" th:src="@{/js/modal.js}"> </script>
 </body>
-<div>
-    <footer th:replace="partials/footer.html :: footer"></footer>
-</div>
 </html>

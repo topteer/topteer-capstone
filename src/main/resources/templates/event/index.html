@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
-    <head><title>Top-Teer All Events</title>
-        <link th:replace="partials/header.html :: header"/>
+<head><title>Top-Teer All Events</title>
+    <link th:replace="partials/header.html :: header"/>
 
-    </head>
+</head>
 
-    <body class="profileBody">
+<body class="createBody">
+<div class="theContainer">
+    <div class="contentWrap">
         <nav th:replace="partials/navbar.html :: navbar"></nav>
         <div class="wrapper">
             <div id="myModal" class="modal">
@@ -16,7 +18,8 @@
                     </div>
                     <form th:action="@{/search}" method="post">
                         <div class="d-flex align-items-center b-0">
-                            <label for="search-params"></label><select class="nosir" id="search-params" name="search-params">
+                            <label for="search-params"></label><select class="nosir" id="search-params"
+                                                                       name="search-params">
                             <option value="2">Organizations</option>
                             <option value="1">Events</option>
                         </select>
@@ -28,14 +31,16 @@
                 </div>
             </div>
         </div>
-<!--        Display all events-->
-        <div th:each="event: ${events}" class="w3-card-4 w3-margin-center w3-round-xlarge">
+        <!--        Display all events-->
+        <div th:each="event: ${events}" class="card-4">
             <div class="eventsHeaderEvent">
-                <h2 class="m-0"><a th:text="${event.title.toUpperCase()}"  th:href="@{/event/{id}/show (id= ${event.getId()})}"></a></h2>
+                <h2 class="m-0"><a th:text="${event.title.toUpperCase()}"
+                                   th:href="@{/event/{id}/show (id= ${event.getId()})}"></a></h2>
             </div>
-            <div class="eventBody">
+            <div class="eventBodyCard">
                 <p class="eventText" th:text="${'Description: ' + event.description}"></p>
-                <p class="text-black text-center mt-1 mb-2" th:text="${'Coordinator name: ' + event.user.firstName + ' ' + event.user.lastName}"></p>
+                <p class="eventText"
+                   th:text="${'Coordinator name: ' + event.user.firstName + ' ' + event.user.lastName}"></p>
                 <p class="eventText" th:text="${'Phone Number: ' + event.phone}"></p>
                 <p class="eventText" th:text="${'Date: ' + event.date}"></p>
                 <p class="eventText" th:text="${'Start Time: ' + event.startTime}"></p>
@@ -43,12 +48,14 @@
                 <p class="eventText" th:text="${'Location: ' + event.location}"></p>
                 <p class="eventText" th:text="${'Minimum Volunteer Hours: ' + event.hours}"></p>
             </div>
-      </div>
-
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script type="text/javascript" th:src="@{/js/modal.js}"> </script>
-    </body>
-    <div>
-        <footer th:replace="partials/footer.html :: footer"></footer>
+        </div>
     </div>
+    <footer th:replace="partials/footer.html :: footer"></footer>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{/js/modal.js}"></script>
+</body>
+
 </html>
