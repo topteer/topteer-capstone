@@ -35,13 +35,13 @@
         <div class="eventsHeaderEvent">
             <h3 class="m-0" th:text="${event.title.toUpperCase()}"></h3>
         </div>
-        <div class="eventBody m-0">
+        <div class="eventBodyCard m-0">
             <p class="eventText" th:text="${'Description: ' + event.description}"></p>
             <p class="text-black text-center" th:text="${'Event Coordinator: ' + event.user.firstName}"></p>
             <p class="eventText" th:text="${'Phone: ' + event.phone}"></p>
             <p class="eventText" th:text="${'Date: ' + event.date}"></p>
             <p class="eventText" th:text="${'Start Time: ' + event.startTime}"></p>
-            <p class="eventText" th:text="${'End Time' + event.endTime}"></p>
+            <p class="eventText" th:text="${'End Time: ' + event.endTime}"></p>
             <a th:href="@{'https://www.google.com/maps/search/?api=1&query='+${event.location}}" target="_blank"><p
                     class="eventText" th:text="${'Location: ' + event.location}"></p></a>
             <p class="eventText mb-0" th:text="${'Volunteer hours: ' + event.hours}"></p>
@@ -53,7 +53,7 @@
         </form>
         <!--           Message if already registered-->
         <div th:if="${alreadyRegistered}">
-            <p class="eventBody text-danger text-center">You have already registered for this event :)</p>
+            <p class="eventBodyCard text-danger text-center">You have already registered for this event :)</p>
         </div>
         <!--            Register button-->
         <form method="post" class="eventBodyCard text-center" th:action="@{/event/{id}/register(id = ${event.id})}"
@@ -63,7 +63,7 @@
     </div>
     <!--        Volunteer List-->
     <!--        ==== Needs to submit all names that are checked ==== -->
-    <div th:if="${isEventOwner}" class="w3-card-4 w3-margin-center w3-round-xlarge">
+    <div th:if="${isEventOwner}" class="card-4">
         <div class="eventsHeaderEvent">
             <h3 class="m-0" th:text="Volunteers"></h3>
         </div>

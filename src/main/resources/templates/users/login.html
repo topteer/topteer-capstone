@@ -12,13 +12,12 @@
             <div id="myModal" class="modal">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 id="modalHeader">Search for Organizations and Events</h2>
+                        <h2>Search for Organizations and Events</h2>
                         <span class="close">&times;</span>
                     </div>
                     <form th:action="@{/search}" method="post">
-                        <div class="d-flex align-items-center b-0">
-                            <label for="search-params"></label><select class="nosir" id="search-params"
-                                                                       name="search-params">
+                        <div class="b-0">
+                            <label for="search-params"></label><select class="nosir" id="search-params" name="search-params">
                             <option value="2">Organizations</option>
                             <option value="1">Events</option>
                         </select>

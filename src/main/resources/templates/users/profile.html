@@ -32,36 +32,38 @@
         </div>
         <!--profile card-->
         <div class="lineUp">
-            <div class="card-5">
-                <div class="text-center">
-                    <div>
+            <div>
+                <div class="card-5">
+                    <div class="eventBodyCard">
                         <div class="userHeader" th:object="${user}">
                             <h1 th:text="${user.firstName}"></h1>
                             <h1 th:text="${user.lastName}"></h1>
                         </div>
-                        <hr>
+                        <hr class="m-0">
 
-                        <i class="fa fa-address-book-o m-2" style="font-size:24px"
-                           th:text="'&nbsp' + ${user.username}"></i>
+                        <i class="fa fa-address-book-o m-2 text-black" style="font-size:24px" th:text="'&nbsp' + ${user.username}"></i>
                         <br>
-                        <i class="fa fa-envelope-o m-2" style="font-size:24px" th:text="'&nbsp' + ${user.email}"></i>
+                        <i class="fa fa-envelope-o m-2 text-black" style="font-size:24px" th:text="'&nbsp' + ${user.email}"></i><br>
 
-                    </div>
+
                     <a th:href="@{/users/edit}">
                         <button class="btn-hover color-7">Edit Profile</button>
                     </a>
+                    </div>
                 </div>
-            </div>
+                </div>
 
             <!--organization card-->
+            <div>
             <div class="card-5">
-                <h2 class="userHeader" th:text="Organization"></h2>
-                <hr>
+                <div class="eventBodyCard">
+                <h2 class="userHeader m-0" th:text="Organization"></h2>
+                <hr class="m-0">
                 <div th:if="${!nullOrg}">
-                    <h4 th:text="${orgN}"></h4>
+                    <h4 class="eventText" th:text="${orgN}"></h4>
                 </div>
                 <div th:if="${nullOrg}">
-                    <h4><a th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>
+                    <h4><a class="eventText" th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>
                 </div>
                 <br>
                 <br>
@@ -69,20 +71,26 @@
                     <button class="btn-hover color-7">Create Organization</button>
                 </a>
                 <a th:if="${usersOrgId!=0}" th:href="@{/organization/edit}">
-                    <button class="">Edit Organization</button>
+                    <button class="btn-hover color-7">Edit Organization</button>
                 </a>
+                </div>
+            </div>
             </div>
 
             <!--events card-->
+            <div>
             <div class="card-5">
-                <h2 class="userHeader" th:text="Events"></h2>
-                <hr>
+                <div class="eventBodyCard">
+                <h2 class="userHeader m-0" th:text="Events"></h2>
+                <hr class="m-0">
                 <div class="scrollCard">
                     <form th:each="event: ${user.events}">
-                        <h4><a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>
+                        <h4 class="eventText"><a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>
                     </form>
                 </div>
             </div>
+            </div>
+        </div>
         </div>
     </div>
     <footer th:replace="partials/footer.html :: footer"></footer>

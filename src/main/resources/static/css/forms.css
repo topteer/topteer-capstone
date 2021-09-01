@@ -64,3 +64,13 @@
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
 }
+
+.card-6{
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    border: 2px solid lightgray;
+    width: 500px;
+    margin: 230px 15px 15px 15px ;
+    color: white;
+}
