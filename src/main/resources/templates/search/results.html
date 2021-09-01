@@ -5,35 +5,14 @@
     <title>Search results</title>
     <link th:replace="partials/header.html :: header"/>
 </head>
-<nav th:replace="partials/navbar.html :: navbar"></nav>
-<!--<div class="wrapper">-->
-<!--    <div id="myModal" class="modal">-->
-<!--        <div class="modal-content">-->
-<!--            <div class="modal-header">-->
-<!--                <h2 id="modalHeader">Search for Organizations and Events</h2>-->
-<!--                <span class="close">&times;</span>-->
-<!--            </div>-->
-<!--            <form th:action="@{/search}" method="post">-->
-<!--                <div class="d-flex align-items-center b-0">-->
-<!--                    <label for="search-params"></label><select class="nosir" id="search-params" name="search-params">-->
-<!--                    <option value="2">Organizations</option>-->
-<!--                    <option value="1">Events</option>-->
-<!--                </select>-->
-<!--                    <label for="query"></label><input class="nosir mx-2" id="query" name="query" type="text"-->
-<!--                                                      placeholder="Search"/>-->
-<!--                    <button class="btn-hover color-9 m-0" type="submit" value="submit">Search</button>-->
-<!--                </div>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<body class="formBody">
-<main class="card-7">
 
+
+<body class="formBody">
+<nav th:replace="partials/navbar.html :: navbar"></nav>
+<main class="card-7">
 
     <div class="w3-center w3-blue w3-border resultCard">
         <h1>This is what we found!</h1>
-
         <!--    =========== Search results (From home controller) for loop  ==========-->
         <div class="w3-center container w3-white w3-border" th:each="event : ${searchResults}">
             <a th:href="@{'/event/' + ${event.id} + '/show'}">
@@ -44,7 +23,6 @@
                     <p th:text="${event.location}"></p>
                 </div>
         </div>
-
 
         <!--    Org Search Results-->
         <div class="w3-center container w3-white w3-border" th:each="organization : ${searchResults2}">
