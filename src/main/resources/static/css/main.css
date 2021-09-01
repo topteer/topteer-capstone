@@ -309,6 +309,8 @@ span.psw {
 .userHeader{
     background-color: rgb(126, 132, 247);
     text-align: center;
+    font-size: 30px;
+    font-family: "M PLUS Rounded 1c", sans-serif;
 }
 
 .modal {
@@ -353,6 +355,7 @@ span.psw {
     margin: 0;
     padding: 0;
     font-family: 'M PLUS Rounded 1c',"Times New Roman", Times, serif;
+    font-size: x-large;
 }
 
 .layer1_class {
@@ -379,6 +382,6 @@ span.psw {
     src: url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
     src: url('https://top-teer-capstone/src/main/resources/static/css/main.css/phenomena-light-webfont.eot') format('woff2'),
     url('https://top-teer-capstone/src/main/resources/static/css/main.css/phenomena-light-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+    font-weight: auto;
+    font-style: auto;
 }

@@ -1,101 +1,105 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head><title>Top-Teer profile page</title>
-    <link th:replace="partials/header.html :: header"/>
+	<link th:replace="partials/header.html :: header"/>
 
 </head>
 
 <body class="createBody">
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 <div class="theContainer">
-    <div class="contentWrap">
-        <div class="wrapper">
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 id="modalHeader">Search for Organizations and Events</h2>
-                        <span class="close">&times;</span>
-                    </div>
-                    <form th:action="@{/search}" method="post">
-                        <div class="d-flex align-items-center b-0">
-                            <label for="search-params"></label><select class="nosir" id="search-params"
-                                                                       name="search-params">
-                            <option value="2">Organizations</option>
-                            <option value="1">Events</option>
-                        </select>
-                            <label for="query"></label><input class="nosir mx-2" id="query" name="query" type="text"
-                                                              placeholder="Search"/>
-                            <button class="btn-hover color-9 m-0" type="submit" value="submit">Search</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+	<div class="contentWrap">
+		<div class="wrapper">
+			<div id="myModal" class="modal">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2 id="modalHeader">Search for Organizations and Events</h2>
+						<span class="close">&times;</span>
+					</div>
+					<form th:action="@{/search}" method="post">
+						<div class="d-flex align-items-center b-0">
+							<label for="search-params"></label><select class="nosir" id="search-params"
+							                                           name="search-params">
+							<option value="2">Organizations</option>
+							<option value="1">Events</option>
+						</select>
+							<label for="query"></label><input class="nosir mx-2" id="query" name="query" type="text"
+							                                  placeholder="Search"/>
+							<button class="btn-hover color-9 m-0" type="submit" value="submit">Search</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 
-        <!--profile card-->
-        <div class="lineUp">
-            <div>
-                <div class="card-5">
-                    <div class="eventBodyCard">
-                        <div class="userHeader" th:object="${user}">
-                            <h1 th:text="${user.firstName}"></h1>
-                            <h1 th:text="${user.lastName}"></h1>
-                        </div>
-                        <hr class="m-0">
+		<!--profile card-->
+		<div class="lineUp">
+			<div>
+				<div class="card-5">
+					<div class="eventBodyCard">
+						<div class="userHeader m-0" th:object="${user}">
+							<h1 class="userHeader m-0" th:text="${user.firstName}"></h1>
+							<h1 class="userHeader m-0" th:text="${user.lastName}"></h1>
+						</div>
+						<hr class="m-0">
 
-                        <i class="fa fa-address-book-o m-2 text-black" style="font-size:24px" th:text="'&nbsp' + ${user.username}"></i>
-                        <br>
-                        <i class="fa fa-envelope-o m-2 text-black" style="font-size:24px" th:text="'&nbsp' + ${user.email}"></i><br>
+						<i class="fa fa-address-book-o m-2 text-black" style="font-size:24px;font-family:'M PLUS Rounded 1c',sans-serif;"
+						   th:text="'&nbsp' + ${user.username}"></i>
+						<br>
+						<i class="fa fa-envelope-o m-2 text-black" style="font-size:24px;font-family:'M PLUS Rounded 1c', sans-serif"
+						   th:text="'&nbsp' + ${user.email}"></i><br>
 
 
-                    <a th:href="@{/users/edit}">
-                        <button class="btn-hover color-7">Edit Profile</button>
-                    </a>
-                    </div>
-                </div>
-                </div>
+						<a th:href="@{/users/edit}">
+							<button class="btn-hover color-7">Edit Profile</button>
+						</a>
+					</div>
+				</div>
+			</div>
 
-            <!--organization card-->
-            <div>
-            <div class="card-5">
-                <div class="eventBodyCard">
-                <h2 class="userHeader m-0" th:text="Organization"></h2>
-                <hr class="m-0">
-                <div th:if="${!nullOrg}">
-                    <h4 class="eventText" th:text="${orgN}"></h4>
-                </div>
-                <div th:if="${nullOrg}">
-                    <h4><a class="eventText" th:text="${orgN}" th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>
-                </div>
-                <br>
-                <br>
-                <a th:if="${usersOrgId==0}" th:href="@{/organization/create}">
-                    <button class="btn-hover color-7">Create Organization</button>
-                </a>
-                <a th:if="${usersOrgId!=0}" th:href="@{/organization/edit}">
-                    <button class="btn-hover color-7">Edit Organization</button>
-                </a>
-                </div>
-            </div>
-            </div>
+			<!--organization card-->
+			<div>
+				<div class="card-5">
+					<div class="eventBodyCard">
+						<h1 class="userHeader m-0" th:text="Organization"></h1>
+						<hr class="m-0">
+						<div th:if="${!nullOrg}">
+							<h4 class="eventText" th:text="${orgN}"></h4>
+						</div>
+						<div th:if="${nullOrg}">
+							<h4><a class="eventText" style="font-size:24px" th:text="${orgN}"
+							       th:href="@{/organization/{id}/show(id=${usersOrgId})}"></a></h4>
+						</div>
+						<br>
+<!--						<br>-->
+						<a th:if="${usersOrgId==0}" th:href="@{/organization/create}">
+							<button class="btn-hover color-7">Create Organization</button>
+						</a>
+						<a th:if="${usersOrgId!=0}" th:href="@{/organization/edit}">
+							<button class="btn-hover color-7">Edit Organization</button>
+						</a>
+					</div>
+				</div>
+			</div>
 
-            <!--events card-->
-            <div>
-            <div class="card-5">
-                <div class="eventBodyCard">
-                <h2 class="userHeader m-0" th:text="Events"></h2>
-                <hr class="m-0">
-                <div class="scrollCard">
-                    <form th:each="event: ${user.events}">
-                        <h4 class="eventText"><a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>
-                    </form>
-                </div>
-            </div>
-            </div>
-        </div>
-        </div>
-    </div>
-    <footer th:replace="partials/footer.html :: footer"></footer>
+			<!--events card-->
+			<div>
+				<div class="card-5">
+					<div class="eventBodyCard">
+						<h2 class="userHeader m-0" th:text="Events"></h2>
+						<hr class="m-0">
+						<div class="scrollCard">
+							<form th:each="event: ${user.events}">
+								<h4 class="eventText"><a th:href="@{/event/{id}/show(id=${event.id})}"
+								                         th:text="${event.title}"></a></h4>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="partials/footer.html :: footer"></footer>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
