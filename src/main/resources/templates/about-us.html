@@ -7,27 +7,9 @@
 
 <body class="aboutUsBody">
 <nav th:replace="partials/navbar.html :: navbar"></nav>
-<div class="wrapper">
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalHeader">Search for Organizations and Events</h2>
-                <span class="close">&times;</span>
-            </div>
-            <form th:action="@{/search}" method="post">
-                <div class="d-flex align-items-center b-0">
-                    <label for="search-params"></label><select class="nosir" id="search-params" name="search-params">
-                    <option value="2">Organizations</option>
-                    <option value="1">Events</option>
-                </select>
-                    <label for="query"></label><input class="nosir mx-2" id="query" name="query" type="text"
-                                                      placeholder="Search"/>
-                    <button class="btn-hover color-9 m-0" type="submit" value="submit">Search</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+
+<img src="../static/img/meet.png" class="welcomeImage" th:src="@{/img/meet.png}" alt="aboutUs"/>
+
 <div class="container">
 
     <div class="container mx-auto">
@@ -35,7 +17,7 @@
 
             <!-- Team item -->
             <div class="col-xl-2 col-sm-6 mb-5">
-                <div class="border border-primary bg-white rounded shadow-sm py-5 px-4"><img src="../img/Evan.jpeg" alt="" height="200px" width="200px" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <div class="border border-primary bg-light rounded shadow-sm py-5 px-4"><img src="../img/Evan.jpeg" alt="" height="200px" width="200px" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                     <h5 class="mb-0">Evan Williams</h5><span class="small text-uppercase text-muted">Back-End</span>
                     <h6 class="bio">Marine Corps. Veteran with a passion for science, innovation, and technology</h6>
                     <br>
@@ -49,7 +31,7 @@
 
             <!-- Team item -->
             <div class="col-xl-2 col-sm-6 mb-5">
-                <div class="border border-primary bg-white rounded shadow-sm py-5 px-4"><img src="../img/Jeff.jpeg" alt="" height="200px" width="200px" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <div class="border border-primary bg-light rounded shadow-sm py-5 px-4"><img src="../img/Jeff.jpeg" alt="" height="200px" width="200px" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                     <h5 class="mb-0">Jeffrey Rowe</h5><span class="small text-uppercase text-muted">Back-End</span>
                     <h6 class="bio">Software developer and Retired US Army Senior Non-Commissioned Officer</h6>
                     <br>
@@ -62,7 +44,7 @@
             </div><!-- End -->
 
             <div class="col-xl-2 col-sm-6 mb-5">
-                <div class="border border-primary bg-white rounded shadow-sm py-5 px-4"><img src="../img/Joseph.jpeg" alt="" height="200px" width="200px" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <div class="border border-primary bg-light rounded shadow-sm py-5 px-4"><img src="../img/Joseph.jpeg" alt="" height="200px" width="200px" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                     <h5 class="mb-0">Joseph Hopkins</h5><span class="small text-uppercase text-muted">Back-End/Designer</span>
                     <h6 class="bio">Software developer and ex military police K9 handler in the U.S. Marine Corps</h6>
                     <ul class="social mb-0 list-inline mt-3">
@@ -74,7 +56,7 @@
             </div><!-- End -->
 
             <div class="col-xl-2 col-sm-6 mb-5">
-                <div class="border border-primary bg-white rounded shadow-sm py-5 px-4"><img src="../img/Luke.jpeg" alt="" height="200px" width="200px" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <div class="border border-primary bg-light rounded shadow-sm py-5 px-4"><img src="../img/Luke.jpeg" alt="" height="200px" width="200px" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                     <h5 class="mb-0">Luke Curran</h5><span class="small text-uppercase text-muted">Back-End</span>
                     <h6 class="bio">Ex Water Softener Technician for 10 years now transitioned to a software developer</h6>
                     <br>
@@ -88,7 +70,7 @@
 
             <!-- Team item -->
             <div class="col-xl-2 col-sm-6 mb-5">
-                <div class="border border-primary bg-white rounded shadow-sm py-5 px-4"><img src="../img/Roger.jpeg" alt="" height="200px" width="200px" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <div class="border border-primary bg-light rounded shadow-sm py-5 px-4"><img src="../img/Roger.jpeg" alt="" height="200px" width="200px" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                     <h5 class="mb-0">Roger Sandoval</h5><span class="small text-uppercase text-muted">Designer</span>
                     <h6 class="bio">Spent most of my life as a barista serving up smiles. Now I'm a software developer</h6>
                     <br>
@@ -101,23 +83,6 @@
             </div><!-- End -->
         </div>
     </div>
-  
-            <div class="container w-100">
-                <div class="cardAboutMe w-100">
-                    <div class="card-horizontal">
-                        <div class="img-square-wrapper">
-                            <img src="../static/img/Top-TeerLogo-BlackOnWhite.png" width="150" height="175" alt="..." th:src="@{/img/Top-TeerLogo-BlackOnWhite.png}"/>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Top-Teer</h4>
-                            <p class="card-text">Top-Teer is an event coordinating application that puts volunteers in touch with opportunities led by the event coordinator. Making the process of volunteering in the community more accessible to application users. Top-Teer was created using Spring Boot, Spring Boot Security, Java, Javascript, MySql, HTML, CSS, Bootstrap and SendGrid API.</p>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">For educational purposes.</small>
-                    </div>
-                </div>
-            </div>
 
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
