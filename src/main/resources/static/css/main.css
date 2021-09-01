@@ -365,3 +365,7 @@ span.psw {
 .nameFS {
     font-size: 18px;
 }
+
+.setHeight {
+    height: 600px !important;
+}
