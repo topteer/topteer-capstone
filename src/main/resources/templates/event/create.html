@@ -8,27 +8,27 @@
 <body class="createBody">
 
 <nav th:replace="partials/navbar.html :: navbar"></nav>
-<div class="wrapper">
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalHeader">Search for Organizations and Events</h2>
-                <span class="close">&times;</span>
-            </div>
-            <form th:action="@{/search}" method="post">
-                <div class="d-flex align-items-center b-0">
-                    <label for="search-params"></label><select class="nosir" id="search-params" name="search-params">
-                    <option value="2">Organizations</option>
-                    <option value="1">Events</option>
-                </select>
-                    <label for="query"></label><input class="nosir mx-2" id="query" name="query" type="text"
-                                                      placeholder="Search"/>
-                    <button class="btn-hover color-9 m-0" type="submit" value="submit">Search</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+<!--<div class="wrapper">-->
+<!--    <div id="myModal" class="modal">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h2 id="modalHeader">Search for Organizations and Events</h2>-->
+<!--                <span class="close">&times;</span>-->
+<!--            </div>-->
+<!--            <form th:action="@{/search}" method="post">-->
+<!--                <div class="d-flex align-items-center b-0">-->
+<!--                    <label for="search-params"></label><select class="nosir" id="search-params" name="search-params">-->
+<!--                    <option value="2">Organizations</option>-->
+<!--                    <option value="1">Events</option>-->
+<!--                </select>-->
+<!--                    <label for="query"></label><input class="nosir mx-2" id="query" name="query" type="text"-->
+<!--                                                      placeholder="Search"/>-->
+<!--                    <button class="btn-hover color-9 m-0" type="submit" value="submit">Search</button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <div class="theContainer">
     <div class="contentWrap">
@@ -38,7 +38,7 @@
             <h2 class="m-0">Create An Event</h2>
         </div>
 <!--        Create event form-->
-        <form class="eventBody" th:action="@{/event/create}" method="post" th:object="${events}">
+        <form class="eventBodyCard" th:action="@{/event/create}" method="post" th:object="${events}">
 
             <div class="form-group">
                 <label class="eventText" for="orgName"><b>Organization Name</b></label><br>

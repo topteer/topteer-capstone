@@ -7,27 +7,6 @@
 
 <body class="homeBody">
 <nav th:replace="partials/navbar.html :: navbar"></nav>
-<div class="wrapper">
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalHeader">Search for Organizations and Events</h2>
-                <span class="close">&times;</span>
-            </div>
-            <form th:action="@{/search}" method="post">
-                <div class="d-flex align-items-center b-0">
-                    <label for="search-params"></label><select class="nosir" id="search-params" name="search-params">
-                    <option value="2">Organizations</option>
-                    <option value="1">Events</option>
-                </select>
-                    <label for="query"></label><input class="nosir mx-2" id="query" name="query" type="text"
-                                                      placeholder="Search"/>
-                    <button class="btn-hover color-9 m-0" type="submit" value="submit">Search</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
     <div class="container d-flex justify-content-center mx-auto mt-4">
         <img src="../static/img/top.png" th:src="@{/img/top.png}" alt="Top"/>
         <img src="../static/img/volunteer-hands.jpeg" th:src="@{/img/volunteer-hands.jpeg}" width="500" height="225" alt="Hands of Volunteer"/>
@@ -40,9 +19,6 @@
         <br>
         <a th:href="@{/register}" class="button slide_down d-flex justify-content-center">GET STARTED</a>
     </div>
-
-
-    <p id="quote"></p>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script type="text/javascript" th:src="@{/js/modal.js}"> </script>

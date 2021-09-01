@@ -43,34 +43,6 @@ margin-top: 14px;
 }
 
 
-
-/*.titles{*/
-/*    background: lightblue;*/
-/*    width: 75%;*/
-/*    text-align: center;*/
-/*    color: black;*/
-/*}*/
-
-/*.descriptions {*/
-/*    background: white;*/
-/*    width: 75%;*/
-/*    text-align: center;*/
-/*    color: black;*/
-/*}*/
-
-/*.card{*/
-/*    margin: 10px;*/
-/*    display: flex;*/
-/*    width: 45vw;*/
-/*    height: fit-content;*/
-/*    border: none;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    font-size: larger;*/
-/*}*/
-
-
-
 .homeBody {
     background-image: url('../img/hands2.png');
     background-repeat: no-repeat;

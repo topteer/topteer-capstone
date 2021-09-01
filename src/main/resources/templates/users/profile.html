@@ -81,25 +81,23 @@
 					</div>
 				</div>
 			</div>
-
-			<!--events card-->
-			<div>
-				<div class="card-5">
-					<div class="eventBodyCard">
-						<h2 class="userHeader m-0" th:text="Events"></h2>
-						<hr class="m-0">
-						<div class="scrollCard">
-							<form th:each="event: ${user.events}">
-								<h4 class="eventText"><a th:href="@{/event/{id}/show(id=${event.id})}"
-								                         th:text="${event.title}"></a></h4>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<footer th:replace="partials/footer.html :: footer"></footer>
+            <!--events card-->
+            <div>
+            <div class="card-5">
+                <div class="eventBodyCard">
+                <h2 class="userHeader m-0" th:text="'Registered Events'"></h2>
+                <hr class="m-0">
+                <div class="scrollCard">
+                    <form th:each="event: ${user.events}">
+                        <h4><a class="eventText" th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <footer th:replace="partials/footer.html :: footer"></footer>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
