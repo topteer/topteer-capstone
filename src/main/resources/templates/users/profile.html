@@ -61,7 +61,9 @@
 			<div>
 				<div class="card-5">
 					<div class="eventBodyCard">
-						<h1 class="userHeader m-0" th:text="Organization"></h1>
+						<div class="userHeader">
+							<h1 th:text="Organization"></h1>
+						</div>
 						<hr class="m-0">
 						<div th:if="${!nullOrg}">
 							<h4 class="eventText" th:text="${orgN}"></h4>

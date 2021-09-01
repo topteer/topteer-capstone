@@ -3,63 +3,43 @@
 <head><title>Top-Teer Register an Account</title>
 	<link th:replace="partials/header.html :: header"/>
 </head>
-<nav th:replace="partials/navbar.html :: navbar"></nav>
-<div class="wrapper">
-	<div id="myModal" class="modal">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h2 id="modalHeader">Search for Organizations and Events</h2>
-				<span class="close">&times;</span>
-			</div>
-			<form th:action="@{/search}" method="post">
-				<div class="d-flex align-items-center b-0">
-					<label for="search-params"></label><select class="nosir" id="search-params" name="search-params">
-					<option value="2">Organizations</option>
-					<option value="1">Events</option>
-				</select>
-					<label for="query"></label><input class="nosir mx-2" id="query" name="query" type="text"
-													  placeholder="Search"/>
-					<button class="btn-hover color-9 m-0" type="submit" value="submit">Search</button>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
+
 <body class="formBody">
+<nav th:replace="partials/navbar.html :: navbar"></nav>
 <div class="container">
 
-	<div class="w3-card-4 w3-margin-center w3-round-xlarge">
+	<div class="card-4">
 		<div class="userHeader">
 			<h2 class="m-0">Create An Account</h2>
 		</div>
-		<div class="eventBody">
+		<div class="eventBodyCard">
 			<form class="container" th:action="@{/register}" method="POST" th:object="${user}">
 				<p class="eventText">
 					<label>First Name</label>
-					<input width="25" class="w3-input w3-border mx-2" name="first" type="text" placeholder="First Name"
+					<input width="25" class="input" name="first" type="text" placeholder="First Name"
 						   id="firstname" th:field="*{firstName}"/></p>
 				<p class="eventText">
 					<label>Last Name</label>
-					<input class="w3-input w3-border mx-2" name="last" type="text" placeholder="Last Name" id="lastname"
+					<input class="input" name="last" type="text" placeholder="Last Name" id="lastname"
 						   th:field="*{lastName}"/></p>
 				<p class="eventText">
 					<label>Username</label>
-					<input class="w3-input w3-border mx-2" name="last" type="text" placeholder="Username" id="username"
+					<input class="input" name="last" type="text" placeholder="Username" id="username"
 						   th:field="*{username}"/></p>
 				<p class="eventText">
 					<label>Email</label>
-					<input class="w3-input w3-border mx-2" name="last" type="text" placeholder="Email" id="email"
+					<input class="input" name="last" type="text" placeholder="Email" id="email"
 						   th:field="*{email}"/></p>
 				<p class="eventText">
 					<label>Password</label>
-					<input class="w3-input w3-border mx-2" name="password" type="password" placeholder="Password"
+					<input class="input" name="password" type="password" placeholder="Password"
 						   id="password" minlength="6" th:field="*{password}"/></p>
 				<p class="eventText">
 					<label>Confirm Password</label>
-					<input class="w3-input w3-border" name="password-confirm" type="password"
+					<input class="input " name="password-confirm" type="password"
 						   placeholder="Confirm Password" id="password-confirm" minlength="6"/></p>
 				<p>
-					<button class="btn-hover color-9 eventText center">Register</button>
+					<button class="btn-hover color-9">Register</button>
 				</p>
 			</form>
 		</div>
