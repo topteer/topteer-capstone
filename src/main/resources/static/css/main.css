@@ -85,7 +85,7 @@ margin-top: 14px;
 }
 
 .footer {
-    position:absolute;bottom:0;left:auto;right:auto;height:30px;
+    position:fixed;bottom:0;left:auto;right:auto;height:60px !important;
     display: flex;
     justify-content: center;
     align-items: center;
