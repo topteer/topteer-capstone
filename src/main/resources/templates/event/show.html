@@ -65,7 +65,7 @@
         <form method="post" class="d-flex align-items-center" th:action="@{/sendText/to/{id}(id=${user.id})}"
               th:each="user: ${event.getEventvolunteer()}">
             <a th:href="@{/users/{id}/profile(id=${user.id})}" class="col-4 m-1"><label class="eventText" th:text="${user.firstName} + ' ' + ${user.lastName}"></label></a>
-            <input class="col-3 m-1 checkbox" type="checkbox" th:value="${user.id}">
+            <input class="col-3 m-1" th:value="${user.id}" hidden >
             <button type="submit" class="btn-hover color-3 col-3 m-1" name="eventCompleted">Submit</button>
         </form>
     </div>
