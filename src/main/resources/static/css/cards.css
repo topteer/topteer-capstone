@@ -19,11 +19,11 @@
 .scrollCard {
     height:150px;
     overflow-y: scroll;
+    background: white;
 }
 
 .lineUp {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-evenly;
     align-content: flex-start;
 }

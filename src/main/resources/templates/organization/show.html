@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="w3-card-4 w3-margin-center w3-round-xlarge" th:object="${org}">
+        <div class="card-4" th:object="${org}">
             <div class="organizationHeader">
                 <h3 class="m-0" th:text="${org.getOrgName()}"></h3>
             </div>
@@ -43,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div th:name="id" th:value="${org.id}" class="w3-card-4 w3-margin-center w3-round-xlarge">
+        <div th:name="id" th:value="${org.id}" class="card-4">
             <h3 class="organizationHeader m-0">Events</h3>
             <!-- Displays all events linked to org with links-->
             <div th:if="${noEvnt}">
