@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head><title>Top-Teer All events</title>
-	<link th:replace="partials/header.html :: header"/>
+    <link th:replace="partials/header.html :: header"/>
 </head>
+
 <nav th:replace="partials/navbar.html :: navbar"></nav>
 <!--<div class="wrapper">-->
 <!--	<div id="myModal" class="modal">-->
@@ -25,25 +26,52 @@
 <!--		</div>-->
 <!--	</div>-->
 <!--</div>-->
+
 <body class="createBody">
-<!--Display all orgs-->
-<div class="w3-card-4 w3-margin-center w3-round-xlarge" th:each="organization: ${organizations}">
-	<div class="organizationHeader">
-		<h2 class="m-0"><a th:text="${organization.getOrgName()}"
-		       th:href="@{/organization/{id}/show(id=${organization.getId()})}"></a></h2>
-	</div>
-	<div class="eventBody">
-		<p th:text="${organization.getAddress()}" class="eventText"></p>
-		<p th:text="${organization.getCity() + ', ' + organization.getState().toUpperCase() + ' ' + organization.getZip()}"
-		   class="eventText"></p>
-		<p th:text="${organization.getPhone()}" class="eventText"></p>
-		<p th:text="${organization.getEmail()}" class="eventText"></p>
-	</div>
+<nav th:replace="partials/navbar.html :: navbar"></nav>
+<div class="theContainer">
+    <div class="contentWrap">
+        <div class="wrapper">
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="modalHeader">Search for Organizations and Events</h2>
+                        <span class="close">&times;</span>
+                    </div>
+                    <form th:action="@{/search}" method="post">
+                        <div class="d-flex align-items-center b-0">
+                            <label for="search-params"></label><select class="nosir" id="search-params"
+                                                                       name="search-params">
+                            <option value="2">Organizations</option>
+                            <option value="1">Events</option>
+                        </select>
+                            <label for="query"></label><input class="nosir mx-2" id="query" name="query" type="text"
+                                                              placeholder="Search"/>
+                            <button class="btn-hover color-9 m-0" type="submit" value="submit">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--Display all orgs-->
+        <div class="card-4" th:each="organization: ${organizations}">
+            <div class="organizationHeader">
+                <h2 class="m-0"><a th:text="${organization.getOrgName()}"
+                                   th:href="@{/organization/{id}/show(id=${organization.getId()})}"></a></h2>
+            </div>
+            <div class="eventBodyCard">
+                <p th:text="${organization.getAddress()}" class="eventText"></p>
+                <p th:text="${organization.getCity() + ', ' + organization.getState().toUpperCase() + ' ' + organization.getZip()}"
+                   class="eventText"></p>
+                <p th:text="${organization.getPhone()}" class="eventText"></p>
+                <p th:text="${organization.getEmail()}" class="eventText"></p>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="partials/footer.html :: footer"></footer>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script type="text/javascript" th:src="@{/js/modal.js}"> </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{/js/modal.js}"></script>
 </body>
-<div>
-	<footer th:replace="partials/footer.html :: footer"></footer>
-</div>
 </html>

@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-    <head><title>Top-Teer Create an Organization</title>
-        <link th:replace="partials/header.html :: header"/>
-    </head>
-
-
+<head><title>Top-Teer Create an Organization</title>
+    <link th:replace="partials/header.html :: header"/>
+</head>
 
     <body class="createBody">
         <nav th:replace="partials/navbar.html :: navbar"></nav>
@@ -29,36 +27,44 @@
 <!--                </div>-->
 <!--            </div>-->
 <!--        </div>-->
+
         <div class="container">
 
-            <div class="w3-card-4 w3-margin-center w3-round-xlarge">
-                <div class="w3-center w3-green w3-border">
+            <div class="card-4">
+                <div class="organizationHeader">
                     <h2>Create An Organization</h2>
                 </div>
-<!--                Create org form-->
-                <form class="w3-center container w3-white w3-border" action="/organization/create" th:action="@{/organization/create}" method="post" th:object="${organization}">
+                <!--                Create org form-->
+                <form class="eventBodyCard" action="/organization/create"
+                      th:action="@{/organization/create}" method="post" th:object="${organization}">
                     <div class="form-group">
-                        <label class="w3-text-green" for="orgName"><b>Organization Name</b></label>
-                        <input width="25" class="w3-input w3-border w3-sand" placeholder="Organization Name" id="orgName" th:field="*{orgName}">
-                        <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('orgName')}" th:errors="*{orgName}"></p>
+                        <label class="eventText" for="orgName"><b>Organization Name</b></label>
+                        <input class="input" placeholder="Organization Name"
+                               id="orgName" th:field="*{orgName}">
+                        <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('orgName')}"
+                           th:errors="*{orgName}"></p>
                     </div>
 
                     <div class="form-group">
-                        <label class="w3-text-green" for="address"><b>Address</b></label>
-                        <input width="25" class="w3-input w3-border w3-sand" placeholder="Address" id="address" th:field="*{address}" />
-                        <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+                        <label class="eventText" for="address"><b>Address</b></label>
+                        <input class="input" placeholder="Address" id="address"
+                               th:field="*{address}"/>
+                        <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('address')}"
+                           th:errors="*{address}"></p>
                     </div>
 
                     <div class="form-group">
-                        <label class="w3-text-green" for="city"><b>City</b></label>
-                        <input width="25" class="w3-input w3-border w3-sand" placeholder="City" id="city" th:field="*{city}">
-                        <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
+                        <label class="eventText" for="city"><b>City</b></label>
+                        <input class="input" placeholder="City" id="city"
+                               th:field="*{city}">
+                        <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('city')}"
+                           th:errors="*{city}"></p>
                     </div>
 
                     <div class="form-group">
-                        <label class="w3-text-green" for="state"><b>State</b></label>
+                        <label class="eventText" for="state"><b>State</b></label>
                         <br>
-                        <select width="25" class="w3-input w3-border w3-sand" id="state" th:field="*{state}">
+                        <select class="input" id="state" th:field="*{state}">
                             <option value="al">AL</option>
                             <option value="ak">AK</option>
                             <option value="az">AZ</option>
@@ -110,37 +116,44 @@
                             <option value="wi">WI</option>
                             <option value="wy">WY</option>
                         </select>
-                        <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></p>
+                        <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('state')}"
+                           th:errors="*{state}"></p>
                     </div>
 
                     <div class="form-group">
-                        <label class="w3-text-green" for="zip"><b>Zip</b></label>
-                        <input width="25" class="w3-input w3-border w3-sand" placeholder="Zip" id="zip" th:field="*{zip}">
-                        <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('zip')}" th:errors="*{zip}"></p>
+                        <label class="eventText" for="zip"><b>Zip</b></label>
+                        <input class="input" placeholder="Zip" id="zip"
+                               th:field="*{zip}">
+                        <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('zip')}"
+                           th:errors="*{zip}"></p>
                     </div>
 
                     <div class="form-group">
-                        <label class="w3-text-green" for="phone"><b>Phone</b></label>
-                        <input width="25" class="w3-input w3-border w3-sand" placeholder="Phone" id="phone" th:field="*{phone}" />
-                        <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+                        <label class="eventText" for="phone"><b>Phone</b></label>
+                        <input class="input" placeholder="Phone" id="phone"
+                               th:field="*{phone}"/>
+                        <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('phone')}"
+                           th:errors="*{phone}"></p>
                     </div>
 
                     <div class="form-group">
-                        <label class="w3-text-green" for="email"><b>Email</b></label>
-                        <input width="25" class="w3-input w3-border w3-sand" placeholder="Email" th:type="email" id="email" th:field="*{email}" />
-                        <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                        <label class="eventText" for="email"><b>Email</b></label>
+                        <input class="input" placeholder="Email" th:type="email"
+                               id="email" th:field="*{email}"/>
+                        <p class="font-weight-bold text-danger" th:if="${#fields.hasErrors('email')}"
+                           th:errors="*{email}"></p>
                     </div>
                     <p>
-                        <button class="w3-btn w3-green" type="submit" name="sendCreate">Create</button>
+                        <button class="btn-hover color-5" type="submit" name="sendCreate">Create</button>
                     </p>
                 </form>
             </div>
         </div>
-
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script type="text/javascript" th:src="@{/js/modal.js}"> </script>
-    </body>
-    <div>
-        <footer th:replace="partials/footer.html :: footer"></footer>
     </div>
+    <footer th:replace="partials/footer.html :: footer"></footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{/js/modal.js}"></script>
+</body>
 </html>

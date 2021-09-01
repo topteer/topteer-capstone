@@ -6,6 +6,7 @@
     </head>
     <body class="createBody">
         <nav th:replace="partials/navbar.html :: navbar"></nav>
+
 <!--        <div class="wrapper">-->
 <!--            <div id="myModal" class="modal">-->
 <!--                <div class="modal-content">-->
@@ -43,7 +44,7 @@
                 </div>
             </div>
         </div>
-        <div th:name="id" th:value="${org.id}" class="w3-card-4 w3-margin-center w3-round-xlarge">
+        <div th:name="id" th:value="${org.id}" class="card-4">
             <h3 class="organizationHeader m-0">Events</h3>
             <!-- Displays all events linked to org with links-->
             <div th:if="${noEvnt}">
