@@ -83,11 +83,11 @@
             <div>
             <div class="card-5">
                 <div class="eventBodyCard">
-                <h2 class="userHeader m-0" th:text="Events"></h2>
+                <h2 class="userHeader m-0" th:text="'Registered Events'"></h2>
                 <hr class="m-0">
                 <div class="scrollCard">
                     <form th:each="event: ${user.events}">
-                        <h4 class="eventText"><a th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>
+                        <h4><a class="eventText" th:href="@{/event/{id}/show(id=${event.id})}" th:text="${event.title}"></a></h4>
                     </form>
                 </div>
             </div>
