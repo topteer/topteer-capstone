@@ -34,7 +34,7 @@
     overflow: auto;
     position: relative;
     margin-left: -250px;
-    margin-top: 450px;
+    margin-top: 230px;
 }
 
 .card-4{
@@ -73,4 +73,16 @@
     width: 500px;
     margin: 230px 15px 15px 15px ;
     color: white;
+}
+
+.card-7{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 15px;
+    color: transparent;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
 }

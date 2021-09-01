@@ -3,8 +3,6 @@
 <head><title>Top-Teer All events</title>
     <link th:replace="partials/header.html :: header"/>
 </head>
-
-<nav th:replace="partials/navbar.html :: navbar"></nav>
 <!--<div class="wrapper">-->
 <!--	<div id="myModal" class="modal">-->
 <!--		<div class="modal-content">-->
@@ -56,7 +54,7 @@
         <!--Display all orgs-->
         <div class="card-4" th:each="organization: ${organizations}">
             <div class="organizationHeader">
-                <h2 class="m-0"><a th:text="${organization.getOrgName()}"
+                <h2 class="m-0"><a th:text="${organization.orgName.toUpperCase()}"
                                    th:href="@{/organization/{id}/show(id=${organization.getId()})}"></a></h2>
             </div>
             <div class="eventBodyCard">
